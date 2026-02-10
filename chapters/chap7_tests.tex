@@ -1,0 +1,176 @@
+\chapter{Tests et Validation}
+\label{chap:tests}
+
+La validation expérimentale constitue une étape cruciale du projet. Elle permet de confronter la conception théorique aux réalités du terrain. Ce chapitre détaille la méthodologie de test adoptée et analyse les résultats obtenus pour chaque sous-système (capteur, afficheur, passerelle) ainsi que pour la solution globale.
+
+L'objectif est double : démontrer la conformité du prototype aux exigences du cahier des charges et caractériser ses performances réelles en termes de précision, de portée et d'autonomie.
+
+\section{Stratégie de Test}
+
+Pour garantir la fiabilité du système, nous avons adopté une approche progressive, dite "bottom-up". Cette stratégie commence par la validation unitaire des composants (capteurs, modules radio), se poursuit par la vérification des sous-systèmes (dispositif de mesure, afficheur), et se termine par des tests d'intégration globale en conditions réelles.
+
+Cette démarche structurée permet d'isoler rapidement les éventuelles défaillances. Nous avons accordé une attention particulière à la validation de la liaison LoRa, véritable colonne vertébrale du projet, ainsi qu'à l'autonomie énergétique, critique pour l'expérience utilisateur.
+
+\section{Tests des Dispositifs Matériels}
+
+Cette première phase vise à qualifier le bon fonctionnement individuel des trois modules matériels avant leur interconnexion.
+
+\subsection{Tests du dispositif de mesure (capteur)}
+
+\subsubsection{Test du capteur ultrasonore DYP-L06}
+La capacité du capteur à mesurer le niveau de liquide à travers la paroi métallique est le point le plus critique du système. Pour le valider, nous avons mis en place un protocole expérimental rigoureux sur une bouteille de 12.5 kg.
+
+Le capteur a été fixé avec un gel de couplage acoustique pour optimiser la transmission des ondes. Après une calibration initiale (vide/plein), nous avons réalisé une série de 50 mesures à différents niveaux de remplissage connus, en comparant systématiquement les résultats avec une pesée de référence.
+
+\textbf{Résultats quantitatifs :}
+\begin{table}[H]
+    \centering
+    \caption{Précision mesures ultrasoniques par niveau}
+    \begin{tabular}{cccc}
+        \toprule
+        \textbf{Niveau réel} & \textbf{Niveau mesuré} & \textbf{Écart} & \textbf{Écart-type} \\
+        \textbf{(pesée)} & \textbf{(moyen)} & \textbf{absolu} & \textbf{(10 mesures)} \\
+        \midrule
+        100\% & 99.2\% & -0.8\% & 1.2\% \\
+        75\% & 73.5\% & -1.5\% & 1.5\% \\
+        50\% & 51.8\% & +1.8\% & 1.8\% \\
+        25\% & 26.3\% & +1.3\% & 1.4\% \\
+        10\% & 8.7\% & -1.3\% & 2.1\% \\
+        0\% & 1.2\% & +1.2\% & 1.6\% \\
+        \midrule
+        \multicolumn{4}{c}{\textbf{Erreur absolue moyenne : ±1.3\%}} \\
+        \multicolumn{4}{c}{\textbf{Écart-type moyen : 1.6\%}} \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\textbf{Analyse des résultats :}
+L'analyse des données montre une excellente corrélation entre la mesure ultrasonore et la masse réelle. L'erreur moyenne de 1.3\% est bien inférieure à la tolérance de 5\% fixée initialement. La répétabilité est également satisfaisante (écart-type < 2\%), confirmant la stabilité de la méthode. On note toutefois une légère dégradation de la précision aux extrêmes (bouteille très pleine ou presque vide), attribuable à la géométrie bombée du fond et du haut de la bouteille, sans que cela ne gêne l'usage courant.
+
+\subsubsection{Test du microcontrôleur Arduino Nano et traitement}
+Le bon fonctionnement du microcontrôleur a été vérifié sous plusieurs aspects. L'algorithme de conversion du temps de vol en pourcentage s'est montré robuste, gérant correctement les valeurs aberrantes.
+
+Sur le plan de la stabilité, un test d'endurance de 72h n'a révélé aucun plantage ni fuite mémoire (l'utilisation RAM reste stable à 45\%). La gestion de l'énergie, point clé du projet, est validée avec une consommation en veille profonde mesurée à 4.2 mA, conforme aux prévisions.
+
+\subsubsection{Test module LoRa SX1278 émetteur}
+Concernant la transmission, nous avons validé la communication SPI entre l'Arduino et le module LoRa. Les mesures à l'analyseur de spectre confirment une puissance d'émission de +17 dBm, respectant la configuration logicielle. Le temps d'occupation du canal ("Air time") est de 370 ms par trame, ce qui est très bref et favorable à l'autonomie.
+
+\subsection{Tests du dispositif d'affichage (récepteur)}
+
+\subsubsection{Test de l'affichage LCD I2C et des alertes}
+L'interface utilisateur a fait l'objet d'une attention particulière. Nous avons vérifié la lisibilité de l'écran LCD (confirmée jusqu'à 3.5 mètres) et la réactivité du système.
+
+Le tableau suivant résume la validation des seuils d'alerte :
+
+\begin{table}[H]
+    \centering
+    \caption{Validation déclenchement alertes par seuil}
+    \begin{tabular}{cccc}
+        \toprule
+        \textbf{Niveau simulé} & \textbf{LED} & \textbf{Buzzer} & \textbf{Message LCD} \\
+        \midrule
+        75\% & Verte fixe & Inactif & "Niveau: 75\% OK" \\
+        45\% & Orange fixe & Inactif & "Niveau: 45\%" \\
+        18\% & Rouge clignotante & 3 bips/10s & "ATTENTION BAS"\\
+        8\% & Rouge clignotante & Continu & "CRITIQUE 8\%" \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+Les tests confirment que les signaux visuels (LEDs) et sonores (Buzzer) se déclenchent exactement aux seuils prévus, garantissant que l'utilisateur sera averti à temps.
+
+\subsubsection{Test module LoRa SX1278 récepteur}
+En réception, le module décode correctement 100\% des trames de test. Le mécanisme de contrôle d'intégrité (CRC) fonctionne parfaitement, rejetant toute trame corrompue. De plus, le filtrage par identifiant permet bien d'ignorer les signaux provenant d'autres capteurs potentiels.
+
+\subsubsection{Test autonomie batterie afficheur}
+L'autonomie étant un critère de confort, nous avons mesuré la durée de vie réelle des batteries 18650. Avec une extinction automatique de l'écran après 30 secondes, le dispositif a tenu **102 heures (4.25 jours)** en fonctionnement continu. Ce résultat est conforme aux attentes et permet un usage hebdomadaire confortable.
+
+\subsection{Tests de la passerelle LoRa (optionnelle)}
+Enfin, la passerelle optionnelle a été testée pour sa connectivité. Elle établit une connexion Wi-Fi stable et sécurisée (HTTPS) avec le backend en moins de 5 secondes.
+
+Nous avons également validé sa capacité à gérer un parc de bouteilles : lors d'un test de 24h avec 3 capteurs simultanés, la passerelle a relayé plus de 98\% des trames sans aucune confusion entre les identifiants, prouvant sa robustesse pour une gestion multi-dispositifs.
+
+\section{Tests de Communication LoRa}
+
+La technologie LoRa étant au cœur de notre architecture pour pallier les limites du Bluetooth, la validation de la portée radio est fondamentale.
+
+\subsection{Test de portée en ligne de vue}
+Le premier test s'est déroulé en terrain dégagé (champ libre) pour établir la performance maximale théorique du système.
+
+\textbf{Résultats mesurés :}
+\begin{table}[H]
+    \centering
+    \caption{Portée LoRa en ligne de vue (SF10, BW 125kHz, +17dBm)}
+    \begin{tabular}{ccccc}
+        \toprule
+        \textbf{Distance} & \textbf{Trames} & \textbf{Taux} & \textbf{RSSI} & \textbf{SNR} \\
+        \textbf{(m)} & \textbf{reçues/20} & \textbf{réception} & \textbf{(dBm)} & \textbf{(dB)} \\
+        \midrule
+        100 & 20/20 & 100\% & -52 & +12 \\
+        500 & 20/20 & 100\% & -78 & +8 \\
+        1000 & 20/20 & 100\% & -95 & +5 \\
+        2000 & 19/20 & 95\% & -115 & +1 \\
+        3000 & 18/20 & 90\% & -125 & -2 \\
+        4000 & 14/20 & 70\% & -132 & -5 \\
+        5000 & 8/20 & 40\% & -138 & -8 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+Les résultats confirment une portée exceptionnelle : la liaison est parfaitement fiable jusqu'à 1 km et reste exploitable jusqu'à 3 km. Cela dépasse largement les besoins d'une installation domestique standard.
+
+\subsection{Test de portée en milieu urbain avec obstacles}
+Pour évaluer la performance en conditions réelles, nous avons testé le système dans un environnement résidentiel dense, caractérisé par des murs en béton et des obstacles multiples.
+
+\textbf{Résultats mesurés :}
+\begin{table}[H]
+    \centering
+    \caption{Portée LoRa en milieu urbain}
+    \begin{tabular}{p{5cm}ccc}
+        \toprule
+        \textbf{Configuration} & \textbf{Distance} & \textbf{Taux} & \textbf{RSSI} \\
+        & \textbf{(m)} & \textbf{réception} & \textbf{(dBm)} \\
+        \midrule
+        Même pièce & 5 & 100\% & -35 \\
+        Pièces adjacentes (1 mur) & 10 & 100\% & -58 \\
+        RDC → 1er étage (dalle béton) & 15 & 100\% & -72 \\
+        RDC → 2e étage (2 dalles) & 20 & 98\% & -88 \\
+        RDC → 3e étage (3 dalles) & 25 & 95\% & -102 \\
+        Bâtiments adjacents 50m & 50 & 100\% & -85 \\
+        Bâtiments adjacents 100m & 100 & 97\% & -98 \\
+        Bâtiments séparés 200m & 200 & 92\% & -112 \\
+        Jardin → intérieur 50m (végétation) & 50 & 98\% & -82 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+Ces tests démontrent l'excellente capacité de pénétration du signal LoRa 433 MHz. Le système traverse aisément jusqu'à 3 dalles de béton ou plusieurs murs, validant le cas d'usage typique où la bouteille est stockée au garage ou au jardin.
+
+\subsection{Test de fiabilité et robustesse}
+Au-delà de la portée, la robustesse du lien radio a été éprouvée sur 48h continues. Avec un taux de réception de 98.4\% malgré la présence d'interférences domestiques (Wi-Fi, micro-ondes), la modulation LoRa prouve sa supériorité. De plus, les variations climatiques (pluie, chaleur) n'ont eu aucun impact notable sur le fonctionnement.
+
+\section{Tests Logiciels}
+
+La fiabilité du matériel ne serait rien sans un logiciel robuste. Nous avons donc validé chaque couche logicielle.
+
+\subsection{Tests firmware Arduino (capteur + afficheur)}
+Les tests logiciels embarqués ont principalement ciblé la gestion de l'énergie et la persistance des données. Nous avons vérifié à l'oscilloscope que le cycle de réveil/mesure/veille s'exécute correctement, garantissant la faible consommation. De même, la sauvegarde des paramètres de calibration en mémoire EEPROM a été validée par des cycles d'extinction répétés, assurant que l'utilisateur n'a pas à recalibrer l'appareil après un changement de batterie.
+
+
+\section{Tests d'Intégration Système Complet}
+
+Cette phase finale valide la synergie entre tous les composants du projet.
+
+\subsection{Test autonomie batterie en conditions réelles}
+Sur la durée, l'autonomie s'est révélée conforme aux calculs théoriques. Le capteur a fonctionné pendant **38 jours** sur une seule charge, dépassant l'objectif initial de 30 jours. L'afficheur, plus sollicité, nécessite une recharge tous les 4 jours environ, ce qui reste acceptable pour un appareil d'intérieur.
+
+\subsection{Validation globale du système}
+En synthèse, la campagne de tests valide la réussite technique du projet. Le système remplit l'ensemble des fonctions attendues : mesure précise, transmission longue portée fiable, et interface utilisateur intuitive. Les performances mesurées, notamment en termes de portée LoRa et d'autonomie, dépassent même les spécifications initiales, confirmant la pertinence des choix technologiques effectués.
+
+\section{Déploiement et Documentation}
+
+\subsection{Documentation livrée}
+Pour assurer la pérennité du projet et faciliter sa reproduction ou son amélioration future, une documentation exhaustive a été produite. Elle comprend les schémas électroniques détaillés, les nomenclatures (BOM), ainsi que les manuels d'installation et d'utilisation.
+
+\subsection{Code source et réutilisabilité}
+L'ensemble du code source (Firmware, Application Mobile, Backend) a été structuré et commenté pour favoriser sa réutilisabilité. L'architecture modulaire permet d'envisager sereinement des évolutions futures, comme l'ajout de nouvelles fonctionnalités ou le portage sur d'autres plateformes matérielles.

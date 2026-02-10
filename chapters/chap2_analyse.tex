@@ -1,0 +1,463 @@
+\chapter{Analyse du Projet}
+\label{chap:analyse}
+
+Ce chapitre présente l'analyse approfondie des besoins, des contraintes et des spécifications fonctionnelles du système de détection de gaz. Cette analyse constitue le fondement sur lequel repose toute la conception du projet.
+
+\section{Étude des Solutions Existantes}
+\label{sec:solutions_existantes}
+
+Cette section présente une analyse comparative des principales technologies existantes permettant d'estimer le niveau de gaz dans des récipients fermés, notamment les bouteilles de gaz domestique. Chaque méthode est étudiée selon son principe de fonctionnement, ainsi que ses avantages et ses limites dans le contexte du projet.
+
+\subsection{Méthodes de mesure de niveau}
+
+\subsubsection{Mesure par pesage}
+
+\textbf{Principe :}  
+La méthode par pesage consiste à déterminer la quantité de gaz restante en mesurant le poids total de la bouteille. En connaissant le poids de la bouteille vide, il est possible de déduire la masse de gaz restante par simple soustraction. Cette approche repose sur le fait que la masse du gaz diminue progressivement au fur et à mesure de son utilisation.
+
+\begin{itemize}
+    \item \textbf{Avantages :}
+    \begin{itemize}
+        \item Très bonne précision (inférieure à 1 \%)
+        \item Principe simple et largement utilisé
+        \item Méthode non-intrusive, sans contact avec le gaz
+    \end{itemize}
+    
+    \item \textbf{Inconvénients :}
+    \begin{itemize}
+        \item Nécessite l'installation permanente d'une balance sous la bouteille
+        \item Solution encombrante et peu pratique pour un usage domestique
+        \item Sensible aux déplacements ou chocs de la bouteille
+        \item Coût relativement élevé pour une balance précise et fiable
+        \item Obligation de calibrer le système avec le poids exact de la bouteille vide
+    \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{mesure_pesage.png}
+    \caption{Exemple de solution de mesure du niveau de gaz par pesage}
+    \label{fig:solution_pesage}
+\end{figure}
+
+\subsubsection{Mesure par pression}
+
+\textbf{Principe :}  
+La mesure par pression repose sur la mesure de la pression hydrostatique exercée par le liquide au fond du récipient. Dans un réservoir ouvert, cette pression est directement proportionnelle à la hauteur de liquide. Cependant, dans le cas d'une bouteille de gaz sous pression, cette méthode nécessite un accès direct à l'intérieur du récipient afin d'installer un capteur de pression.
+
+\begin{itemize}
+    \item \textbf{Avantages :}
+    \begin{itemize}
+        \item Bonne précision lorsque la mesure est correctement réalisée
+        \item Relation directe entre pression mesurée et niveau de liquide
+        \item Peu influencée par la nature du liquide
+    \end{itemize}
+    
+    \item \textbf{Inconvénients :}
+    \begin{itemize}
+        \item \textbf{Méthode intrusive} nécessitant le perçage de la bouteille
+        \item Risque important de fuite de gaz
+        \item Installation complexe et dangereuse
+        \item \textcolor{red}{\textbf{Méthode non conforme aux exigences de sécurité pour les bouteilles de gaz domestique}}
+    \end{itemize}
+\end{itemize}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.6\linewidth]{chapters/mesure_pression.png}
+    \caption{Solution de mesure du niveau de gaz par mesure de la pression interne}
+    \label{mesure_pression}
+\end{figure}
+
+\subsubsection{Mesure ultrasonore (Solution retenue)}
+
+\textbf{Principe :}  
+La mesure ultrasonore repose sur l'émission d'ondes ultrasonores à travers la paroi métallique de la bouteille. Ces ondes se propagent à l'intérieur de la bouteille et se réfléchissent sur l'interface entre la phase gazeuse et la phase liquide. En mesurant le temps de parcours aller-retour des ondes, il est possible de déterminer avec précision la distance entre le capteur et la surface du liquide, permettant ainsi d'estimer le niveau de gaz restant sans avoir à ouvrir ou modifier la bouteille.
+
+\begin{itemize}
+    \item \textbf{Avantages :}
+    \begin{itemize}
+        \item \textbf{Méthode non-intrusive} ne nécessitant aucune modification de la bouteille
+        \item Précision acceptable pour un usage domestique (environ ±5 \%)
+        \item Temps de réponse rapide (quelques secondes)
+        \item Faible sensibilité aux conditions environnementales
+        \item Coût raisonnable des composants électroniques
+        \item Technologie éprouvée et largement utilisée en milieu industriel
+        \item Faible consommation énergétique compatible avec fonctionnement sur batterie
+        \item Installation simple sous la bouteille sans perçage ni modification
+    \end{itemize}
+    
+    \item \textbf{Inconvénients :}
+    \begin{itemize}
+        \item Nécessite un bon couplage acoustique entre le capteur et la paroi
+        \item Calibration initiale indispensable pour chaque type de bouteille
+        \item Performances dépendantes de l'état de surface de la bouteille
+        \item Sensibilité aux vibrations lors de la mesure
+        \item Précision légèrement inférieure à la méthode par pesage
+    \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{chapters/mseure_ultrason.png}
+    \caption{Principe de fonctionnement de la détection ultrasonore}
+    \label{fig:principe_ultrason}
+\end{figure}
+
+\subsection{Tableau comparatif des technologies}
+
+\begin{table}[H]
+    \centering
+    \caption{Comparaison multicritère des solutions}
+    \label{tab:comparaison_solutions}
+    \small
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabular}{l c c c}
+        \toprule
+        \textbf{Critère} & \textbf{Pesage} & \textbf{Pression}  & \textbf{Ultrason} \\
+        \midrule
+        Précision & Excellente & Bonne & Bonne \\
+        (Note /5) & 5/5 & 4/5 & 4/5 \\
+        \midrule
+        Non-intrusif & Oui & Non  & Oui \\
+        (Note /5) & 5/5 & 0/5  & 5/5 \\
+        \midrule
+        Sécurité & Bonne & Risque & Excellente \\
+        (Note /5) & 4/5 & 2/5  & 5/5 \\
+        \midrule
+        Coût & Élevé & Moyen & Moyen \\
+        (Note /5) & 2/5 & 3/5 & 4/5 \\
+        \midrule
+        Facilité & Moyenne & Complexe & Moyenne \\
+        (Note /5) & 3/5 & 2/5 & 3/5 \\
+        \midrule
+        Fiabilité & Bonne & Moyenne & Bonne \\
+        (Note /5) & 4/5 & 3/5 & 4/5 \\
+        \midrule
+        \textbf{TOTAL} & \textbf{23/30} & \textbf{14/30} & \textbf{25/30} \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\subsection{Justification du choix de la solution ultrasonore}
+
+Au vu de l'analyse comparative, la technologie ultrasonore s'impose comme le meilleur compromis pour notre application :
+
+\begin{enumerate}
+    \item \textbf{Conformité aux contraintes de sécurité} : Aucune modification de la bouteille, absence de risque de fuite, composants basse tension uniquement.
+    
+    \item \textbf{Précision suffisante} : L'objectif de ± 5\% est atteignable avec une calibration appropriée et un traitement du signal optimisé.
+    
+    \item \textbf{Coût maîtrisé} : Les capteurs ultrasonores sont disponibles à des prix raisonnables (3 000 - 15 000 FCFA pièce selon la qualité).
+    
+    \item \textbf{Facilité d'implémentation} : La technologie est bien documentée avec de nombreuses ressources disponibles pour Arduino et microcontrôleurs embarqués.
+    
+    \item \textbf{Faible consommation} : Compatible avec l'objectif d'autonomie de plusieurs semaines sur batterie grâce aux modes de veille profonde.
+    
+    \item \textbf{Fiabilité prouvée} : Cette technologie est utilisée avec succès dans de nombreuses applications industrielles (mesure de niveau dans réservoirs, contrôle non destructif, détection d'objets).
+    
+    \item \textbf{Installation simple} : Fixation rapide sous la bouteille sans outillage spécialisé ni compétences techniques particulières.
+\end{enumerate}
+
+\section{Analyse Fonctionnelle Globale}
+\label{sec:analyse_fonctionnelle}
+
+\subsection{Modèle général du système}
+
+Le système de détection de gaz repose sur une architecture distribuée comprenant trois dispositifs matériels indépendants communiquant via technologie LoRa longue portée :
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{modele.png}
+    \caption{Modèle général du système}
+    \label{fig:modele_general}
+\end{figure}
+
+\begin{enumerate}
+    \item \textbf{L'utilisateur} : Personne utilisant la bouteille de gaz et souhaitant connaître le niveau restant sans avoir à se déplacer jusqu'à la bouteille.
+    
+    \item \textbf{Le dispositif de mesure} : Module autonome fixé sous la bouteille, effectuant périodiquement les mesures ultrasonores et transmettant les données via LoRa. Fonctionne sur batterie Li-Po rechargeable.
+    
+    \item \textbf{Le dispositif d'affichage} : Boîtier mural équipé d'un écran LCD, de LEDs et d'un buzzer, recevant les données du capteur et affichant le niveau de gaz en temps réel. Déclenche des alarmes visuelles et sonores en cas de niveau critique.
+    
+    \item \textbf{La passerelle LoRa (optionnelle)} : Gateway permettant de transmettre les données vers un serveur cloud pour suivi à distance via application mobile ou web.
+\end{enumerate}
+
+\subsection{Diagramme de contexte}
+
+Le diagramme de contexte illustre les interactions entre le système et son environnement :
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{diagramme_contexte.png}
+    \caption{Diagramme de contexte du système}
+    \label{fig:diagramme_contexte}
+\end{figure}
+
+Le système est principalement composé de trois sous-ensembles : \textbf{le dispositif de mesure}, \textbf{le dispositif d'affichage} et \textbf{la passerelle LoRa (optionnelle)}.
+
+Le dispositif de mesure, fixé sous la bouteille de gaz, est chargé de collecter les données physiques liées au niveau de GPL à l'aide du capteur ultrasonique DYP-L06. Ces données sont traitées localement par un microcontrôleur Arduino Nano, puis transmises sans fil au dispositif d'affichage via communication LoRa 433 MHz.
+
+Le dispositif d'affichage, installé dans un endroit accessible de l'habitation (mur, étagère, plan de travail), sert d'interface visuelle pour l'utilisateur. Il affiche le niveau de gaz en pourcentage sur un écran LCD I2C, utilise des LEDs pour indication rapide de l'état, et déclenche une alarme sonore via buzzer en cas de niveau critique. L'utilisateur peut interagir avec le système via des boutons physiques (allumage et arrêt d'alarme).
+
+La passerelle LoRa optionnelle permet d'étendre les fonctionnalités du système en transmettant les données vers un serveur cloud via Wi-Fi ou Ethernet. Basée sur un ESP32, elle reçoit les trames LoRa des capteurs et les transmet à une plateforme IoT (MQTT, HTTP REST API, ou serveur personnalisé). Cela permet un suivi à distance via application mobile ou interface web, ainsi que la gestion simultanée de plusieurs bouteilles.
+
+L'utilisateur interagit principalement avec le dispositif d'affichage pour la consultation locale, et optionnellement avec l'application mobile pour le suivi à distance, tandis que le dispositif de mesure fonctionne de manière totalement autonome avec alimentation sur batterie et gestion intelligente de la consommation énergétique.
+
+\section{Analyse des Besoins}
+\label{sec:analyse_besoins}
+
+\subsection{Besoins fonctionnels}
+
+Les besoins fonctionnels décrivent ce que le système doit faire. Ils sont classés par priorité selon la méthode MoSCoW :
+
+\begin{table}[H]
+    \centering
+    \caption{Besoins fonctionnels classés par priorité}
+    \label{tab:besoins_fonctionnels}
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabular}{p{2cm}p{4.5cm}p{9cm}}
+        \toprule
+        \textbf{Priorité} & \textbf{Besoin} & \textbf{Description} \\
+        \midrule
+        \multicolumn{3}{c}{\textbf{MUST HAVE (Indispensable)}} \\
+        \midrule
+        BF01 & Mesure du niveau & Le système doit mesurer le niveau de gaz avec une précision de $\pm$5\% via capteur ultrasonique \\
+        BF02 & Affichage local & Le niveau doit être affiché en temps réel sur un écran LCD I2C avec bargraphe \\
+        BF03 & Alerte niveau bas & Une alerte visuelle (LED) et sonore (buzzer) doit être déclenchée quand le niveau < 15\% \\
+        BF04 & Autonomie capteur & Le dispositif de mesure doit fonctionner au moins 30 jours sur batterie Li-Po \\
+        BF05 & Communication LoRa & Transmission fiable des données sur plusieurs kilomètres avec portée minimale de 500m en urbain \\
+        \midrule
+        \multicolumn{3}{c}{\textbf{SHOULD HAVE (Important)}} \\
+        \midrule
+        BF06 & Passerelle IoT & Gateway LoRa permettant connexion au cloud via Wi-Fi/Ethernet \\
+        BF07 & Application mobile & Interface graphique pour consultation à distance via serveur cloud \\
+        BF08 & Indicateurs LED & Affichage visuel rapide de l'état sur le dispositif d'affichage (vert/orange/rouge) \\
+        BF09 & Alarme sonore & Buzzer actif paramétrable pour alertes critiques \\
+        BF10 & Boutons physiques & Interaction utilisateur (allumage écran, arrêt alarme) \\
+        \midrule
+        \multicolumn{3}{c}{\textbf{COULD HAVE (Souhaitable)}} \\
+        \midrule
+        BF11 & Historique cloud & Stockage de l'historique de consommation sur serveur distant \\
+        BF12 & Multi-bouteilles & Gestion de plusieurs capteurs par une seule passerelle \\
+        BF13 & Statistiques & Analyse de consommation avec graphiques via application \\
+        BF14 & Prédiction & Estimation du nombre de jours restants basée sur historique \\
+        BF15 & Notifications push & Alertes mobiles en cas de niveau bas \\
+        \midrule
+        \multicolumn{3}{c}{\textbf{WON'T HAVE (Non prioritaire)}} \\
+        \midrule
+        BF16 & Détection de fuites & Alerte en cas de fuite détectée (capteur MQ-6 additionnel) \\
+        BF17 & Géolocalisation & Localisation des points de vente de bouteilles \\
+        BF18 & Partage social & Partage des statistiques sur réseaux sociaux \\
+        BF19 & Commande vocale & Intégration assistants vocaux (Alexa, Google Home) \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\subsection{Besoins non fonctionnels}
+
+Les besoins non fonctionnels définissent les contraintes de qualité du système :
+
+\subsubsection{Performance}
+\begin{itemize}
+    \item \textbf{Temps de réponse} : Mesure complète et transmission en moins de 10 secondes
+    \item \textbf{Précision} : Erreur maximale de $\pm$5\% sur l'ensemble de la plage de mesure
+    \item \textbf{Répétabilité} : Écart-type inférieur à 2\% sur 20 mesures consécutives
+    \item \textbf{Latence LoRa} : Délai maximal de 5 secondes entre mesure et affichage
+    \item \textbf{Portée LoRa} : Communication fiable jusqu'à 2-5 km en zone dégagée, 500m-1km en milieu urbain
+    \item \textbf{Fréquence de mesure} : Actualisation toutes les 15 minutes pour optimiser l'autonomie
+\end{itemize}
+
+\subsubsection{Fiabilité}
+\begin{itemize}
+    \item \textbf{Disponibilité} : Taux de disponibilité supérieur à 99\% pour le système de mesure
+    \item \textbf{Durée de vie} : Minimum 5 ans en utilisation normale
+    \item \textbf{MTBF} : Temps moyen entre pannes supérieur à 10 000 heures
+    \item \textbf{Robustesse thermique} : Résistance aux variations de température (-10°C à +50°C)
+    \item \textbf{Taux de perte LoRa} : Taux de paquets perdus inférieur à 1\% en conditions normales
+    \item \textbf{Récupération} : Reconnexion automatique en cas de perte temporaire de communication
+\end{itemize}
+
+\subsubsection{Utilisabilité}
+\begin{itemize}
+    \item \textbf{Installation capteur} : Fixation sous bouteille en moins de 3 minutes sans outils
+    \item \textbf{Installation affichage} : Montage mural ou sur support en moins de 5 minutes
+    \item \textbf{Appairage LoRa} : Connexion automatique au démarrage sans configuration manuelle
+    \item \textbf{Apprentissage} : Utilisation intuitive sans formation préalable
+    \item \textbf{Lisibilité} : Affichage LCD visible à 3 mètres de distance
+    \item \textbf{Accessibilité mobile} : Compatible avec Android 8.0+ et iOS 13+ (si passerelle cloud)
+\end{itemize}
+
+\subsubsection{Sécurité}
+\begin{itemize}
+    \item \textbf{Électrique} : Utilisation exclusive de composants basse tension ($\leq$ 5V)
+    \item \textbf{Isolation} : Aucun contact électrique avec la bouteille métallique
+    \item \textbf{Protection batterie} : Circuit TP4056 avec protection surcharge/décharge/court-circuit
+    \item \textbf{Boîtier étanche} : Protection IP54 minimum pour le dispositif de mesure
+    \item \textbf{Certifications} : Conformité aux normes IEC 60335 (appareils domestiques)
+    \item \textbf{RF} : Respect de la réglementation bande ISM 433 MHz (puissance max 10 mW ERP)
+\end{itemize}
+
+\subsubsection{Maintenabilité}
+\begin{itemize}
+    \item \textbf{Modularité} : Architecture permettant le remplacement de composants défaillants
+    \item \textbf{Diagnostic} : LEDs d'état sur chaque dispositif pour identification rapide des problèmes
+    \item \textbf{Batterie} : Remplacement facile des batteries sans démontage complet
+    \item \textbf{Mises à jour} : Possibilité de reprogrammation du firmware via port UART
+    \item \textbf{Documentation} : Manuel technique détaillé avec schémas électroniques et netlists
+    \item \textbf{Calibration} : Procédure de recalibration accessible sans équipement spécialisé
+\end{itemize}
+
+\subsubsection{Énergie}
+\begin{itemize}
+    \item \textbf{Autonomie mesure} : Minimum 30 jours sur batterie Li-Po 1500 mAh en mode normal
+    \item \textbf{Autonomie affichage} : Minimum 12-16 heures sur batteries 18650 en utilisation continue
+    \item \textbf{Modes de veille} : Implémentation de deep sleep pour Arduino et LoRa entre mesures
+    \item \textbf{Indication batterie} : Affichage du niveau de batterie sur LCD et LED dédiée
+    \item \textbf{Recharge} : Temps de recharge complet inférieur à 4 heures (capteur) via USB
+\end{itemize}
+
+\subsection{Scénarios d'utilisation principaux}
+
+\subsubsection{Scénario 1 : Installation initiale}
+
+\begin{enumerate}
+    \item L'utilisateur fixe le dispositif de mesure sous la bouteille de gaz à l'aide de la sangle ajustable ou du système de fixation adhésif.
+    \item Il connecte la batterie Li-Po au module TP4056 et la place dans le boîtier du capteur.
+    \item Il installe le dispositif d'affichage à l'endroit souhaité (cuisine, salon) et insère les batteries 18650.
+    \item Il allume les deux dispositifs via leurs interrupteurs respectifs.
+    \item Le système effectue une auto-vérification : le capteur clignote une LED verte, l'écran LCD affiche un message de démarrage.
+    \item L'appairage LoRa se fait automatiquement (fréquence 433 MHz préprogrammée).
+    \item L'utilisateur lance la procédure de calibration via le bouton dédié sur le dispositif d'affichage.
+    \item Le capteur ultrasonique effectue plusieurs mesures pour détecter le niveau actuel et ajuste les paramètres.
+    \item La mesure initiale est effectuée et transmise via LoRa, puis affichée sur le LCD en pourcentage.
+\end{enumerate}
+
+\subsubsection{Scénario 2 : Consultation quotidienne}
+
+\begin{enumerate}
+    \item L'utilisateur se trouve dans la pièce où est installé le dispositif d'affichage.
+    \item Il appuie sur le bouton d'allumage pour activer le rétroéclairage du LCD (si éteint).
+    \item Le niveau de gaz actuel s'affiche immédiatement en pourcentage (ex: 67\%) et sous forme de bargraphe.
+    \item Les LEDs indiquent l'état : verte (>50\%), orange (20-50\%), rouge (<20\%).
+    \item L'heure de la dernière mesure est affichée sur la deuxième ligne du LCD.
+    \item Si l'utilisateur possède la passerelle cloud, il peut également consulter le niveau via l'application mobile depuis n'importe où.
+    \item Le système repasse automatiquement en veille d'affichage après 30 secondes sans interaction.
+\end{enumerate}
+
+\subsubsection{Scénario 3 : Alerte de niveau bas}
+
+\begin{enumerate}
+    \item Le dispositif de mesure détecte lors d'une mesure périodique que le niveau est descendu sous le seuil de 15\%.
+    \item Il transmet immédiatement cette information critique via LoRa au dispositif d'affichage.
+    \item Le buzzer du dispositif d'affichage émet un signal sonore intermittent (3 bips toutes les 10 secondes).
+    \item La LED rouge clignote de manière continue.
+    \item L'écran LCD affiche "NIVEAU BAS - 12\%" avec une icône d'avertissement.
+    \item Si la passerelle cloud est installée, une notification push est envoyée sur le smartphone de l'utilisateur.
+    \item L'application mobile affiche un message suggérant de prévoir un rechange rapidement.
+    \item L'utilisateur peut désactiver temporairement l'alarme sonore en appuyant sur le bouton "SILENCE", mais la LED rouge continue de clignoter.
+    \item L'alarme se réactivera automatiquement après 6 heures si le niveau n'a pas augmenté.
+\end{enumerate}
+
+\subsubsection{Scénario 4 : Suivi à distance via passerelle cloud (optionnel)}
+
+\begin{enumerate}
+    \item L'utilisateur a installé la passerelle LoRa ESP32 connectée à son réseau Wi-Fi domestique.
+    \item La passerelle reçoit périodiquement les trames LoRa du capteur (toutes les 15 minutes).
+    \item Elle transmet ces données au serveur cloud via protocole MQTT ou HTTP REST API.
+    \item L'utilisateur ouvre l'application mobile même en étant absent de son domicile.
+    \item Il accède à l'onglet "Tableau de bord" qui affiche le niveau actuel de toutes ses bouteilles.
+    \item Il consulte l'onglet "Historique" pour voir l'évolution de la consommation sur les 7 derniers jours.
+    \item L'application affiche des graphiques de consommation quotidienne et hebdomadaire.
+    \item Il accède ensuite à l'onglet "Prédiction".
+    \item Un algorithme basé sur la consommation moyenne estime le nombre de jours restants avant épuisement complet.
+    \item L'application suggère une date optimale pour le remplacement de la bouteille.
+    \item L'utilisateur peut configurer les seuils d'alerte et la fréquence de mesure via l'application.
+\end{enumerate}
+
+\subsubsection{Scénario 5 : Gestion de plusieurs bouteilles (avec passerelle)}
+
+\begin{enumerate}
+    \item Un utilisateur possède deux bouteilles : une en utilisation, une de rechange.
+    \item Il installe un capteur sous chaque bouteille (chaque capteur a un identifiant unique).
+    \item La passerelle LoRa reçoit les données des deux capteurs sur le même canal 433 MHz.
+    \item L'application mobile affiche deux widgets distincts : "Bouteille Cuisine" et "Bouteille Rechange".
+    \item Quand la bouteille principale atteint 10\%, l'application suggère : "Préparez le remplacement - Rechange disponible à 92\%".
+    \item L'utilisateur peut renommer, archiver, ou réassigner les capteurs via l'interface.
+    \item Le système conserve l'historique séparé de chaque bouteille pour analyse de consommation.
+\end{enumerate}
+
+\section{Contraintes du projet}
+
+\subsubsection{Contraintes techniques}
+
+\begin{table}[H]
+    \centering
+    \caption{Contraintes techniques}
+    \label{tab:contraintes_techniques}
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabular}{p{5cm}p{10cm}}
+        \toprule
+        \textbf{Contrainte} & \textbf{Description} \\
+        \midrule
+        Non-intrusive & Aucune modification de la bouteille autorisée \\
+        Compatibilité & Doit fonctionner avec bouteilles 6kg, 12,5kg, 35kg \\
+        Paroi métallique & Le capteur ultrasonique doit traverser l'acier (épaisseur 2-3mm) \\
+        Température & Fonctionnement de -10°C à +50°C \\
+        Humidité & Résistance à 10-90\% d'humidité relative \\
+        Vibrations & Résistance aux vibrations domestiques courantes \\
+        Alimentation & Fonctionnement sur batterie rechargeable sans alimentation secteur \\
+        Communication & Portée LoRa minimum 500m en milieu urbain, 2km en zone dégagée \\
+        Fréquence RF & Utilisation bande ISM 433 MHz (libre de licence) \\
+        Encombrement & Dispositif mesure: diamètre max 90mm, hauteur max 30mm \\
+        Étanchéité & Protection IP54 minimum pour le dispositif de mesure \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\subsubsection{Contraintes économiques}
+
+\begin{itemize}
+    \item \textbf{Budget prototype global} : Maximum 200 000 FCFA pour système complet sans passerelle
+    \item \textbf{Budget avec passerelle} : Maximum 300 000 FCFA incluant gateway ESP32
+    \item \textbf{Répartition budgétaire} :
+    \begin{itemize}
+        \item Dispositif de mesure : 20 000 - 40 000 FCFA
+        \item Dispositif d'affichage : 20 000 - 40 000 FCFA
+        \item Passerelle LoRa (opt) : 15 000 - 30 000 FCFA
+        \item PCB et boîtiers : 10 000 - 20 000 FCFA
+    \end{itemize}
+    \item \textbf{Composants} : Priorité aux composants disponibles localement (Cameroun) ou via fournisseurs internationaux (AliExpress, Mouser)
+    \item \textbf{Coût cible production} : Coût unitaire de production série inférieur à 60 000 FCFA
+    \item \textbf{Maintenance} : Coût de maintenance annuel inférieur à 2 000 FCFA (remplacement batteries)
+\end{itemize}
+
+\subsubsection{Contraintes temporelles}
+
+\begin{table}[H]
+    \centering
+    \caption{Planning prévisionnel détaillé}
+    \label{tab:planning_detaille}
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabular}{c p{6cm} c p{6cm}}
+        \toprule
+        \textbf{Phase} & \textbf{Activités} & \textbf{Durée} & \textbf{Livrables} \\
+        \midrule
+        1 & Étude préliminaire & 2 semaines & Rapport d'étude, choix LoRa \\
+        2 & Conception détaillée & 4 semaines & Schémas électroniques, netlists \\
+        3 & Approvisionnement & 2 semaines & Composants achetés \\
+        4 & Réalisation matérielle & 5 semaines & Prototypes fonctionnels (3 dispositifs) \\
+        5 & Développement firmware & 4 semaines & Code Arduino + ESP32 \\
+        6 & Tests communication LoRa & 1 semaine & Validation portée et fiabilité \\
+        7 & Calibration capteur & 2 semaines & Procédure validée \\
+        8 & Développement backend (opt) & 2 semaines & Serveur cloud + API \\
+        9 & Tests et validation & 2 semaines & Résultats des tests \\
+        10 & Documentation & 2 semaines & Rapport final complet \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\begin{center}
+    \textbf{TOTAL :} \textbf{26 semaines} (avec passerelle cloud)\\
+    \textbf{TOTAL :} \textbf{24 semaines} (version standalone sans cloud)
+\end{center}

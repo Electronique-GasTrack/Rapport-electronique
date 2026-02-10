@@ -1,0 +1,31 @@
+\babel@toc {french}{}\relax 
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Bouteiile de gaz standard}}{8}{figure.caption.4}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Exemple de solution de mesure du niveau de gaz par pesage}}{14}{figure.caption.17}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Solution de mesure du niveau de gaz par mesure de la pression interne}}{15}{figure.caption.19}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Principe de fonctionnement de la détection ultrasonore}}{17}{figure.caption.21}%
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Modèle général du système}}{19}{figure.caption.23}%
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Diagramme de contexte du système}}{20}{figure.caption.24}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Architecture distribuée du système LoRa}}{27}{figure.caption.42}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Schéma fonctionnel des deux dispositifs}}{28}{figure.caption.43}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Architecture du backend Spring Boot}}{30}{figure.caption.47}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Positionnement du capteur ultrasonore sur la bouteille}}{32}{figure.caption.54}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Capteur Ultrasonore}}{40}{figure.caption.66}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Circuit de conditionnement}}{41}{figure.caption.70}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Schéma de câblage complet}}{41}{figure.caption.72}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Organigramme algorithme de mesure}}{41}{figure.caption.74}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces États d'affichage OLED}}{41}{figure.caption.77}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Circuit d'alimentation}}{42}{figure.caption.78}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Diagramme de classe}}{43}{figure.caption.79}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Diagramme de cas d'utilisation}}{45}{figure.caption.84}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Diagramme d'activité "Consulter Historique"}}{48}{figure.caption.86}%
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Diagramme d'activité "Consulter Niveau de Gaz}}{48}{figure.caption.87}%
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Diagramme d'activité "Afficher Prédiction"}}{48}{figure.caption.88}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }

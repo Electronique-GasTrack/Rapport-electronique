@@ -1,0 +1,91 @@
+\chapter{Limites et Perspectives d'Évolution}
+\label{chap:perspectives}
+
+Ce chapitre présente les principales limites du système développé dans le cadre de ce projet,
+ainsi que les perspectives d’amélioration et d’évolution possibles.
+Il met en évidence les axes de progression tant sur le plan matériel que logiciel, et ouvre la voie
+à une éventuelle transformation du prototype en une solution commerciale.
+
+\section{Limites Actuelles}
+
+Malgré les résultats satisfaisants obtenus, le système présente certaines limites inhérentes
+au cadre académique et aux ressources disponibles.
+
+\subsection{Limites matérielles}
+
+\begin{itemize}
+    \item Le dispositif repose sur un seul capteur ultrasonore, ce qui peut limiter la précision
+    dans certaines conditions (inclinaison de la bouteille, vibrations).
+    \item La fixation du capteur dépend fortement de la qualité du couplage acoustique,
+    pouvant influencer la fiabilité des mesures.
+    \item L’autonomie, bien que satisfaisante (environ 30 jours), reste limitée par l’utilisation
+    de composants peu optimisés énergétiquement.
+    \item Le prototype n’intègre pas encore un boîtier industriel certifié pour un usage prolongé.
+\end{itemize}
+
+\subsection{Limites logicielles}
+
+\begin{itemize}
+    \item Les algorithmes de prédiction reposent sur des modèles simples et ne tiennent pas
+    encore compte de tous les paramètres d’usage (habitudes, saisonnalité).
+    \item L’application mobile dépend de la connexion Bluetooth et ne permet pas une surveillance
+    totalement distante en temps réel.
+    \item Le backend reste basique et n’intègre pas encore de mécanismes avancés d’analyse
+    ou d’optimisation des données.
+\end{itemize}
+
+\section{Améliorations Matérielles}
+
+Plusieurs améliorations matérielles peuvent être envisagées afin d’augmenter les performances
+et la fiabilité du système.
+
+\begin{itemize}
+    \item Utilisation de plusieurs capteurs ultrasonores pour améliorer la précision et introduire
+    une redondance des mesures.
+    \item Remplacement de l’Arduino Uno par un microcontrôleur plus performant et économe
+    en énergie (ESP32, STM32).
+    \item Intégration d’un boîtier robuste et étanche, conforme aux normes industrielles.
+    \item Ajout de capteurs complémentaires (température, inclinaison) pour corriger et affiner
+    les mesures.
+    \item Optimisation du circuit d’alimentation pour augmenter l’autonomie de la batterie.
+\end{itemize}
+
+\section{Améliorations Logicielles}
+
+Des évolutions logicielles significatives peuvent également être envisagées.
+
+\begin{itemize}
+    \item Amélioration des algorithmes de prédiction à l’aide de techniques d’apprentissage
+    automatique basées sur l’historique de consommation.
+    \item Mise en place d’une synchronisation cloud automatique pour un suivi à distance
+    sans dépendre uniquement du Bluetooth.
+    \item Ajout de notifications intelligentes (alertes personnalisées, prévisions avancées).
+    \item Amélioration de l’interface utilisateur pour une meilleure expérience (UX/UI).
+    \item Sécurisation renforcée des données échangées entre l’application et le backend.
+\end{itemize}
+
+\section{Évolution vers une Solution Commerciale}
+
+À plus long terme, le projet peut évoluer vers une solution commercialisable.
+
+\subsection{Étapes envisagées}
+
+\begin{itemize}
+    \item Validation du prototype à travers des tests intensifs en conditions réelles.
+    \item Miniaturisation du dispositif et optimisation du design industriel.
+    \item Certification du produit selon les normes de sécurité et de compatibilité électromagnétique.
+    \item Développement d’une application mobile stable et déployée sur les stores officiels.
+    \item Mise en place d’une infrastructure backend scalable.
+\end{itemize}
+
+\subsection{Vision à long terme}
+
+À terme, la solution pourrait être étendue à :
+\begin{itemize}
+    \item La gestion intelligente de la consommation énergétique domestique.
+    \item L’intégration dans des systèmes domotiques et des plateformes IoT.
+    \item Une utilisation à l’échelle industrielle ou commerciale (restaurants, hôtels, entreprises).
+\end{itemize}
+
+Ces perspectives montrent que le projet constitue une base solide pour des développements futurs,
+tant académiques que professionnels.

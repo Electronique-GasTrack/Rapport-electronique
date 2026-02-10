@@ -1,0 +1,260 @@
+\chapter{Développement de l'Application Mobile}
+\label{chap:application}
+
+Ce chapitre présente la conception et le développement de l'application mobile GasTrack.
+
+\section{Modèle de données}
+\label{sec:modele_donnee}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{chapters/diagramme_classe.png}
+    \caption{Diagramme de classe}
+    \label{fig:diagramme_classe}
+\end{figure}
+
+Ce modèle permet de structurer les informations échangées entre le backend cloud, l’application mobile et l’utilisateur.
+
+\subsection{Vue d’ensemble du modèle}
+
+Le modèle de données repose sur quatre classes principales :
+\textit{Mesure}, \textit{Bouteille}, \textit{Passerelle} et \textit{Utilisateur}.  
+Chaque classe représente une entité clé du système et encapsule les données ainsi que les comportements associés.
+
+\subsection{Description des classes}
+
+\subsubsection{Classe \texttt{Bouteille}}
+
+La classe \texttt{Bouteille} représente la bouteille de gaz surveillée par le dispositif.
+
+\textbf{Rôle :}
+Elle centralise les informations statiques et dynamiques relatives à la bouteille, notamment son type, sa capacité et son état de remplissage.
+
+\textbf{Responsabilités principales :}
+\begin{itemize}
+    \item Stocker les caractéristiques de la bouteille (capacité, type de gaz)
+    \item Associer les mesures de niveau effectuées
+    \item Fournir l’état courant du niveau de gaz
+\end{itemize}
+
+\subsubsection{Classe \texttt{Mesure}}
+
+La classe \texttt{Mesure} modélise une mesure de niveau de gaz réalisée par le capteur ultrasonore.
+
+\textbf{Rôle :}
+Elle permet d’enregistrer les résultats des mesures et d’assurer l’historisation des données.
+
+\textbf{Responsabilités principales :}
+\begin{itemize}
+    \item Stocker la valeur mesurée (niveau de gaz)
+    \item Enregistrer la date et l’heure de la mesure
+    \item Fournir les données nécessaires aux calculs de consommation et de prédiction
+\end{itemize}
+
+Chaque objet \texttt{Mesure} est associé à une unique \texttt{Bouteille}.
+
+\subsubsection{Classe \texttt{Passerelle}}
+
+La classe \texttt{Passerelle} représente l'interface avec l'infrastructure LoRa.
+
+\textbf{Rôle :}
+Elle gère l'identification des dispositifs LoRa et la récupération des données depuis le serveur.
+
+\textbf{Responsabilités principales :}
+\begin{itemize}
+    \item Authentification auprès de l'API du backend
+    \item Synchronisation des données des capteurs
+\end{itemize}
+
+
+\subsubsection{Classe \texttt{Utilisateur}}
+
+La classe \texttt{Utilisateur} représente l’utilisateur final de l’application mobile.
+
+\textbf{Rôle :}
+Elle permet de personnaliser l’utilisation du système et de relier les données à un utilisateur donné.
+
+\textbf{Responsabilités principales :}
+\begin{itemize}
+    \item Consulter le niveau de gaz en temps réel
+    \item Accéder à l’historique de consommation
+    \item Visualiser les prédictions de consommation
+\end{itemize}
+
+Un utilisateur peut être associé à une ou plusieurs bouteilles.
+
+\subsection{Relations entre les classes}
+
+Les relations entre les classes assurent la cohérence du modèle :
+
+\begin{itemize}
+    \item Une \texttt{Bouteille} est associée à plusieurs \texttt{Mesure} (relation un-à-plusieurs), ce qui permet l’historisation des niveaux de gaz.
+    \item L’\texttt{Utilisateur} consulte les données de sa \texttt{Bouteille} qui sont mises à jour via la \texttt{Passerelle} connectée au cloud.
+\end{itemize}
+
+
+\section{Analyse Fonctionnelle de l'Application}
+\label{sec:analyse_app}
+
+\subsection{Cas d'utilisation}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{chapters/usecase.png}
+    \caption{Diagramme de cas d'utilisation}
+    \label{fig:use_cases_app}
+\end{figure}
+
+\subsection{Synthèse des cas d’utilisation}
+
+Le tableau suivant présente une synthèse des principaux cas d’utilisation de l’application mobile.
+
+
+\begin{table}[H]
+\centering
+\caption{Cas d'utilisation de l'application mobile}
+\label{tab:cas_utilisation_app}
+\small
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|p{2.8cm}|p{2.5cm}|p{4cm}|p{3.5cm}|p{2.2cm}|}
+\hline
+\rowcolor{blue!20}
+\textbf{Cas d'utilisation} & 
+\textbf{Précon-ditions} & 
+\textbf{Scénario nominal} & 
+\textbf{Scénarios alternatifs} & 
+\textbf{Post-conditions} \\
+\hline
+
+\textbf{UC1:} Consulter le niveau de gaz & 
+Connexion Internet active & 
+\begin{enumerate}[leftmargin=*, nosep]
+    \item L'utilisateur ouvre l'application
+    \item Authentification automatique
+    \item Récupération des dernières données serveur
+    \item Affichage en temps réel
+\end{enumerate} & 
+\textbf{A1:} Pas d'internet → Mode hors ligne (cache)\newline
+\textbf{A2:} Serveur inaccessible → Message d'erreur & 
+Niveau de gaz affiché avec précision \\
+\hline
+
+\textbf{UC2:} Consulter l'historique & 
+Application connectée & 
+\begin{enumerate}[leftmargin=*, nosep]
+    \item Accès à l'onglet "Historique"
+    \item Téléchargement des données archivées
+    \item Affichage graphique (jour/semaine/mois)
+\end{enumerate} & 
+\textbf{A1:} Historique vide → Message "Aucune donnée" & 
+Historique visualisé sous forme de courbes \\
+\hline
+
+\textbf{UC3:} Obtenir une prédiction & 
+Données suffisantes sur le serveur & 
+\begin{enumerate}[leftmargin=*, nosep]
+    \item Requête de prédiction au backend
+    \item Réception du résultat calculé
+    \item Affichage de la prédiction
+\end{enumerate} & 
+\textbf{A1:} Données insuffisantes → "Besoin de plus de données"\newline
+\textbf{A2:} Consommation irrégulière → Prédiction imprécise & 
+Prédiction affichée avec niveau de confiance \\
+\hline
+
+\textbf{UC4:} Ajouter un nouveau capteur & 
+Code ID du capteur disponible & 
+\begin{enumerate}[leftmargin=*, nosep]
+    \item Appui sur "Ajouter dispositif"
+    \item Saisie de l'ID unique du capteur LoRa
+    \item Vérification auprès du serveur
+    \item Association au compte utilisateur
+    \item Confirmation visuelle
+\end{enumerate} & 
+\textbf{A1:} ID invalide → Message d'erreur & 
+Capteur ajouté au parc \\
+\hline
+
+\end{tabular}
+\end{table}
+
+
+\section{Parcours Utilisateur}
+\label{sec:parcours_utilisateur}
+
+Cette section décrit le parcours utilisateur au sein de l’application mobile \textit{GasTrack}.  
+Le parcours est basé sur les diagrammes d’activités correspondant aux trois principaux cas d’utilisation : 
+la consultation du niveau de gaz, la consultation de l’historique de consommation et l’affichage des prédictions de consommation.
+
+\subsection{Principes généraux du parcours}
+
+Quel que soit le cas d’utilisation, le parcours utilisateur repose sur une séquence commune d’actions :
+\begin{itemize}
+    \item l'identification sécurisée,
+    \item la sélection de la bouteille dans le parc,
+    \item l’accès à la fonctionnalité demandée.
+\end{itemize}
+
+Cette approche garantit une expérience utilisateur cohérente, intuitive et homogène à travers l’ensemble de l’application.
+
+\subsection{Parcours : Consultation du niveau de gaz}
+
+Le premier parcours permet à l’utilisateur de consulter en temps réel le niveau de gaz restant dans la bouteille.
+
+\begin{enumerate}
+    \item L’utilisateur lance l’application.
+    \item L'écran d'accueil affiche la liste des bouteilles associées avec leur dernier niveau connu (remonté par la passerelle).
+    \item L’utilisateur sélectionne une bouteille pour voir les détails.
+\end{enumerate}
+
+Ce parcours se termine lorsque le niveau de gaz est correctement affiché à l’utilisateur.
+
+\subsection{Parcours : Consultation de l’historique de consommation}
+
+Ce parcours permet à l’utilisateur d’analyser l’évolution de sa consommation de gaz dans le temps.
+
+\begin{enumerate}
+    \item Depuis l'écran de détail d'une bouteille, l'utilisateur clique sur l'onglet "Historique".
+    \item L’application interroge l'API REST pour obtenir les données agrégées.
+\end{enumerate}
+
+L’historique est présenté sous forme chronologique afin de faciliter l’analyse des tendances de consommation.
+
+\subsection{Parcours : Affichage de la prédiction de consommation}
+
+Ce parcours vise à fournir à l’utilisateur une estimation de la durée restante avant épuisement du gaz.
+
+\begin{enumerate}
+    \item Le backend calcule périodiquement les prédictions basées sur les nouvelles données LoRa.
+    \item L'application affiche cette estimation (ex: "Il vous reste environ 12 jours") directement sur le tableau de bord.
+\end{enumerate}
+
+Ce parcours permet d’anticiper le remplacement de la bouteille de gaz et d’améliorer la gestion énergétique.
+
+\subsection{Synthèse du parcours utilisateur}
+
+L'utilisation d'une architecture cloud simplifie grandement le parcours utilisateur en supprimant les étapes techniques de connexion Bluetooth et d'appairage à chaque utilisation. L'information est disponible immédiatement au lancement de l'application.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{chapters/activite_historique.png}
+    \caption{Diagramme d'activité "Consulter Historique"}
+    \label{fig:diagramme_activite}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{chapters/activite_niveau_gaz.png}
+    \caption{Diagramme d'activité "Consulter Niveau de Gaz}
+    \label{fig:activité_niveau_gaz}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{chapters/activite_prediction.png}
+    \caption{Diagramme d'activité "Afficher Prédiction"}
+    \label{fig:activité_prevision}
+\end{figure}
+
+\section{Interfaces Utilisateur}
+\label{sec:interfaces_ui}

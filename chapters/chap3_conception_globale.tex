@@ -1,0 +1,431 @@
+\chapter{Conception du Système Global}
+\label{chap:conception_globale}
+
+Suite à l'analyse des besoins et des contraintes, ce chapitre détaille la conception technique du système proposé. Il présente l'architecture globale, justifie les choix technologiques opérés et décrit les stratégies mises en œuvre pour garantir la fiabilité, l'autonomie et la sécurité du dispositif.
+
+\section{Architecture Générale du Système}
+\label{sec:architecture_generale}
+
+\subsection{Vue d'ensemble}
+
+Pour répondre aux contraintes d'éloignement et d'autonomie, le système repose sur une architecture distribuée. Nous avons opté pour la technologie radio LoRa, qui assure une liaison robuste entre l'extérieur (lieu de stockage du gaz) et l'intérieur de l'habitation.
+
+Le système s'articule autour de trois entités distinctes :
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{chapters/archi_cloud.png}
+    \caption{Architecture distribuée du système LoRa}
+    \label{fig:architecture_lora}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Le dispositif de mesure (Capteur)} : Placé directement sous la bouteille, ce module autonome a pour unique fonction de mesurer le niveau de gaz et de transmettre l'information. Il est conçu pour être "invisible" à l'usage et très économe en énergie.
+    
+    \item \textbf{Le dispositif d'affichage (Récepteur)} : Situé dans la pièce de vie, il joue le rôle d'interface homme-machine. Il reçoit les données et informe l'utilisateur via un écran et des signaux lumineux ou sonores, sans nécessiter de connexion internet.
+    
+    \item \textbf{La passerelle LoRa (Optionnelle)} : Cet élément permet d'ouvrir le système vers l'Internet des Objets (IoT). Elle fait le pont entre le réseau local LoRa et le Cloud, permettant ainsi l'usage de l'application mobile.
+\end{itemize}
+
+Cette approche modulaire offre une grande flexibilité : le système est parfaitement fonctionnel en mode "local" (capteur + afficheur) pour les utilisateurs sans internet, tout en étant extensible vers une solution connectée complète.
+
+\subsection{Description des dispositifs matériels}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{chapters/module.png}
+    \caption{Schéma fonctionnel des deux dispositifs}
+    \label{fig:modules_dispositif}
+\end{figure}
+
+
+\subsubsection{Le dispositif de mesure (Module Capteur)}
+Ce module est le cœur du système d'acquisition. Installé sous la bouteille, il doit faire face à des contraintes d'encombrement et d'autonomie sévères.
+
+Sa conception s'articule autour du capteur ultrasonore \textbf{DYP-L06}, choisi pour sa capacité à mesurer à travers le métal et sa faible consommation. Le pilotage est assuré par un \textbf{Arduino Nano}, qui orchestre les mesures et la mise en veille. La transmission est confiée au module \textbf{LoRa SX1278}, configuré pour une portée optimale en milieu urbain (jusqu'à 1 km).
+
+L'alimentation est fournie par une batterie Li-Po de 3.7V, gérée par un module de charge TP4056 qui assure la sécurité électrique. L'ensemble est intégré dans un boîtier compact (Ø90mm) et étanche (IP54), conçu pour se fixer discrètement sous la bouteille.
+
+\textbf{Stratégie de fonctionnement :}
+Pour maximiser l'autonomie, le dispositif ne fonctionne pas en continu. Il suit un cycle strict : \\
+1.  \textbf{Réveil} périodique (ex: toutes les 15 minutes). \\
+2.  \textbf{Mesure} ultrasonore et calcul du niveau. \\
+3.  \textbf{Transmission} de la donnée via LoRa. \\
+4.  \textbf{Mise en veille profonde} immédiate de tous les composants. \\
+
+Cette stratégie permet de réduire drastiquement la consommation moyenne, offrant une autonomie théorique de plusieurs semaines.
+
+\subsubsection{Le dispositif d'affichage (Module Récepteur)}
+Ce module est conçu pour être installé confortablement dans l'habitation. Il centralise les informations et gère les alertes.
+
+Il partage la même base technologique (Arduino Nano et LoRa SX1278) mais fonctionne en réception. L'interface utilisateur est composée d'un \textbf{écran LCD I2C} pour l'affichage précis et de \textbf{LEDs tricolores} pour une lecture rapide de l'état (Vert/Orange/Rouge). Un buzzer est intégré pour les alertes critiques.
+
+L'alimentation est ici plus robuste, basée sur deux batteries 18650 en série, régulées à 5V, permettant une utilisation prolongée sans recharge fréquente.
+
+Le système gère trois états :
+\begin{itemize}
+    \item \textbf{Veille} : Écran éteint, radio en écoute (consommation réduite).
+    \item \textbf{Actif} : Écran allumé sur demande utilisateur ou réception de données.
+    \item \textbf{Alerte} : Activation des signaux sonores et visuels en cas de niveau critique.
+\end{itemize}
+
+\subsubsection{La passerelle LoRa (Module Gateway - Optionnel)}
+Pour les utilisateurs souhaitant une connectivité étendue, la passerelle joue le rôle de pont. Basée sur un microcontrôleur \textbf{ESP32} (choisi pour sa connectivité Wi-Fi native), elle écoute les messages LoRa et les retransmet vers un serveur distant.
+
+Contrairement aux autres modules, elle est alimentée sur secteur, ce qui lui permet d'être en écoute permanente et de gérer simultanément plusieurs bouteilles si nécessaire.
+
+\subsection{Architecture de l'application mobile}
+
+L'application mobile constitue le terminal de supervision avancé. Elle ne communique pas directement avec les capteurs, mais interroge le serveur Cloud (Backend).
+
+Son rôle dépasse le simple affichage : elle transforme les données brutes en informations utiles. Elle permet notamment de visualiser l'historique de consommation, de recevoir des notifications en cas de niveau bas où que l'on soit, et d'utiliser des algorithmes prédictifs pour estimer la date de remplacement de la bouteille.
+
+
+\subsection{Architecture du backend}
+
+Le Backend, développé avec le framework \textbf{Spring Boot}, est le cerveau de la partie connectée. Il assure la persistance des données et l'exécution de la logique métier complexe.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{chapters/archi_spring.png}
+    \caption{Architecture du backend Spring Boot}
+    \label{fig:architecture_backend}
+\end{figure}
+
+L'architecture logicielle suit le modèle MVC (Modèle-Vue-Contrôleur) pour garantir une séparation claire des responsabilités :
+
+\begin{enumerate}
+    \item \textbf{Les Contrôleurs REST} gèrent les entrées/sorties. Ils reçoivent les mesures de la passerelle et répondent aux requêtes de l'application mobile, tout en sécurisant les accès via des jetons JWT.
+    \item \textbf{Les Services Métier} contiennent l'intelligence du système : validation des données, détection d'anomalies, calculs statistiques et déclenchement des notifications.
+    \item \textbf{La Couche de Données (DAO)} interagit avec la base de données PostgreSQL pour stocker de manière pérenne les utilisateurs, les bouteilles et l'historique des mesures.
+\end{enumerate}
+
+
+
+\section{Choix Technologiques}
+\label{sec:choix_technologiques}
+
+\subsection{Choix du microcontrôleur : Arduino Nano}
+
+Le choix du microcontrôleur est critique pour l'équilibre entre performance, taille et consommation. Nous avons sélectionné l'\textbf{Arduino Nano} pour équiper à la fois le capteur et l'afficheur.
+
+\subsubsection{Justification du choix}
+
+Plusieurs arguments justifient cette décision :
+
+\begin{itemize}
+    \item \textbf{Compacité} : Avec ses dimensions réduites (18×45mm), il s'intègre parfaitement dans l'espace restreint sous la bouteille.
+    \item \textbf{Efficacité énergétique} : Il supporte des modes de veille profonde ("Deep Sleep") essentiels pour atteindre l'autonomie visée.
+    \item \textbf{Standardisation} : L'utilisation du même composant sur les deux modules simplifie la maintenance, le développement du code et la gestion des stocks.
+    \item \textbf{Accessibilité} : Son faible coût et sa grande disponibilité en font un choix pertinent pour un déploiement à grande échelle.
+\end{itemize}
+
+
+
+\subsubsection{Caractéristiques techniques détaillées}
+
+\begin{table}[H]
+    \centering
+    \caption{Spécifications techniques Arduino Nano}
+    \label{tab:specs_arduino}
+    \begin{tabular}{ll}
+        \toprule
+        \textbf{Paramètre} & \textbf{Valeur} \\
+        \midrule
+        Microcontrôleur & ATmega328P (8-bit AVR) \\
+        Fréquence horloge & 16 MHz \\
+        Mémoire Flash & 32 KB (dont 2 KB bootloader) \\
+        SRAM & 2 KB \\
+        EEPROM & 1 KB \\
+        Tension fonctionnement & 5V (VIN accepte 7-12V) \\
+        Tension logique & 5V (compatible 3.3V via diviseur) \\
+        Dimensions & 18 × 45 mm \\
+        Poids & ~7g \\
+        Pins I/O digitaux & 14 (dont 6 PWM) \\
+        Pins analogiques & 8 (ADC 10-bit) \\
+        Consommation active & ~20 mA \\
+        Consommation veille profonde & <5 mA (avec LowPower lib) \\
+        Interfaces & UART, I2C, SPI \\
+        Connecteur USB & Mini-USB (programmation + serial monitor) \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+
+
+\subsection{Choix du capteurs ultrasonores}
+
+\subsubsection{Analyse et justification du choix}
+La contrainte majeure du projet est de mesurer le niveau de gaz sans modifier la bouteille (pour des raisons de sécurité et de réglementation). La technologie ultrasonore s'est imposée comme la seule solution viable permettant une mesure "à travers" la paroi métallique.
+
+Nous avons sélectionné le capteur \textbf{DYP-L06}. Contrairement aux capteurs standards (type HC-SR04), ce modèle est étanche (IP67) et conçu pour être couplé à une surface solide. Il offre une précision de $\pm$1\%, largement suffisante pour notre besoin, et fonctionne sur une plage de tension compatible avec notre batterie.
+
+\subsubsection{Principe de fonctionnement}
+Le principe physique repose sur la mesure du temps de vol (Time of Flight). Le capteur, positionné au sommet de la bouteille, émet une onde ultrasonore qui traverse le gaz.
+
+Lorsque cette onde rencontre la surface du liquide (GPL), elle est réfléchie vers le capteur. En mesurant le temps aller-retour $\Delta t$, et connaissant la vitesse du son dans le gaz $v_{gaz}$, on déduit la distance $d$ entre le haut de la bouteille et le liquide :
+
+\[d = \frac{v_{gaz} \times \Delta t}{2}\]
+
+Le niveau de remplissage est ensuite obtenu par soustraction par rapport à la hauteur totale de la bouteille.
+
+\[\text{Niveau (\%)} = \frac{H_{tot} - d}{H_{tot}} \times 100\]
+
+
+\subsubsection{Configuration mécanique du capteur}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{chapters/schema_capteur.png}
+    \caption{Positionnement du capteur ultrasonore sur la bouteille}
+    \label{fig:position_capteur}
+\end{figure}
+
+L'installation du capteur est non-destructive. Il est maintenu fermement contre la paroi métallique (généralement sous la bouteille ou sur le dessus selon le modèle) à l'aide d'un adhésif industriel ou d'une sangle magnétique.
+
+Un point crucial est l'application d'un **gel de couplage** (ou pâte thermique) entre le capteur et le métal. Ce gel élimine la fine couche d'air qui empêcherait la transmission des ultrasons, garantissant ainsi la fiabilité de la mesure.
+
+\subsubsection{Avantages de la solution retenue}
+Cette approche présente un compromis optimal :
+\begin{itemize}
+    \item \textbf{Sécurité} : Aucun contact avec le gaz, aucun perçage.
+    \item \textbf{Simplicité} : Un seul capteur suffit, réduisant le coût et la complexité.
+    \item \textbf{Efficacité} : La mesure est directe et peu influencée par la composition chimique exacte du mélange propane/butane.
+\end{itemize}
+
+\subsection{Choix de l'écran : LCD I2C}
+
+Pour l'interface utilisateur, nous avons privilégié la lisibilité et la simplicité. L'écran LCD I2C a été retenu au détriment de l'OLED.
+
+\subsubsection{Justification du choix LCD I2C}
+Bien que moins moderne que l'OLED, le LCD offre une meilleure lisibilité à distance (essentiel pour un affichage mural) et une consommation maîtrisée une fois le rétroéclairage éteint. De plus, son interface I2C simplifie considérablement le câblage (seulement 4 fils), augmentant la fiabilité globale du montage.
+
+
+
+\subsection{Choix du module de communication : LoRa}
+
+L'adoption de la technologie LoRa (Long Range) représente une évolution majeure par rapport aux solutions Bluetooth classiques. Ce choix est motivé par la nécessité de traverser les obstacles (murs, dalles) séparant souvent la cuisine du lieu de stockage du gaz.
+
+\subsubsection{Justification du choix LoRa}
+LoRa offre une portée de plusieurs centaines de mètres en milieu urbain et une excellente pénétration des structures en béton, là où le Bluetooth peinerait à dépasser 10 mètres. De plus, sa très faible consommation en veille est parfaitement adaptée à notre usage intermittent (envoi de quelques octets toutes les 15 minutes).
+
+Nous utilisons le module \textbf{SX1278} fonctionnant sur la bande libre 433 MHz. La communication est configurée en mode "Point-à-Point" (P2P), ce qui permet aux modules de dialoguer directement sans dépendre d'une infrastructure réseau externe ou d'un abonnement opérateur.
+
+\subsubsection{Module LoRa choisi : SX1278}
+
+Nous utilisons le chipset \textbf{Semtech SX1276/SX1278} intégré dans modules breakout compatibles Arduino (RA-02, RFM95W, E32 selon disponibilité fournisseurs).
+
+\textbf{Caractéristiques techniques SX1278 :}
+\begin{itemize}
+    \item Chipset : Semtech SX1276/SX1278 (référence industrie)
+    \item Fréquences supportées : 137-1020 MHz (version 433 MHz utilisée)
+    \item Puissance émission : Réglable -4 dBm à +20 dBm (max 100mW)
+    \item Sensibilité réception : Jusqu'à -148 dBm (mode SF12, BW 125kHz)
+    \item Interface : SPI (MISO, MOSI, SCK, NSS, RESET)
+    \item Tension alimentation : 3.3V (compatible sortie Arduino Nano)
+    \item Consommation TX +20dBm : ~120 mA
+    \item Consommation RX : ~12 mA
+    \item Consommation veille : <1 µA
+    \item Spreading Factor : SF7 à SF12 (compromis débit/portée configurable)
+    \item Bandwidth : 125 kHz, 250 kHz, 500 kHz
+    \item Débit données : 0.3 kbps (SF12) à 37.5 kbps (SF7)
+\end{itemize}
+
+\subsubsection{Configuration retenue pour le projet}
+
+\textbf{Mode de communication : Point-à-Point (P2P)}
+
+Le mode point-à-point direct a été privilégié pour le fonctionnement autonome capteur <-> afficheur :
+
+\begin{itemize}
+    \item \textbf{Simplicité} : Pas de join procedure, pas de serveur réseau LoRaWAN nécessaire
+    \item \textbf{Rapidité} : Latence minimale émission→réception (<1s)
+    \item \textbf{Indépendance} : Système fonctionnel même sans connexion Internet/infrastructure
+    \item \textbf{Coût} : Pas d'abonnement opérateur LoRaWAN requis
+    \item \textbf{Confidentialité} : Données restent locales (aucun transit réseau externe)
+\end{itemize}
+
+La passerelle optionnelle peut recevoir les mêmes trames P2P et les relayer vers le cloud, offrant le meilleur des deux mondes.
+
+\textbf{Paramètres radio configurés :}
+\begin{itemize}
+    \item \textbf{Fréquence porteuse} : 433.0 MHz (bande ISM)
+    \item \textbf{Spreading Factor} : SF10 (compromis portée/débit)
+    \item \textbf{Bandwidth} : 125 kHz (standard)
+    \item \textbf{Coding Rate} : 4/5 (protection erreurs)
+    \item \textbf{Puissance TX} : +17 dBm (50mW, conforme réglementation)
+    \item \textbf{Préambule} : 8 symboles
+    \item \textbf{CRC} : Activé (détection erreurs transmission)
+\end{itemize}
+
+Ces paramètres offrent portée typique 1-2 km en urbain avec débit ~1 kbps, largement suffisant pour payload <50 bytes toutes les 15 minutes.
+
+
+\subsection{Choix technologiques logiciels}
+
+\subsubsection{Firmware embarqué : Arduino IDE + C/C++}
+Le développement embarqué a été réalisé en C/C++ via l'IDE Arduino. Ce choix nous donne accès à des bibliothèques optimisées pour la gestion de l'énergie (LowPower) et la communication radio, accélérant ainsi la phase de prototypage.
+
+\subsubsection{Firmware passerelle : ESP-IDF / Arduino Core ESP32}
+Pour la passerelle, nous utilisons les capacités natives de l'ESP32 pour gérer simultanément la pile LoRa et la pile Wi-Fi, assurant le pontage des données vers le Cloud via des requêtes HTTP sécurisées.
+
+\subsubsection{Backend : Spring Boot}
+Côté serveur, le choix de Spring Boot (Java) garantit une robustesse industrielle. Il permet de structurer proprement l'API, de gérer la sécurité des données et d'évoluer facilement vers une architecture micro-services si le projet venait à grandir.
+
+\textbf{Fonctions principales du backend :}
+\begin{itemize}
+    \item \textbf{Réception données passerelle} : Endpoint POST /api/measurements acceptant payloads JSON
+    \item \textbf{Gestion entités métier} : CRUD complet users, bottles, measurements, alerts
+    \item \textbf{Persistance base de données} : Stockage relationnel PostgreSQL avec transactions ACID
+    \item \textbf{Algorithmes prédiction} : Calcul tendances consommation, estimation jours restants (régression linéaire, moyennes mobiles exponentielles)
+    \item \textbf{Notifications push} : Intégration Firebase Cloud Messaging pour alertes mobiles
+    \item \textbf{API REST documentée} : Endpoints exposés avec Swagger/OpenAPI pour app mobile
+    \item \textbf{Authentification/autorisation} : JWT tokens, rôles utilisateurs
+    \item \textbf{Monitoring/logs} : Actuator endpoints, logs structurés JSON
+\end{itemize}
+
+\textbf{Stack technique utilisée :}
+\begin{itemize}
+    \item \textbf{Langage} : Java 21 LTS
+    \item \textbf{Framework} : Spring Boot 3.5
+    \item \textbf{Base de données} : PostgreSQL 16.0
+    \item \textbf{ORM} : Spring Data JPA (Hibernate implémentation)
+    \item \textbf{Documentation API} : SpringDoc OpenAPI (Swagger UI)
+    \item \textbf{Sécurité} : Spring Security + JWT
+    \item \textbf{Build} : Maven
+    \item \textbf{Déploiement} : Docker
+\end{itemize}
+
+
+
+\section{Principe de calibration}
+\label{sec:calibration}
+
+Pour garantir des mesures fiables malgré la diversité des bouteilles (6kg, 12.5kg, 35kg), une procédure de calibration est indispensable. Elle permet d'adapter le système à la géométrie spécifique de chaque récipient.
+
+Nous avons mis en place une **calibration à deux points**, simple à réaliser pour l'utilisateur :
+\begin{enumerate}
+    \item \textbf{Calibration à vide (0\%)} : Le système mesure la distance jusqu'au fond de la bouteille ($d_{vide}$).
+    \item \textbf{Calibration à plein (100\%)} : Le système mesure la distance jusqu'à la surface du liquide d'une bouteille neuve ($d_{plein}$).
+\end{enumerate}
+
+Ces valeurs sont stockées dans la mémoire permanente (EEPROM) de l'Arduino. Par la suite, le niveau de gaz est calculé par interpolation linéaire :
+
+\[\text{Niveau (\%)} = \left(1 - \frac{d_{mesure} - d_{plein}}{d_{vide} - d_{plein}}\right) \times 100\]
+
+Cette méthode permet de s'affranchir des variations de hauteur ou de forme du fond de la bouteille, garantissant une précision constante.
+
+
+\subsection{Améliorations possibles (évolutions futures)}
+
+\begin{itemize}
+    \item \textbf{Calibration multi-points} : 3 points (vide, 50\%, plein) pour correction non-linéarités (fond bombé)
+    \item \textbf{Compensation température} : Ajustement vitesse son selon température GPL mesurée (capteur DS18B20)
+    \item \textbf{Auto-calibration} : Détection automatique niveaux extrêmes sur usage long terme
+    \item \textbf{Profils bouteilles} : Base de données dimensions constructeurs (stockage multi-profils EEPROM)
+\end{itemize}
+
+\section{Gestion de l'énergie}
+\label{sec:gestion_energie}
+
+L'autonomie est un critère critique pour un objet connecté domestique. Notre stratégie énergétique diffère selon le module : une économie maximale pour le capteur (difficile d'accès) et un compromis performance/autonomie pour l'afficheur.
+
+\subsection{Dispositif de mesure (capteur)}
+Le capteur passe 99\% de son temps en "sommeil profond". Il ne se réveille que quelques millisecondes pour effectuer sa mesure et sa transmission.
+
+\textbf{Alimentation :}
+\begin{itemize}
+    \item Batterie Li-Po 3.7V (1000-2000 mAh selon encombrement disponible)
+    \item Module TP4056 avec protections :
+    \begin{itemize}
+        \item Surcharge : coupure 4.2V
+        \item Décharge profonde : coupure 2.5V (protection chimie Li-Po)
+        \item Court-circuit : MOSFET FS8205A
+    \end{itemize}
+    \item Régulateur AMS1117-3.3V (dropout 1.3V) : 3.7V batterie → 3.3V stable LoRa/capteur
+    \item Recharge USB 5V (1A max) via connecteur Micro-USB ou USB-C
+\end{itemize}
+
+\textbf{Consommation détaillée par phase :}
+\begin{table}[H]
+    \centering
+    \caption{Profil consommation dispositif de mesure}
+    \begin{tabular}{lcc}
+        \toprule
+        \textbf{Phase} & \textbf{Courant} & \textbf{Durée} \\
+        \midrule
+        Deep sleep (Arduino + LoRa) & <5 mA & 14 min 59 s \\
+        Réveil + init & 20 mA & 100 ms \\
+        Mesure ultrasonique & 35 mA & 200 ms \\
+        Transmission LoRa +17dBm & 120 mA & 400 ms \\
+        Retour veille & 10 mA & 100 ms \\
+        \midrule
+        \textbf{Moyenne sur cycle 15 min} & \multicolumn{2}{c}{\textbf{~8 mA}} \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+Grâce à cette gestion fine, la consommation moyenne chute à environ 8 mA. Avec une batterie standard de 1500 mAh, nous estimons l'autonomie réelle à environ **40 jours** avec une mesure tous les quarts d'heure. Cette durée peut être doublée en espaçant les mesures à 30 minutes.
+
+\subsection{Dispositif d'affichage (récepteur)}
+L'afficheur consomme davantage car il doit rester à l'écoute des signaux radio. Pour compenser, nous utilisons des batteries de plus grande capacité (18650) et coupons l'écran LCD lorsqu'il n'est pas regardé.
+
+\textbf{Alimentation :}
+\begin{itemize}
+    \item 2× batteries 18650 Li-ion 3.7V en série = 7.4V nominal (6.0-8.4V selon charge)
+    \item Capacité typique : 2×2500 mAh = 2500 mAh (série conserve capacité, double tension)
+    \item Porte-batterie avec BMS (Battery Management System) intégré :
+    \begin{itemize}
+        \item Protection surcharge : coupure 8.4V (4.2V/cellule)
+        \item Protection décharge : coupure 6.0V (3.0V/cellule)
+        \item Équilibrage cellules (balancing)
+    \end{itemize}
+    \item Convertisseur DC-DC step-down LM2596 : 7.4V → 5V stable (efficacité 92\%)
+    \item Sortie 5V alimente : Arduino Nano VIN, LCD I2C, LED, buzzer
+\end{itemize}
+
+\textbf{Consommation par composant :}
+\begin{table}[H]
+    \centering
+    \caption{Consommation dispositif d'affichage}
+    \begin{tabular}{lcc}
+        \toprule
+        \textbf{Composant} & \textbf{Courant (actif)} & \textbf{Courant (veille)} \\
+        \midrule
+        Arduino Nano & 20 mA & 5 mA (LED power) \\
+        LoRa SX1278 RX continu & 12 mA & <1 µA (sleep) \\
+        LCD I2C rétroéclairage ON & 25 mA & 0 mA (éteint) \\
+        LED tricolore & 15 mA & 0 mA \\
+        Buzzer actif & 30 mA & 0 mA \\
+        LM2596 quiescent & 5 mA & 5 mA \\
+        \midrule
+        \textbf{Total veille écran} & \multicolumn{2}{c}{\textbf{22 mA}} \\
+        \textbf{Total actif affichage} & \multicolumn{2}{c}{\textbf{62 mA}} \\
+        \textbf{Total alerte (LCD+LED+buzzer)} & \multicolumn{2}{c}{\textbf{107 mA}} \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+L'autonomie estimée est d'environ **4 à 5 jours** en usage normal. Bien que plus faible que celle du capteur, elle reste acceptable car le remplacement des batteries est aisé dans l'espace de vie.
+
+\subsection{Passerelle LoRa (gateway)}
+La passerelle étant alimentée sur secteur, aucune contrainte énergétique ne s'applique. Elle privilégie la performance et la disponibilité pour assurer le lien temps réel avec le Cloud.
+
+\section{Sécurité du système}
+\label{sec:securite}
+
+La manipulation de gaz inflammable impose une rigueur absolue en matière de sécurité. Notre conception intègre la sécurité à trois niveaux : électrique, mécanique et fonctionnelle.
+
+\subsection{Sécurité électrique}
+L'ensemble du système fonctionne en **Très Basse Tension de Sécurité (TBTS)**, inférieure à 12V, éliminant tout risque d'électrocution. De plus, une isolation galvanique totale est assurée : aucun composant électrique n'est en contact direct avec le métal de la bouteille, le capteur étant isolé par son boîtier plastique et le système de fixation.
+
+Les batteries au lithium, potentiellement instables, sont systématiquement protégées par des circuits dédiés (BMS) contre les surcharges, les courts-circuits et les décharges profondes.
+
+\subsection{Sécurité mécanique et installation}
+Le dispositif est conçu pour être **non-intrusif**. Il ne nécessite aucun perçage ni modification de la bouteille, préservant ainsi son intégrité structurelle conformément aux normes en vigueur. La fixation est robuste (adhésif industriel ou sangle) pour éviter tout détachement accidentel, et les boîtiers sont étanches (IP54) pour résister à un usage en extérieur.
+
+\subsection{Sécurité fonctionnelle}
+Le logiciel intègre des mécanismes de surveillance (Watchdog) pour détecter les pannes. Si le capteur cesse d'émettre (panne ou batterie vide), l'afficheur signale une erreur "CAPTEUR HORS LIGNE" après un délai de sécurité. Les seuils d'alerte (20\%, 15\%, 5\%) sont définis pour laisser à l'utilisateur le temps de réagir avant la panne sèche.
+
+\subsection{Sécurité données et vie privée}
+Enfin, la confidentialité est assurée par le chiffrement des communications vers le Cloud (HTTPS/TLS). En local, la communication LoRa utilise des identifiants anonymes, ne transmettant aucune donnée personnelle, uniquement des niveaux techniques.

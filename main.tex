@@ -1,0 +1,280 @@
+\documentclass[12pt,a4paper]{report}
+
+%=============================================================================
+% PACKAGES
+%=============================================================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french,provide=*]{babel}
+\usepackage{geometry}
+\geometry{
+    a4paper,
+    left=2cm,
+    right=2cm,
+    top=2cm,
+    bottom=2cm,
+    headheight=15pt
+}
+
+% Packages mathématiques et scientifiques
+\usepackage{amsmath,amssymb,amsfonts}
+
+% Packages graphiques
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage[table]{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,positioning,calc}
+
+% Packages pour les tableaux
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{longtable}
+\usepackage{array}
+
+% Packages pour le code
+\usepackage{listings}
+
+% Packages divers
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{tocloft}
+\usepackage{enumitem}
+\usepackage{pdfpages}
+\usepackage{csquotes} % Recommandé avec babel
+\usepackage[most]{tcolorbox}
+
+
+% Packages pour les liens et références (à charger en dernier)
+\usepackage{hyperref}
+\usepackage[capitalise,noabbrev]{cleveref}
+
+%=============================================================================
+% CONFIGURATION DES PACKAGES
+%=============================================================================
+
+% Configuration hyperref
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=cyan,
+    citecolor=green,
+    pdftitle={Détecteur de Niveau de Gaz Butane},
+    pdfauthor={Équipe Projet GIF-1},
+    pdfsubject={Rapport de Projet},
+    pdfkeywords={Arduino, Ultrason, IoT, Gaz, BLE},
+    bookmarksnumbered=true,
+}
+
+% Configuration des listings pour le code
+\lstset{
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue}\bfseries,
+    commentstyle=\color{green!60!black}\itshape,
+    stringstyle=\color{red},
+    showstringspaces=false,
+    breaklines=true,
+    frame=single,
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    captionpos=b,
+}
+
+% Configuration des en-têtes et pieds de page
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\leftmark}
+\fancyfoot[C]{\thepage}  % Numéro de page en bas au centre
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\fancypagestyle{plain}{
+    \fancyhf{}
+    \fancyfoot[C]{\thepage}  % Numéro de page en bas au centre
+    \renewcommand{\headrulewidth}{0pt}
+    \renewcommand{\footrulewidth}{0pt}
+}
+
+% Configuration des titres de chapitres
+\titleformat{\chapter}[display]
+{\normalfont\huge\bfseries\color{blue!70!black}}
+{\chaptertitlename\ \thechapter}{20pt}{\Huge}
+
+% Configuration captions
+\captionsetup{
+    labelfont=bf,
+    justification=centering,
+    singlelinecheck=true
+}
+
+
+
+
+
+% Personnalisation des listes
+\setlist[itemize]{itemsep=2pt, topsep=5pt}
+\setlist[enumerate]{itemsep=2pt, topsep=5pt}
+
+%=============================================================================
+% COMMANDES PERSONNALISÉES
+%=============================================================================
+
+
+% Commande pour les références croisées
+\newcommand{\figref}[1]{Figure~\ref{#1}}
+\newcommand{\tabref}[1]{Tableau~\ref{#1}}
+\newcommand{\secref}[1]{Section~\ref{#1}}
+\newcommand{\chapref}[1]{Chapitre~\ref{#1}}
+
+% Couleurs personnalisées
+\definecolor{uniblue}{RGB}{0,51,102}
+\definecolor{warningred}{RGB}{204,0,0}
+\definecolor{successgreen}{RGB}{0,153,51}
+
+%=============================================================================
+% DÉBUT DU DOCUMENT
+%=============================================================================
+
+\begin{document}
+
+
+%-----------------------------------------------------------------------------
+% TABLE DES MATIÈRES
+%-----------------------------------------------------------------------------
+\tableofcontents
+\clearpage
+
+%-----------------------------------------------------------------------------
+% LISTE DES FIGURES
+%-----------------------------------------------------------------------------
+\phantomsection
+\addcontentsline{toc}{chapter}{\listfigurename}
+\listoffigures
+\clearpage
+
+%-----------------------------------------------------------------------------
+% LISTE DES TABLEAUX
+%-----------------------------------------------------------------------------
+\phantomsection
+\addcontentsline{toc}{chapter}{\listtablename}
+\listoftables
+\clearpage
+
+%-----------------------------------------------------------------------------
+% LISTE DES ACRONYMES ET ABRÉVIATIONS
+%-----------------------------------------------------------------------------
+\chapter*{Liste des Acronymes et Abréviations}
+\addcontentsline{toc}{chapter}{Liste des Acronymes et Abréviations}
+
+\begin{tabular}{ll}
+    \textbf{ADC} & Analog-to-Digital Converter (Convertisseur Analogique-Numérique) \\
+    \textbf{API} & Application Programming Interface \\
+    \textbf{BLE} & Bluetooth Low Energy \\
+    \textbf{FCFA} & Franc de la Communauté Financière Africaine \\
+    \textbf{FP} & Fonction Principale \\
+    \textbf{FS} & Fonction Secondaire \\
+    \textbf{GPL} & Gaz de Pétrole Liquéfié \\
+    \textbf{I2C} & Inter-Integrated Circuit \\
+    \textbf{IDE} & Integrated Development Environment \\
+    \textbf{IoT} & Internet of Things (Internet des Objets) \\
+    \textbf{LCD} & Liquid Crystal Display \\
+    \textbf{LED} & Light-Emitting Diode \\
+    \textbf{Li-ion} & Lithium-ion \\
+    \textbf{Li-Po} & Lithium-Polymère \\
+    \textbf{MCU} & Microcontroller Unit \\
+    \textbf{OLED} & Organic Light-Emitting Diode \\
+    \textbf{PCB} & Printed Circuit Board \\
+    \textbf{PWM} & Pulse Width Modulation \\
+    \textbf{REST} & Representational State Transfer \\
+    \textbf{SRAM} & Static Random-Access Memory \\
+    \textbf{SPI} & Serial Peripheral Interface \\
+    \textbf{UART} & Universal Asynchronous Receiver-Transmitter \\
+    \textbf{UI} & User Interface \\
+    \textbf{UX} & User Experience \\
+    \textbf{UUID} & Universally Unique Identifier \\
+\end{tabular}
+
+\clearpage
+
+%=============================================================================
+% CORPS DU RAPPORT
+%=============================================================================
+
+% Inclusion des chapitres (à créer dans des fichiers séparés)
+\include{chapters/chap1_introduction}
+\include{chapters/chap2_analyse}
+\include{chapters/chap3_conception_globale}
+\include{chapters/chap4_appareil}
+\include{chapters/chap5_application}
+\include{chapters/chap7_tests}
+\include{chapters/chap8_difficultes}
+\include{chapters/chap9_perspectives}
+\include{chapters/chap10_conclusion}
+
+\clearpage
+\pagestyle{plain} % Supprime les en-têtes (conserve numéro de page en bas)
+\chapter*{Références}
+\addcontentsline{toc}{chapter}{Réferences}
+\markboth{Bibliographie}{Bibliographie}
+
+\begin{itemize}[label={-}]
+
+\item Google. \textit{Flutter Documentation}.  
+Disponible sur : \url{https://docs.flutter.dev} (consulté en janvier 2026).
+
+\item VMware. \textit{Spring Boot Reference Documentation}.  
+Disponible sur : \url{https://docs.spring.io/spring-boot/docs/current/reference/html/} (consulté en janvier 2026).
+
+\item Arduino. \textit{Arduino Official Documentation}.  
+Disponible sur : \url{https://docs.arduino.cc} (consulté en janvier 2026).
+
+\item Bluetooth SIG. \textit{Bluetooth Low Energy (BLE) Core Specification}.  
+Disponible sur : \url{https://www.bluetooth.com/specifications/specs/core-specification/} (consulté en janvier 2026).
+
+\item DYP Sensor. \textit{DYP-L06 Ultrasonic Sensor Datasheet}.  
+Disponible sur : \url{https://www.dypcn.com/uploads/DYP-L06.pdf} (consulté en janvier 2026).
+
+\item Buyya, R., \& Dastjerdi, A. V. \textit{Internet of Things: Principles and Paradigms}. Morgan Kaufmann, 2016.
+
+\item Margolis, M. \textit{Arduino Cookbook}. 2\textsuperscript{e} édition, O’Reilly Media, 2016.
+
+\item Valvano, J. W. \textit{Embedded Systems: Real-Time Interfacing to ARM Cortex-M Microcontrollers}. CreateSpace, 2015.
+
+\item Render. \textit{Deploying Spring Boot Applications}.  
+Disponible sur : \url{https://render.com/docs/deploy-spring-boot} (consulté en janvier 2026).
+
+\item Flutter Community. \textit{flutter\_blue\_plus Package Documentation}.  
+Disponible sur : \url{https://pub.dev/packages/flutter_blue_plus} (consulté en janvier 2026).
+
+\item Google. \textit{Google Identity Platform Documentation}.  
+Disponible sur : \url{https://developers.google.com/identity} (consulté en janvier 2026).
+
+\item Kinsler, L. E., Frey, A. R., Coppens, A. B., \& Sanders, J. V.  
+\textit{Fundamentals of Acoustics}. John Wiley \& Sons, 2000.
+
+\item Net Ninja. \textit{Flutter Tutorial for Beginners}. YouTube Playlist.  
+Disponible sur : \url{https://www.youtube.com/playlist?list=PL4cUxeGkcC9i9Ae2D9Ee1RvylH38dKuET} (consulté en janvier 2026).
+
+\item Andreas Spiess. \textit{Bluetooth Low Energy with Arduino}. YouTube Video.  
+Disponible sur : \url{https://www.youtube.com/watch?v=5zI0ydQ0n4Y} (consulté en janvier 2026).
+
+\item FreeCodeCamp.org. \textit{Internet of Things Full Course}. YouTube.  
+Disponible sur : \url{https://www.youtube.com/watch?v=QSIPNhOiMoE} (consulté en janvier 2026).
+
+\item World LPG Association. \textit{Global LPG Market Outlook}.  
+Disponible sur : \url{https://www.wlpga.org/publications/global-lpg-market-outlook/} (consulté en janvier 2026).
+
+\item International Energy Agency (IEA). \textit{Energy Access Outlook – Cooking Fuels}.  
+Disponible sur : \url{https://www.iea.org/reports/energy-access-outlook-2017} (consulté en janvier 2026).
+
+\item World Health Organization (WHO). \textit{Household Air Pollution and Health}.  
+Disponible sur : \url{https://www.who.int/news-room/fact-sheets/detail/household-air-pollution-and-health} (consulté en janvier 2026).
+
+\end{itemize}
+% \endgroup supprimé car on a changé le style de page globalement pour la fin
+
+
+\end{document}

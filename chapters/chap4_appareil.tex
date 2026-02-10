@@ -1,0 +1,156 @@
+\chapter{Conception et Réalisation de l'Appareil}
+\label{chap:appareil}
+
+Ce chapitre décrit en détail la conception matérielle et logicielle du dispositif embarqué de détection de gaz.
+
+\section{Module de Détection}
+\label{sec:module_detection}
+
+\subsection{Principe physique de la détection ultrasonore}
+
+\subsubsection{Propagation des ondes ultrasonores}
+
+[INSÉRER EXPLICATION DÉTAILLÉE + FORMULES]
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{capteur_sonore.jpeg}
+    \caption{Capteur Ultrasonore}
+    \label{fig:capteur_ultrasons}
+\end{figure}
+
+\subsection{Mise en œuvre des capteurs JSN-SR04T}
+
+\subsubsection{Caractéristiques techniques}
+
+\begin{table}[H]
+    \centering
+    \caption{Spécifications capteur JSN-SR04T}
+    \label{tab:specs_jsn}
+    \begin{tabular}{ll}
+        \toprule
+        \textbf{Paramètre} & \textbf{Valeur} \\
+        \midrule
+        Tension d'alimentation & 5V DC \\
+        Courant de travail & < 15 mA \\
+        Fréquence ultrasonore & 40 kHz \\
+        Portée de détection & 25 - 450 cm \\
+        Précision & ±2 mm \\
+        Angle de mesure & 75° \\
+        Temps de cycle min & 60 ms \\
+        Étanchéité & IP67 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\subsubsection{Montage et fixation}
+
+[DÉCRIRE SYSTÈME DE FIXATION + PHOTOS]
+
+\subsection{Circuit de conditionnement du signal}
+
+[SCHÉMA ÉLECTRIQUE DÉTAILLÉ + EXPLICATIONS]
+
+\begin{figure}[H]
+    \centering
+    \fbox{\textcolor{blue}{[INSÉRER SCHÉMA : Circuit de conditionnement avec ampli-op LM358]}}
+    \caption{Circuit de conditionnement}
+    \label{fig:circuit_conditioning}
+\end{figure}
+
+\section{Module de Traitement}
+\label{sec:module_traitement}
+
+\subsection{Circuit Arduino Uno}
+
+\subsubsection{Schéma de connexion complet}
+
+\begin{figure}[H]
+    \centering
+    \fbox{\textcolor{blue}{[INSÉRER SCHÉMA FRITZING : Connexions complètes Arduino]}}
+    \caption{Schéma de câblage complet}
+    \label{fig:schema_cablage}
+\end{figure}
+
+\subsection{Algorithme de mesure}
+
+\subsubsection{Organigramme général}
+
+\begin{figure}[H]
+    \centering
+    \fbox{\textcolor{blue}{[INSÉRER FLOWCHART : Algorithme principal]}}
+    \caption{Organigramme algorithme de mesure}
+    \label{fig:flowchart_mesure}
+\end{figure}
+
+
+
+\subsection{Gestion de la mémoire EEPROM}
+
+[EXPLICATION STOCKAGE CALIBRATION + HISTORIQUE]
+
+\section{Module d'Affichage}
+\label{sec:module_affichage}
+
+\subsection{Écran OLED SSD1306}
+
+\subsubsection{Configuration I2C}
+
+[DÉTAILS CONFIGURATION + CODE]
+
+\subsubsection{Interface graphique}
+
+\begin{figure}[H]
+    \centering
+    \fbox{\textcolor{blue}{[INSÉRER MOCKUPS : Différents états d'affichage OLED]}}
+    \caption{États d'affichage OLED}
+    \label{fig:etats_oled}
+\end{figure}
+
+\subsection{Indicateurs LED}
+
+[DESCRIPTION FONCTIONNEMENT LEDs]
+
+\subsection{Alarme sonore}
+
+[DESCRIPTION PATTERNS SONORES]
+
+\section{Module de Communication BLE}
+\label{sec:module_ble}
+
+\subsection{Configuration module HM-10}
+
+[DÉTAILS CONFIGURATION]
+
+\subsection{Implémentation services GATT}
+
+[CODE + EXPLICATIONS]
+
+\section{Module d'Alimentation}
+\label{sec:module_alimentation}
+
+\subsection{Circuit d'alimentation}
+
+\begin{figure}[H]
+    \centering
+    \fbox{\textcolor{blue}{[INSÉRER SCHÉMA : Circuit alimentation complet]}}
+    \caption{Circuit d'alimentation}
+    \label{fig:circuit_alimentation}
+\end{figure}
+
+\subsection{Gestion de la charge}
+
+[EXPLICATIONS TP4056]
+
+\section{Intégration Mécanique}
+\label{sec:integration_mecanique}
+
+\subsection{Conception du boîtier}
+
+[PLANS + PHOTOS]
+
+\subsection{Assemblage final}
+
+[PHOTOS ÉTAPES D'ASSEMBLAGE]
+
+\section{Conclusion du Chapitre}

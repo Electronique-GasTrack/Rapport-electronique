@@ -1,0 +1,197 @@
+\chapter{Introduction Générale}
+\label{chap:introduction}
+
+\section{Contexte}
+\label{sec:contexte}
+
+\subsection{Utilisation du gaz domestique}
+
+L'utilisation du gaz butane comme source d'énergie domestique est largement répandue dans les ménages camerounais et dans de nombreux pays en développement. Ce gaz de pétrole liquéfié (GPL) représente une alternative économique et pratique au bois de chauffage et au charbon, contribuant ainsi à la réduction de la déforestation et des émissions de gaz à effet de serre.
+
+Au Cameroun, les bouteilles de gaz domestique sont disponibles en plusieurs capacités (6 kg, 12,5 kg et 31 kg) et sont utilisées quotidiennement pour la préparation des repas dans une grande majorité des foyers urbains et périurbains. Selon les résultats de l’Enquête Intégrée sur les Conditions de Vie des Ménages (EICVM / MIS 2022) menée par l’Institut National de la Statistique (INS), environ 48,7 \% des ménages urbains utilisent le gaz butane (GPL) comme principale source d’énergie pour la cuisson.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{chapters/bouteille_gaz.jpg}
+    \caption{Bouteiile de gaz standard}
+    \label{fig:Bouteille_gaz}
+\end{figure}
+
+\subsection{Problèmes réels rencontrés}
+
+Malgré les avantages du gaz butane, son utilisation présente plusieurs inconvénients majeurs qui affectent le confort et la sécurité des utilisateurs :
+
+\paragraph{Coupures imprévues :}
+L'impossibilité de connaître avec précision le niveau de gaz restant dans la bouteille entraîne fréquemment des coupures imprévues, généralement au moment le moins opportun, notamment pendant la préparation des repas. Cette situation génère des désagréments importants et perturbe l'organisation domestique.
+
+\paragraph{Manipulations dangereuses :}
+Face à l'absence d'indicateur de niveau, les utilisateurs sont contraints de recourir à des méthodes empiriques pour estimer le contenu restant :
+\begin{itemize}
+    \item \textbf{Soulèvement répété de la bouteille} pour en estimer le poids, ce qui peut causer des blessures dorsales, particulièrement pour les personnes âgées ou à mobilité réduite ;
+    \item \textbf{Secouement de la bouteille} pour tenter d'entendre le liquide, méthode imprécise et potentiellement dangereuse.
+\end{itemize}
+
+\paragraph{Risques de sécurité :}
+Ces manipulations répétées augmentent considérablement les risques :
+\begin{itemize}
+    \item Détérioration des raccords et joints, pouvant entraîner des fuites de gaz ;
+    \item Chutes de la bouteille lors des manipulations, avec risque d'explosion en cas de choc violent ;
+    \item Exposition prolongée au gaz en cas de fuite non détectée.
+\end{itemize}
+
+\paragraph{Mauvaise planification :}
+L'incertitude sur le niveau de gaz restant empêche une planification efficace des achats de recharge, conduisant soit à des remplacements prématurés (gaspillage économique), soit à des ruptures de stock au moment critique.
+
+\section{Problématique}
+\label{sec:problematique}
+
+\subsection{Formulation du problème}
+
+La question centrale qui motive ce projet peut être formulée ainsi :
+
+\begin{quote}
+    \textit{\textbf{Comment mesurer de manière fiable, sécurisée et non-intrusive le niveau de gaz restant dans une bouteille domestique, tout en fournissant à l'utilisateur une information claire et accessible en temps réel ?}}
+\end{quote}
+
+Cette problématique soulève plusieurs défis techniques et pratiques :
+
+\begin{enumerate}
+    \item \textbf{Défi de la mesure non-intrusive} : La solution doit fonctionner sans modifier la structure de la bouteille, sans percer ou ouvrir le récipient sous pression, et sans contact direct avec le gaz liquéfié.
+    
+    \item \textbf{Défi de la précision} : Le système doit fournir une mesure suffisamment précise pour permettre une planification efficace, tout en tenant compte des contraintes liées à la paroi métallique et aux variations de température.
+    
+    \item \textbf{Défi de la sécurité} : Toute solution proposée doit respecter des normes de sécurité strictes, notamment l'absence d'étincelles, l'utilisation de composants basse tension, et la robustesse face aux conditions d'utilisation domestique.
+    
+    \item \textbf{Défi de l'accessibilité} : Le système doit être abordable, facile à installer et à utiliser, sans nécessiter de compétences techniques particulières.
+    
+    \item \textbf{Défi de l'autonomie} : L'appareil doit fonctionner de manière autonome avec une alimentation par batterie, sans nécessiter de connexion permanente au secteur.
+\end{enumerate}
+
+\subsection{Limites des solutions existantes}
+
+Plusieurs approches ont été proposées ou commercialisées pour résoudre ce problème, mais chacune présente des limitations significatives :
+
+\begin{table}[H]
+    \centering
+    \caption{Comparaison des solutions existantes}
+    \label{tab:solutions_existantes}
+    \begin{tabular}{p{3cm}p{5cm}p{5cm}}
+        \toprule
+        \textbf{Solution} & \textbf{Avantages} & \textbf{Inconvénients} \\
+        \midrule
+        Pesage manuel & Simple, pas d'électronique & Nécessite manipulation, imprécis, pénible \\
+        \midrule
+        Balance connectée & Précise, automatique & Coût élevé, encombrant, nécessite repositionnement \\
+        \midrule
+        Capteur de pression & Mesure directe & Intrusif, risque de fuite, installation complexe \\
+        \midrule
+        Capteur thermique externe & Non-intrusif & Imprécision, sensible aux conditions ambiantes \\
+        \midrule
+        Jauges mécaniques & Simples & Peu fiables, lecture approximative \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\subsection{Justification de l'approche ultrasonore}
+
+Face à ces limitations, nous avons opté pour une solution basée sur la \textbf{détection ultrasonore externe}, qui présente les avantages suivants :
+
+\begin{itemize}
+    \item \textbf{Non-intrusif} : Aucune modification de la bouteille n'est requise ;
+    \item \textbf{Sûr} : Pas de contact avec le gaz, utilisation de composants basse tension ;
+    \item \textbf{Précis} : Capable de détecter l'interface liquide-gaz à travers la paroi métallique ;
+    \item \textbf{Économique} : Coût des composants raisonnable et accessible ;
+    \item \textbf{Fiable} : Technologie éprouvée dans d'autres applications industrielles.
+\end{itemize}
+
+\section{Objectifs du Projet}
+\label{sec:objectifs}
+
+\subsection{Objectif général}
+
+L'objectif principal de ce projet est de :
+
+\begin{quote}
+    \textit{Concevoir, réaliser et valider un système électronique intelligent et connecté permettant la mesure non-intrusive du niveau de gaz butane dans une bouteille domestique, avec affichage local et accès à distance via une application mobile.}
+\end{quote}
+
+\subsection{Objectifs spécifiques}
+
+Pour atteindre cet objectif général, nous avons défini les objectifs spécifiques suivants :
+
+\subsubsection{OS1 : Mesure non-intrusive du niveau de gaz}
+
+Développer un module de détection basé sur des capteurs ultrasonores capable de :
+\begin{itemize}
+    \item Mesurer la hauteur du liquide dans la bouteille sans contact direct avec le gaz ;
+    \item Atteindre une précision de $\pm$5\% du volume total ;
+    \item Fonctionner avec différentes tailles de bouteilles (6 kg, 12,5 kg, 13 kg) ;
+    \item Réaliser une mesure complète en moins de 5 secondes.
+\end{itemize}
+
+\subsubsection{OS2 : Affichage et supervision déportés}
+
+Concevoir un dispositif de supervision distinct permettant de :
+\begin{itemize}
+    \item Recevoir les données du capteur à distance via une liaison radio ;
+    \item Visualiser le niveau de gaz sur un écran dédié (LCD/OLED) ;
+    \item Émettre des alertes sonores et visuelles en cas de niveau critique ;
+    \item Fonctionner de manière autonome dans une pièce de vie.
+\end{itemize}
+
+
+\subsubsection{OS3 : Application mobile connectée}
+
+Développer une application mobile offrant :
+\begin{itemize}
+    \item Connexion au backend cloud via Internet ;
+    \item Consultation à distance des données transmises par la passerelle LoRa ;
+    \item Historique de consommation avec graphiques ;
+    \item Prédictions de durée restante basées sur les habitudes d'utilisation ;
+    \item Notifications intelligentes (niveau bas, anomalies détectées).
+\end{itemize}
+
+\subsubsection{OS4 : Communication LoRa et infrastructure réseau}
+
+Mettre en place une architecture de communication comprenant :
+\begin{itemize}
+    \item Une liaison radio longue portée (LoRa) entre le capteur et l'afficheur ;
+    \item Une passerelle LoRa optionnelle pour la remontée des données vers le cloud ;
+    \item Un protocole de communication optimisé pour la faible consommation.
+\end{itemize}
+
+\subsubsection{OS5 : Sécurité et fiabilité}
+
+Garantir la sécurité du système en :
+\begin{itemize}
+    \item Utilisant exclusivement des composants basse tension ($\leq$ 5V) ;
+    \item Assurant l'isolation électrique totale entre circuits et bouteille ;
+    \item Respectant les normes de sécurité électrique domestique ;
+    \item Implémentant des protections contre les courts-circuits et surcharges ;
+    \item Validant le système par des tests rigoureux.
+\end{itemize}
+
+\subsubsection{OS6 : Autonomie et efficacité énergétique}
+
+Optimiser la consommation énergétique pour :
+\begin{itemize}
+    \item Atteindre une autonomie minimale de 30 jours avec batterie rechargeable ;
+    \item Implémenter des modes de veille intelligents ;
+    \item Permettre la recharge via port USB standard ;
+    \item Afficher l'état de charge de la batterie.
+\end{itemize}
+
+\section{Méthodologie de Travail}
+\label{sec:methodologie}
+
+Pour mener à bien ce projet, nous avons adopté une approche structurée en plusieurs phases :
+
+\subsection*{Phase 1 : Étude et conception (3 semaines)}
+
+\subsection*{Phase 2 : Développement matériel (4 semaines)}
+
+\subsection*{Phase 3 : Développement logiciel (4 semaines)}
+
+\subsection*{Phase 4 : Tests et validation (2 semaines)}
+
+\subsection*{Phase 5 : Documentation (2 semaines)}

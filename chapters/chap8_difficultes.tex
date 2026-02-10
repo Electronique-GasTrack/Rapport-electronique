@@ -1,0 +1,125 @@
+\chapter{Difficultés Rencontrées et Solutions}
+\label{chap:difficultes}
+
+Ce chapitre présente les principales difficultés rencontrées tout au long de la réalisation du projet, ainsi que les solutions mises en œuvre pour les surmonter.  
+Il met également en évidence les leçons apprises, tant sur le plan technique qu’organisationnel.
+
+\section{Difficultés Matérielles}
+
+\subsection{Difficulté d’acquisition du matériel}
+
+L’une des principales contraintes rencontrées concerne l’acquisition du matériel nécessaire à la réalisation du dispositif embarqué.  
+En particulier, la commande du capteur ultrasonore DYP-L06 a connu un retard important, s’étalant sur plus d’un mois. Ce retard a fortement impacté le planning initial du projet.
+
+\textbf{Causes identifiées :}
+\begin{itemize}
+    \item Disponibilité limitée du capteur sur le marché local.
+    \item Délais de livraison prolongés pour les commandes en ligne.
+    \item Contraintes logistiques liées à l’importation du matériel.
+\end{itemize}
+
+\textbf{Solutions mises en œuvre :}
+\begin{itemize}
+    \item Réorganisation du planning en priorisant les tâches logicielles.
+    \item Étude théorique approfondie du capteur en attendant sa réception.
+    \item Simulation et préparation du code embarqué sans matériel physique.
+\end{itemize}
+
+\subsection{Contraintes financières}
+
+La mobilisation des fonds nécessaires à l’achat des composants électroniques a également constitué une difficulté majeure.
+
+\textbf{Problèmes rencontrés :}
+\begin{itemize}
+    \item Budget limité pour un projet de groupe.
+    \item Retard dans la contribution financière de certains membres.
+\end{itemize}
+
+\textbf{Solutions adoptées :}
+\begin{itemize}
+    \item Réduction des coûts en choisissant des composants alternatifs lorsque possible.
+    \item Mutualisation des ressources entre les membres du groupe.
+    \item Planification progressive des achats selon les priorités.
+\end{itemize}
+
+\subsection{Disponibilité des bouteilles de gaz pour les tests}
+
+La réalisation des tests en conditions réelles nécessitait la disponibilité de bouteilles de gaz vides et pleines, ce qui n’a pas toujours été évident.
+
+\textbf{Solutions :}
+\begin{itemize}
+    \item Collaboration avec des particuliers et des commerces locaux.
+    \item Utilisation de bouteilles partiellement remplies pour certains tests intermédiaires.
+\end{itemize}
+
+\section{Difficultés Logicielles}
+
+\subsection{Courbe d’apprentissage de Flutter}
+
+Le développement de l’application mobile avec Flutter a représenté un défi pour certains membres de l’équipe, notamment ceux n’ayant pas d’expérience préalable avec ce framework.
+
+\textbf{Difficultés rencontrées :}
+\begin{itemize}
+    \item Prise en main du langage Dart.
+    \item Compréhension de la gestion de l’état et de l’architecture de l’application.
+    \item Mise en œuvre de la communication Bluetooth Low Energy (BLE).
+\end{itemize}
+
+\textbf{Solutions apportées :}
+\begin{itemize}
+    \item Répartition des tâches selon le niveau de compétence.
+    \item Auto-formation à travers des tutoriels et la documentation officielle.
+    \item Sessions de travail collaboratif et partage de connaissances.
+\end{itemize}
+
+\subsection{Déploiement du backend}
+
+Le déploiement du backend de l’application a également posé plusieurs difficultés, notamment lors de la mise en production.
+
+\textbf{Problèmes rencontrés :}
+\begin{itemize}
+    \item Configuration du serveur et des variables d’environnement.
+    \item Problèmes de compatibilité entre la base de données et le backend.
+    \item Gestion des erreurs lors du déploiement sur une plateforme cloud.
+\end{itemize}
+
+\textbf{Solutions mises en place :}
+\begin{itemize}
+    \item Tests locaux approfondis avant le déploiement.
+    \item Utilisation de journaux (logs) pour identifier les erreurs.
+    \item Simplification progressive de l’architecture backend.
+\end{itemize}
+
+\section{Difficultés d’Intégration}
+
+L’intégration entre le dispositif embarqué, l’application mobile et le backend a constitué l’une des phases les plus complexes du projet.
+
+\textbf{Difficultés principales :}
+\begin{itemize}
+    \item Instabilité initiale de la connexion Bluetooth entre l’appareil et le téléphone.
+    \item Problèmes de synchronisation des données.
+    \item Différences de comportement selon les modèles de smartphones.
+    \item Gestion des pertes de connexion et des reconnexions.
+\end{itemize}
+
+\textbf{Solutions adoptées :}
+\begin{itemize}
+    \item Multiplication des tests sur différents appareils mobiles.
+    \item Mise en place de mécanismes de reconnexion automatique.
+    \item Validation progressive de chaque maillon de la chaîne de communication.
+\end{itemize}
+
+\section{Leçons Apprises}
+
+La réalisation de ce projet a permis à l’équipe d’acquérir de nombreuses compétences et enseignements.
+
+\textbf{Principales leçons retenues :}
+\begin{itemize}
+    \item L’importance d’une bonne planification et d’une gestion réaliste des délais.
+    \item La nécessité d’anticiper les problèmes d’approvisionnement matériel.
+    \item La valeur du travail en équipe et du partage des connaissances.
+    \item L’intérêt de tester progressivement chaque composant avant l’intégration globale.
+    \item L’adaptabilité face aux imprévus techniques et organisationnels.
+\end{itemize}
+
+Ces expériences ont contribué à renforcer les compétences techniques et organisationnelles des membres de l’équipe et constituent un apport significatif pour leurs futurs projets académiques et professionnels.
