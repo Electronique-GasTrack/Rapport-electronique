@@ -1,7 +1,7 @@
-\chapter{Développement de l'Application Mobile}
+\chapter{Développement de l'Application Web}
 \label{chap:application}
 
-Ce chapitre présente la conception et le développement de l'application mobile GasTrack.
+Ce chapitre présente la conception et le développement de l'application web GasTrack, réalisée avec la bibliothèque React.JS.
 
 \section{Modèle de données}
 \label{sec:modele_donnee}
@@ -13,7 +13,7 @@ Ce chapitre présente la conception et le développement de l'application mobile
     \label{fig:diagramme_classe}
 \end{figure}
 
-Ce modèle permet de structurer les informations échangées entre le backend cloud, l’application mobile et l’utilisateur.
+Ce modèle permet de structurer les informations échangées entre le backend cloud, l’application web et l’utilisateur.
 
 \subsection{Vue d’ensemble du modèle}
 
@@ -53,23 +53,10 @@ Elle permet d’enregistrer les résultats des mesures et d’assurer l’histor
 
 Chaque objet \texttt{Mesure} est associé à une unique \texttt{Bouteille}.
 
-\subsubsection{Classe \texttt{Passerelle}}
-
-La classe \texttt{Passerelle} représente l'interface avec l'infrastructure LoRa.
-
-\textbf{Rôle :}
-Elle gère l'identification des dispositifs LoRa et la récupération des données depuis le serveur.
-
-\textbf{Responsabilités principales :}
-\begin{itemize}
-    \item Authentification auprès de l'API du backend
-    \item Synchronisation des données des capteurs
-\end{itemize}
-
 
 \subsubsection{Classe \texttt{Utilisateur}}
 
-La classe \texttt{Utilisateur} représente l’utilisateur final de l’application mobile.
+La classe \texttt{Utilisateur} représente l’utilisateur final de l’application web.
 
 \textbf{Rôle :}
 Elle permet de personnaliser l’utilisation du système et de relier les données à un utilisateur donné.
@@ -107,12 +94,12 @@ Les relations entre les classes assurent la cohérence du modèle :
 
 \subsection{Synthèse des cas d’utilisation}
 
-Le tableau suivant présente une synthèse des principaux cas d’utilisation de l’application mobile.
+Le tableau suivant présente une synthèse des principaux cas d’utilisation de l’application web.
 
 
 \begin{table}[H]
 \centering
-\caption{Cas d'utilisation de l'application mobile}
+\caption{Cas d'utilisation de l'application web}
 \label{tab:cas_utilisation_app}
 \small
 \renewcommand{\arraystretch}{1.3}
@@ -129,7 +116,7 @@ Le tableau suivant présente une synthèse des principaux cas d’utilisation de
 \textbf{UC1:} Consulter le niveau de gaz & 
 Connexion Internet active & 
 \begin{enumerate}[leftmargin=*, nosep]
-    \item L'utilisateur ouvre l'application
+    \item L'utilisateur accède au site web
     \item Authentification automatique
     \item Récupération des dernières données serveur
     \item Affichage en temps réel
@@ -182,7 +169,7 @@ Capteur ajouté au parc \\
 \section{Parcours Utilisateur}
 \label{sec:parcours_utilisateur}
 
-Cette section décrit le parcours utilisateur au sein de l’application mobile \textit{GasTrack}.  
+Cette section décrit le parcours utilisateur au sein de l’application web \textit{GasTrack}.  
 Le parcours est basé sur les diagrammes d’activités correspondant aux trois principaux cas d’utilisation : 
 la consultation du niveau de gaz, la consultation de l’historique de consommation et l’affichage des prédictions de consommation.
 
@@ -202,7 +189,7 @@ Cette approche garantit une expérience utilisateur cohérente, intuitive et hom
 Le premier parcours permet à l’utilisateur de consulter en temps réel le niveau de gaz restant dans la bouteille.
 
 \begin{enumerate}
-    \item L’utilisateur lance l’application.
+    \item L’utilisateur se connecte à l'application web.
     \item L'écran d'accueil affiche la liste des bouteilles associées avec leur dernier niveau connu (remonté par la passerelle).
     \item L’utilisateur sélectionne une bouteille pour voir les détails.
 \end{enumerate}
@@ -233,7 +220,7 @@ Ce parcours permet d’anticiper le remplacement de la bouteille de gaz et d’a
 
 \subsection{Synthèse du parcours utilisateur}
 
-L'utilisation d'une architecture cloud simplifie grandement le parcours utilisateur en supprimant les étapes techniques de connexion Bluetooth et d'appairage à chaque utilisation. L'information est disponible immédiatement au lancement de l'application.
+L'utilisation d'une architecture cloud simplifie grandement le parcours utilisateur en supprimant les étapes techniques de connexion locale et d'appairage à chaque utilisation. L'information est disponible immédiatement après connexion au site.
 
 \begin{figure}[H]
     \centering
@@ -258,3 +245,59 @@ L'utilisation d'une architecture cloud simplifie grandement le parcours utilisat
 
 \section{Interfaces Utilisateur}
 \label{sec:interfaces_ui}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{appli/Capture d’écran du 2025-12-30 19-37-47.png}
+    \caption{Page d'accueil}
+    \label{fig:accueil}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{appli/Capture d’écran du 2025-12-30 19-40-01.png}
+    \caption{Formulaire d'utilisation 1}
+    \label{fig:formulaire_1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{appli/Capture d’écran du 2025-12-30 19-40-13.png}
+    \caption{Formulaire d'utilisation 2}
+    \label{fig:formulaire_2}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{appli/Capture d’écran du 2025-12-30 19-40-24.png}
+    \caption{Formulaire d'utilisation 3}
+    \label{fig:formulaire_3}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{appli/Capture d’écran du 2025-12-30 19-49-56.png}
+    \caption{Tableau de bord}
+    \label{fig:dashboard}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{appli/Capture d’écran du 2025-12-30 19-50-10.png}
+    \caption{Historique}
+    \label{fig:historique}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{appli/Capture d’écran du 2025-12-30 19-50-21.png}
+    \caption{Prédictions}
+    \label{fig:predictions}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{appli/Capture d’écran du 2025-12-30 19-50-33.png}
+    \caption{Paramètres}
+    \label{fig:params}
+\end{figure}

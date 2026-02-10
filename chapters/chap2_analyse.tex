@@ -180,7 +180,7 @@ Le système de détection de gaz repose sur une architecture distribuée compren
     
     \item \textbf{Le dispositif d'affichage} : Boîtier mural équipé d'un écran LCD, de LEDs et d'un buzzer, recevant les données du capteur et affichant le niveau de gaz en temps réel. Déclenche des alarmes visuelles et sonores en cas de niveau critique.
     
-    \item \textbf{La passerelle LoRa (optionnelle)} : Gateway permettant de transmettre les données vers un serveur cloud pour suivi à distance via application mobile ou web.
+    \item \textbf{La passerelle LoRa (optionnelle)} : Gateway permettant de transmettre les données vers un serveur cloud pour suivi à distance via application web.
 \end{enumerate}
 
 \subsection{Diagramme de contexte}
@@ -202,7 +202,7 @@ Le dispositif d'affichage, installé dans un endroit accessible de l'habitation 
 
 La passerelle LoRa optionnelle permet d'étendre les fonctionnalités du système en transmettant les données vers un serveur cloud via Wi-Fi ou Ethernet. Basée sur un ESP32, elle reçoit les trames LoRa des capteurs et les transmet à une plateforme IoT (MQTT, HTTP REST API, ou serveur personnalisé). Cela permet un suivi à distance via application mobile ou interface web, ainsi que la gestion simultanée de plusieurs bouteilles.
 
-L'utilisateur interagit principalement avec le dispositif d'affichage pour la consultation locale, et optionnellement avec l'application mobile pour le suivi à distance, tandis que le dispositif de mesure fonctionne de manière totalement autonome avec alimentation sur batterie et gestion intelligente de la consommation énergétique.
+L'utilisateur interagit principalement avec le dispositif d'affichage pour la consultation locale, et optionnellement avec l'application web pour le suivi à distance, tandis que le dispositif de mesure fonctionne de manière totalement autonome avec alimentation sur batterie et gestion intelligente de la consommation énergétique.
 
 \section{Analyse des Besoins}
 \label{sec:analyse_besoins}
@@ -231,7 +231,7 @@ Les besoins fonctionnels décrivent ce que le système doit faire. Ils sont clas
         \multicolumn{3}{c}{\textbf{SHOULD HAVE (Important)}} \\
         \midrule
         BF06 & Passerelle IoT & Gateway LoRa permettant connexion au cloud via Wi-Fi/Ethernet \\
-        BF07 & Application mobile & Interface graphique pour consultation à distance via serveur cloud \\
+        BF07 & Application web & Interface graphique pour consultation à distance via serveur cloud \\
         BF08 & Indicateurs LED & Affichage visuel rapide de l'état sur le dispositif d'affichage (vert/orange/rouge) \\
         BF09 & Alarme sonore & Buzzer actif paramétrable pour alertes critiques \\
         BF10 & Boutons physiques & Interaction utilisateur (allumage écran, arrêt alarme) \\
@@ -242,7 +242,7 @@ Les besoins fonctionnels décrivent ce que le système doit faire. Ils sont clas
         BF12 & Multi-bouteilles & Gestion de plusieurs capteurs par une seule passerelle \\
         BF13 & Statistiques & Analyse de consommation avec graphiques via application \\
         BF14 & Prédiction & Estimation du nombre de jours restants basée sur historique \\
-        BF15 & Notifications push & Alertes mobiles en cas de niveau bas \\
+        BF15 & Notifications & Alertes par email ou interface web en cas de niveau bas \\
         \midrule
         \multicolumn{3}{c}{\textbf{WON'T HAVE (Non prioritaire)}} \\
         \midrule
@@ -285,7 +285,7 @@ Les besoins non fonctionnels définissent les contraintes de qualité du systèm
     \item \textbf{Appairage LoRa} : Connexion automatique au démarrage sans configuration manuelle
     \item \textbf{Apprentissage} : Utilisation intuitive sans formation préalable
     \item \textbf{Lisibilité} : Affichage LCD visible à 3 mètres de distance
-    \item \textbf{Accessibilité mobile} : Compatible avec Android 8.0+ et iOS 13+ (si passerelle cloud)
+    \item \textbf{Accessibilité web} : Compatible avec tout navigateur web moderne (Chrome, Firefox, Safari)
 \end{itemize}
 
 \subsubsection{Sécurité}
@@ -341,7 +341,7 @@ Les besoins non fonctionnels définissent les contraintes de qualité du systèm
     \item Le niveau de gaz actuel s'affiche immédiatement en pourcentage (ex: 67\%) et sous forme de bargraphe.
     \item Les LEDs indiquent l'état : verte (>50\%), orange (20-50\%), rouge (<20\%).
     \item L'heure de la dernière mesure est affichée sur la deuxième ligne du LCD.
-    \item Si l'utilisateur possède la passerelle cloud, il peut également consulter le niveau via l'application mobile depuis n'importe où.
+    \item Si l'utilisateur possède la passerelle cloud, il peut également consulter le niveau via l'application web depuis n'importe où.
     \item Le système repasse automatiquement en veille d'affichage après 30 secondes sans interaction.
 \end{enumerate}
 
@@ -353,8 +353,8 @@ Les besoins non fonctionnels définissent les contraintes de qualité du systèm
     \item Le buzzer du dispositif d'affichage émet un signal sonore intermittent (3 bips toutes les 10 secondes).
     \item La LED rouge clignote de manière continue.
     \item L'écran LCD affiche "NIVEAU BAS - 12\%" avec une icône d'avertissement.
-    \item Si la passerelle cloud est installée, une notification push est envoyée sur le smartphone de l'utilisateur.
-    \item L'application mobile affiche un message suggérant de prévoir un rechange rapidement.
+    \item Si la passerelle cloud est installée, une alerte est visible sur le tableau de bord web.
+    \item L'application web affiche un message suggérant de prévoir un rechange rapidement.
     \item L'utilisateur peut désactiver temporairement l'alarme sonore en appuyant sur le bouton "SILENCE", mais la LED rouge continue de clignoter.
     \item L'alarme se réactivera automatiquement après 6 heures si le niveau n'a pas augmenté.
 \end{enumerate}
@@ -365,7 +365,7 @@ Les besoins non fonctionnels définissent les contraintes de qualité du systèm
     \item L'utilisateur a installé la passerelle LoRa ESP32 connectée à son réseau Wi-Fi domestique.
     \item La passerelle reçoit périodiquement les trames LoRa du capteur (toutes les 15 minutes).
     \item Elle transmet ces données au serveur cloud via protocole MQTT ou HTTP REST API.
-    \item L'utilisateur ouvre l'application mobile même en étant absent de son domicile.
+    \item L'utilisateur ouvre l'application web via son navigateur même en étant absent de son domicile.
     \item Il accède à l'onglet "Tableau de bord" qui affiche le niveau actuel de toutes ses bouteilles.
     \item Il consulte l'onglet "Historique" pour voir l'évolution de la consommation sur les 7 derniers jours.
     \item L'application affiche des graphiques de consommation quotidienne et hebdomadaire.
@@ -381,7 +381,7 @@ Les besoins non fonctionnels définissent les contraintes de qualité du systèm
     \item Un utilisateur possède deux bouteilles : une en utilisation, une de rechange.
     \item Il installe un capteur sous chaque bouteille (chaque capteur a un identifiant unique).
     \item La passerelle LoRa reçoit les données des deux capteurs sur le même canal 433 MHz.
-    \item L'application mobile affiche deux widgets distincts : "Bouteille Cuisine" et "Bouteille Rechange".
+    \item L'application web affiche deux widgets distincts : "Bouteille Cuisine" et "Bouteille Rechange".
     \item Quand la bouteille principale atteint 10\%, l'application suggère : "Préparez le remplacement - Rechange disponible à 92\%".
     \item L'utilisateur peut renommer, archiver, ou réassigner les capteurs via l'interface.
     \item Le système conserve l'historique séparé de chaque bouteille pour analyse de consommation.

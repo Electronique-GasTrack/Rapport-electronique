@@ -518,11 +518,6 @@ INPUT ./chapters/module.png
 INPUT ./chapters/module.png
 INPUT ./chapters/module.png
 INPUT ./chapters/module.png
-INPUT ./chapters/archi_spring.png
-INPUT ./chapters/archi_spring.png
-INPUT ./chapters/archi_spring.png
-INPUT ./chapters/archi_spring.png
-INPUT ./chapters/archi_spring.png
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecrm0800.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecrm0600.tfm
 INPUT ./chapters/schema_capteur.png
@@ -577,6 +572,46 @@ INPUT ./chapters/activite_prediction.png
 INPUT ./chapters/activite_prediction.png
 INPUT ./chapters/activite_prediction.png
 INPUT ./chapters/activite_prediction.png
+INPUT ./appli/Capture d’écran du 2025-12-30 19-37-47.png
+INPUT ./appli/Capture d’écran du 2025-12-30 19-37-47.png
+INPUT ./appli/Capture d’écran du 2025-12-30 19-37-47.png
+INPUT ./appli/Capture d’écran du 2025-12-30 19-37-47.png
+INPUT ./appli/Capture d’écran du 2025-12-30 19-37-47.png
+INPUT ./appli/Capture d’écran du 2025-12-30 19-40-01.png
+INPUT ./appli/Capture d’écran du 2025-12-30 19-40-01.png
+INPUT ./appli/Capture d’écran du 2025-12-30 19-40-01.png
+INPUT ./appli/Capture d’écran du 2025-12-30 19-40-01.png
+INPUT ./appli/Capture d’écran du 2025-12-30 19-40-01.png
+INPUT ./appli/Capture d’écran du 2025-12-30 19-40-13.png
+INPUT ./appli/Capture d’écran du 2025-12-30 19-40-13.png
+INPUT ./appli/Capture d’écran du 2025-12-30 19-40-13.png
+INPUT ./appli/Capture d’écran du 2025-12-30 19-40-13.png
+INPUT ./appli/Capture d’écran du 2025-12-30 19-40-13.png
+INPUT ./appli/Capture d’écran du 2025-12-30 19-40-24.png
+INPUT ./appli/Capture d’écran du 2025-12-30 19-40-24.png
+INPUT ./appli/Capture d’écran du 2025-12-30 19-40-24.png
+INPUT ./appli/Capture d’écran du 2025-12-30 19-40-24.png
+INPUT ./appli/Capture d’écran du 2025-12-30 19-40-24.png
+INPUT ./appli/Capture d’écran du 2025-12-30 19-49-56.png
+INPUT ./appli/Capture d’écran du 2025-12-30 19-49-56.png
+INPUT ./appli/Capture d’écran du 2025-12-30 19-49-56.png
+INPUT ./appli/Capture d’écran du 2025-12-30 19-49-56.png
+INPUT ./appli/Capture d’écran du 2025-12-30 19-49-56.png
+INPUT ./appli/Capture d’écran du 2025-12-30 19-50-10.png
+INPUT ./appli/Capture d’écran du 2025-12-30 19-50-10.png
+INPUT ./appli/Capture d’écran du 2025-12-30 19-50-10.png
+INPUT ./appli/Capture d’écran du 2025-12-30 19-50-10.png
+INPUT ./appli/Capture d’écran du 2025-12-30 19-50-10.png
+INPUT ./appli/Capture d’écran du 2025-12-30 19-50-21.png
+INPUT ./appli/Capture d’écran du 2025-12-30 19-50-21.png
+INPUT ./appli/Capture d’écran du 2025-12-30 19-50-21.png
+INPUT ./appli/Capture d’écran du 2025-12-30 19-50-21.png
+INPUT ./appli/Capture d’écran du 2025-12-30 19-50-21.png
+INPUT ./appli/Capture d’écran du 2025-12-30 19-50-33.png
+INPUT ./appli/Capture d’écran du 2025-12-30 19-50-33.png
+INPUT ./appli/Capture d’écran du 2025-12-30 19-50-33.png
+INPUT ./appli/Capture d’écran du 2025-12-30 19-50-33.png
+INPUT ./appli/Capture d’écran du 2025-12-30 19-50-33.png
 INPUT ./chapters/chap7_tests.tex
 INPUT ./chapters/chap7_tests.tex
 OUTPUT chapters/chap7_tests.aux
@@ -584,6 +619,26 @@ INPUT ./chapters/chap7_tests.tex
 INPUT ./chapters/chap7_tests.tex
 INPUT chapters/chap7_tests.tex
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tcbx1200.tfm
+INPUT ./succes_niveau_normal.jpg
+INPUT ./succes_niveau_normal.jpg
+INPUT ./succes_niveau_normal.jpg
+INPUT ./succes_niveau_normal.jpg
+INPUT ./succes_niveau_normal.jpg
+INPUT ./succes_niveau_moyen.jpg
+INPUT ./succes_niveau_moyen.jpg
+INPUT ./succes_niveau_moyen.jpg
+INPUT ./succes_niveau_moyen.jpg
+INPUT ./succes_niveau_moyen.jpg
+INPUT ./succes_niveau_bas.jpg
+INPUT ./succes_niveau_bas.jpg
+INPUT ./succes_niveau_bas.jpg
+INPUT ./succes_niveau_bas.jpg
+INPUT ./succes_niveau_bas.jpg
+INPUT ./fonctionnement_buzzer.jpg
+INPUT ./fonctionnement_buzzer.jpg
+INPUT ./fonctionnement_buzzer.jpg
+INPUT ./fonctionnement_buzzer.jpg
+INPUT ./fonctionnement_buzzer.jpg
 INPUT ./chapters/chap8_difficultes.tex
 INPUT ./chapters/chap8_difficultes.tex
 OUTPUT chapters/chap8_difficultes.aux

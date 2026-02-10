@@ -83,7 +83,7 @@ Les tests confirment que les signaux visuels (LEDs) et sonores (Buzzer) se décl
 En réception, le module décode correctement 100\% des trames de test. Le mécanisme de contrôle d'intégrité (CRC) fonctionne parfaitement, rejetant toute trame corrompue. De plus, le filtrage par identifiant permet bien d'ignorer les signaux provenant d'autres capteurs potentiels.
 
 \subsubsection{Test autonomie batterie afficheur}
-L'autonomie étant un critère de confort, nous avons mesuré la durée de vie réelle des batteries 18650. Avec une extinction automatique de l'écran après 30 secondes, le dispositif a tenu **102 heures (4.25 jours)** en fonctionnement continu. Ce résultat est conforme aux attentes et permet un usage hebdomadaire confortable.
+L'autonomie étant un critère de confort, nous avons mesuré la durée de vie réelle des batteries 18650. Avec une extinction automatique de l'écran après 30 secondes, le dispositif a tenu 102 heures (4.25 jours) en fonctionnement continu. Ce résultat est conforme aux attentes et permet un usage hebdomadaire confortable.
 
 \subsection{Tests de la passerelle LoRa (optionnelle)}
 Enfin, la passerelle optionnelle a été testée pour sa connectivité. Elle établit une connexion Wi-Fi stable et sécurisée (HTTPS) avec le backend en moins de 5 secondes.
@@ -156,13 +156,23 @@ La fiabilité du matériel ne serait rien sans un logiciel robuste. Nous avons d
 \subsection{Tests firmware Arduino (capteur + afficheur)}
 Les tests logiciels embarqués ont principalement ciblé la gestion de l'énergie et la persistance des données. Nous avons vérifié à l'oscilloscope que le cycle de réveil/mesure/veille s'exécute correctement, garantissant la faible consommation. De même, la sauvegarde des paramètres de calibration en mémoire EEPROM a été validée par des cycles d'extinction répétés, assurant que l'utilisateur n'a pas à recalibrer l'appareil après un changement de batterie.
 
+\subsection{Tests de l'application web}
+
+Les tests de l'application web ont porté sur plusieurs aspects :
+
+\subsubsection{Tests fonctionnels}
+\begin{itemize}
+    \item Vérification de la connexion à l'API REST et de la récupération des données.
+    \item Validation de l'affichage correct des données (niveau de gaz, historique, prédictions).
+    \item Test de la navigation entre les différentes vues.
+\end{itemize}
 
 \section{Tests d'Intégration Système Complet}
 
 Cette phase finale valide la synergie entre tous les composants du projet.
 
 \subsection{Test autonomie batterie en conditions réelles}
-Sur la durée, l'autonomie s'est révélée conforme aux calculs théoriques. Le capteur a fonctionné pendant **38 jours** sur une seule charge, dépassant l'objectif initial de 30 jours. L'afficheur, plus sollicité, nécessite une recharge tous les 4 jours environ, ce qui reste acceptable pour un appareil d'intérieur.
+Sur la durée, l'autonomie s'est révélée conforme aux calculs théoriques. Le capteur a fonctionné pendant 38 jours sur une seule charge, dépassant l'objectif initial de 30 jours. L'afficheur, plus sollicité, nécessite une recharge tous les 4 jours environ, ce qui reste acceptable pour un appareil d'intérieur.
 
 \subsection{Validation globale du système}
 En synthèse, la campagne de tests valide la réussite technique du projet. Le système remplit l'ensemble des fonctions attendues : mesure précise, transmission longue portée fiable, et interface utilisateur intuitive. Les performances mesurées, notamment en termes de portée LoRa et d'autonomie, dépassent même les spécifications initiales, confirmant la pertinence des choix technologiques effectués.
@@ -173,4 +183,33 @@ En synthèse, la campagne de tests valide la réussite technique du projet. Le s
 Pour assurer la pérennité du projet et faciliter sa reproduction ou son amélioration future, une documentation exhaustive a été produite. Elle comprend les schémas électroniques détaillés, les nomenclatures (BOM), ainsi que les manuels d'installation et d'utilisation.
 
 \subsection{Code source et réutilisabilité}
-L'ensemble du code source (Firmware, Application Mobile, Backend) a été structuré et commenté pour favoriser sa réutilisabilité. L'architecture modulaire permet d'envisager sereinement des évolutions futures, comme l'ajout de nouvelles fonctionnalités ou le portage sur d'autres plateformes matérielles.
+L'ensemble du code source (Firmware, Application Web, Backend) a été structuré et commenté pour favoriser sa réutilisabilité. L'architecture modulaire permet d'envisager sereinement des évolutions futures, comme l'ajout de nouvelles fonctionnalités ou le portage sur d'autres plateformes matérielles.
+
+\section{Gallerie des tests}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{succes_niveau_normal.jpg}
+    \caption{Cas du niveau de gaz élevé}
+    \label{fig:succes}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{succes_niveau_moyen.jpg}
+    \caption{Cas du niveau de gaz moyen}
+    \label{fig:moyen}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{succes_niveau_bas.jpg}
+    \caption{Cas du niveau de gaz bas}
+    \label{fig:bas}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{fonctionnement_buzzer.jpg}
+    \caption{Fonctionnement du buzzer}
+    \label{fig:buzzer}
+\end{figure}

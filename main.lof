@@ -10,22 +10,33 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Architecture distribuée du système LoRa}}{27}{figure.caption.42}%
 \contentsline {figure}{\numberline {3.2}{\ignorespaces Schéma fonctionnel des deux dispositifs}}{28}{figure.caption.43}%
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Architecture du backend Spring Boot}}{30}{figure.caption.47}%
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Positionnement du capteur ultrasonore sur la bouteille}}{32}{figure.caption.54}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Positionnement du capteur ultrasonore sur la bouteille}}{32}{figure.caption.53}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Capteur Ultrasonore}}{40}{figure.caption.66}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Circuit de conditionnement}}{41}{figure.caption.70}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Schéma de câblage complet}}{41}{figure.caption.72}%
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Organigramme algorithme de mesure}}{41}{figure.caption.74}%
-\contentsline {figure}{\numberline {4.5}{\ignorespaces États d'affichage OLED}}{41}{figure.caption.77}%
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Circuit d'alimentation}}{42}{figure.caption.78}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Capteur Ultrasonore}}{41}{figure.caption.66}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Circuit de conditionnement}}{42}{figure.caption.70}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Schéma de câblage complet}}{42}{figure.caption.72}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Organigramme algorithme de mesure}}{42}{figure.caption.74}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces États d'affichage OLED}}{42}{figure.caption.77}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Circuit d'alimentation}}{43}{figure.caption.78}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Diagramme de classe}}{43}{figure.caption.79}%
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Diagramme de cas d'utilisation}}{45}{figure.caption.84}%
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Diagramme d'activité "Consulter Historique"}}{48}{figure.caption.86}%
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Diagramme d'activité "Consulter Niveau de Gaz}}{48}{figure.caption.87}%
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Diagramme d'activité "Afficher Prédiction"}}{48}{figure.caption.88}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Diagramme de classe}}{44}{figure.caption.79}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Diagramme de cas d'utilisation}}{46}{figure.caption.83}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Diagramme d'activité "Consulter Historique"}}{49}{figure.caption.85}%
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Diagramme d'activité "Consulter Niveau de Gaz}}{49}{figure.caption.86}%
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Diagramme d'activité "Afficher Prédiction"}}{49}{figure.caption.87}%
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Page d'accueil}}{50}{figure.caption.88}%
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Formulaire d'utilisation 1}}{51}{figure.caption.89}%
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Formulaire d'utilisation 2}}{52}{figure.caption.90}%
+\contentsline {figure}{\numberline {5.9}{\ignorespaces Formulaire d'utilisation 3}}{53}{figure.caption.91}%
+\contentsline {figure}{\numberline {5.10}{\ignorespaces Tableau de bord}}{54}{figure.caption.92}%
+\contentsline {figure}{\numberline {5.11}{\ignorespaces Historique}}{55}{figure.caption.93}%
+\contentsline {figure}{\numberline {5.12}{\ignorespaces Prédictions}}{56}{figure.caption.94}%
+\contentsline {figure}{\numberline {5.13}{\ignorespaces Paramètres}}{57}{figure.caption.95}%
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Cas du niveau de gaz élevé}}{63}{figure.caption.107}%
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Cas du niveau de gaz moyen}}{64}{figure.caption.108}%
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Cas du niveau de gaz bas}}{65}{figure.caption.109}%
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Fonctionnement du buzzer}}{66}{figure.caption.110}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

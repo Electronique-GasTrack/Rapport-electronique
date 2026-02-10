@@ -54,15 +54,15 @@ La réalisation des tests en conditions réelles nécessitait la disponibilité 
 
 \section{Difficultés Logicielles}
 
-\subsection{Courbe d’apprentissage de Flutter}
+\subsection{Courbe d’apprentissage de React.JS}
 
-Le développement de l’application mobile avec Flutter a représenté un défi pour certains membres de l’équipe, notamment ceux n’ayant pas d’expérience préalable avec ce framework.
+Le développement de l’application web avec React.JS a représenté un défi pour certains membres de l’équipe, notamment ceux n’ayant pas d’expérience préalable avec ce framework.
 
 \textbf{Difficultés rencontrées :}
 \begin{itemize}
-    \item Prise en main du langage Dart.
-    \item Compréhension de la gestion de l’état et de l’architecture de l’application.
-    \item Mise en œuvre de la communication Bluetooth Low Energy (BLE).
+    \item Prise en main du langage JavaScript et de la syntaxe JSX.
+    \item Compréhension de la gestion de l’état (Hooks, Context) et de l’architecture des composants.
+    \item Consommation des API REST et gestion asynchrone des données.
 \end{itemize}
 
 \textbf{Solutions apportées :}
@@ -92,20 +92,20 @@ Le déploiement du backend de l’application a également posé plusieurs diffi
 
 \section{Difficultés d’Intégration}
 
-L’intégration entre le dispositif embarqué, l’application mobile et le backend a constitué l’une des phases les plus complexes du projet.
+L’intégration entre le dispositif embarqué, l’application web et le backend a constitué l’une des phases les plus complexes du projet.
 
 \textbf{Difficultés principales :}
 \begin{itemize}
-    \item Instabilité initiale de la connexion Bluetooth entre l’appareil et le téléphone.
+    \item Latence dans la remontée des données entre la passerelle LoRa et l'interface web.
     \item Problèmes de synchronisation des données.
-    \item Différences de comportement selon les modèles de smartphones.
-    \item Gestion des pertes de connexion et des reconnexions.
+    \item Différences de rendu selon les navigateurs web.
+    \item Gestion des erreurs de communication avec l'API.
 \end{itemize}
 
 \textbf{Solutions adoptées :}
 \begin{itemize}
-    \item Multiplication des tests sur différents appareils mobiles.
-    \item Mise en place de mécanismes de reconnexion automatique.
+    \item Multiplication des tests sur différents navigateurs.
+    \item Mise en place de mécanismes de rafraîchissement automatique.
     \item Validation progressive de chaque maillon de la chaîne de communication.
 \end{itemize}
 

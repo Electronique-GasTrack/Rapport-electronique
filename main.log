@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.1.31)  10 FEB 2026 20:50
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.1.31)  10 FEB 2026 22:38
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -962,11 +962,11 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 2.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2])
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] [3])
 \tf@toc=\write5
 \openout5 = `main.toc'.
 
- [3] [4] (./main.lof)
+ [4] (./main.lof)
 \tf@lof=\write6
 \openout6 = `main.lof'.
 
@@ -986,7 +986,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
  (./chapters/chap1_introduction.tex
 \bbl@ensure@french {Chapitre} 1.
-<chapters/bouteille_gaz.jpg, id=810, 453.695pt x 453.695pt>
+<chapters/bouteille_gaz.jpg, id=847, 453.695pt x 453.695pt>
 File: chapters/bouteille_gaz.jpg Graphic file (type jpg)
 <use chapters/bouteille_gaz.jpg>
 Package pdftex.def Info: chapters/bouteille_gaz.jpg  used on input line 15.
@@ -1015,7 +1015,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 90--90
 
  (./chapters/chap2_analyse.tex
 \bbl@ensure@french {Chapitre} 2.
-<mesure_pesage.png, id=855, 305.14pt x 343.2825pt>
+<mesure_pesage.png, id=892, 305.14pt x 343.2825pt>
 File: mesure_pesage.png Graphic file (type png)
 <use mesure_pesage.png>
 Package pdftex.def Info: mesure_pesage.png  used on input line 38.
@@ -1026,25 +1026,25 @@ Package pdftex.def Info: mesure_pesage.png  used on input line 38.
 
 
 ]
-<chapters/mesure_pression.png, id=862, 256.96pt x 337.26pt>
+<chapters/mesure_pression.png, id=899, 256.96pt x 337.26pt>
 File: chapters/mesure_pression.png Graphic file (type png)
 <use chapters/mesure_pression.png>
 Package pdftex.def Info: chapters/mesure_pression.png  used on input line 67.
 (pdftex.def)             Requested size: 290.22107pt x 380.94498pt.
  [14 <./mesure_pesage.png>] [15 <./chapters/mesure_pression.png>]
-<chapters/mseure_ultrason.png, id=874, 302.12875pt x 326.21875pt>
+<chapters/mseure_ultrason.png, id=911, 302.12875pt x 326.21875pt>
 File: chapters/mseure_ultrason.png Graphic file (type png)
 <use chapters/mseure_ultrason.png>
 Package pdftex.def Info: chapters/mseure_ultrason.png  used on input line 102.
 (pdftex.def)             Requested size: 290.22107pt x 313.36057pt.
  [16] [17 <./chapters/mseure_ultrason.png>]
-<modele.png, id=887, 851.18pt x 1220.56pt>
+<modele.png, id=924, 851.18pt x 1220.56pt>
 File: modele.png Graphic file (type png)
 <use modele.png>
 Package pdftex.def Info: modele.png  used on input line 171.
 (pdftex.def)             Requested size: 193.47578pt x 277.4264pt.
  [18]
-<diagramme_contexte.png, id=899, 5343.965pt x 3216.015pt>
+<diagramme_contexte.png, id=936, 5343.965pt x 3216.015pt>
 File: diagramme_contexte.png Graphic file (type png)
 <use diagramme_contexte.png>
 Package pdftex.def Info: diagramme_contexte.png  used on input line 192.
@@ -1070,9 +1070,14 @@ Underfull \hbox (badness 3657) in paragraph at lines 252--253
  []
 
 [20 <./diagramme_contexte.png>]
-Overfull \vbox (18.55559pt too high) has occurred while \output is active []
+Overfull \vbox (33.05559pt too high) has occurred while \output is active []
 
- [21] [22] [23] [24] [25]
+ [21] [22] [23] [24]
+Overfull \hbox (17.77359pt too wide) in paragraph at lines 384--385
+[]\T1/cmr/m/n/12 L'application web af-fiche deux wid-gets dis-tincts : "Bouteille Cui-sine" et "Bouteille Rechange". 
+ []
+
+[25]
 Underfull \hbox (badness 1102) in paragraph at lines 449--450
 []|\T1/cmr/m/n/12 Prototypes fonc-tion-nels (3 dis-
  []
@@ -1082,7 +1087,7 @@ Underfull \hbox (badness 1102) in paragraph at lines 449--450
 
  (./chapters/chap3_conception_globale.tex
 \bbl@ensure@french {Chapitre} 3.
-<chapters/archi_cloud.png, id=998, 1541.76pt x 1027.84pt>
+<chapters/archi_cloud.png, id=1035, 1541.76pt x 1027.84pt>
 File: chapters/archi_cloud.png Graphic file (type png)
 <use chapters/archi_cloud.png>
 Package pdftex.def Info: chapters/archi_cloud.png  used on input line 17.
@@ -1093,7 +1098,7 @@ Package pdftex.def Info: chapters/archi_cloud.png  used on input line 17.
 
 
  <./chapters/archi_cloud.png>]
-<chapters/module.png, id=1004, 1541.76pt x 1027.84pt>
+<chapters/module.png, id=1041, 1541.76pt x 1027.84pt>
 File: chapters/module.png Graphic file (type png)
 <use chapters/module.png>
 Package pdftex.def Info: chapters/module.png  used on input line 36.
@@ -1103,44 +1108,38 @@ Underfull \hbox (badness 10000) in paragraph at lines 49--55
 
  []
 
-[28 <./chapters/module.png>]
-<chapters/archi_spring.png, id=1011, 435.6275pt x 577.15625pt>
-File: chapters/archi_spring.png Graphic file (type png)
-<use chapters/archi_spring.png>
-Package pdftex.def Info: chapters/archi_spring.png  used on input line 90.
-(pdftex.def)             Requested size: 290.22107pt x 384.50862pt.
- [29]
-Overfull \hbox (6.01549pt too wide) in paragraph at lines 98--99
+[28 <./chapters/module.png>] [29]
+Overfull \hbox (6.01549pt too wide) in paragraph at lines 102--103
 []\T1/cmr/bx/n/12 Les Con-tr�leurs REST \T1/cmr/m/n/12 g�rent les en-tr�es/-sor-ties. Ils re�oivent les mesures de la passerelle
  []
 
-[30 <./chapters/archi_spring.png>] [31]
-<chapters/schema_capteur.png, id=1038, 1541.76pt x 1027.84pt>
+[30]
+<chapters/schema_capteur.png, id=1067, 1541.76pt x 1027.84pt>
 File: chapters/schema_capteur.png Graphic file (type png)
 <use chapters/schema_capteur.png>
-Package pdftex.def Info: chapters/schema_capteur.png  used on input line 179.
+Package pdftex.def Info: chapters/schema_capteur.png  used on input line 183.
 (pdftex.def)             Requested size: 290.22107pt x 193.47234pt.
- [32 <./chapters/schema_capteur.png>] [33] [34] [35] [36] [37]) [38]
+ [31] [32 <./chapters/schema_capteur.png>] [33] [34] [35] [36] [37]) [38] [39]
 \openout2 = `chapters/chap4_appareil.aux'.
 
  (./chapters/chap4_appareil.tex
 \bbl@ensure@french {Chapitre} 4.
-<capteur_sonore.jpeg, id=1082, 566.115pt x 541.02126pt>
+<capteur_sonore.jpeg, id=1126, 566.115pt x 541.02126pt>
 File: capteur_sonore.jpeg Graphic file (type jpg)
 <use capteur_sonore.jpeg>
 Package pdftex.def Info: capteur_sonore.jpeg  used on input line 17.
 (pdftex.def)             Requested size: 386.95897pt x 369.81306pt.
-[39
+[40
 
 
 
 
-] [40 <./capteur_sonore.jpeg>] [41]) [42]
+] [41 <./capteur_sonore.jpeg>] [42]) [43]
 \openout2 = `chapters/chap5_application.aux'.
 
  (./chapters/chap5_application.tex
 \bbl@ensure@french {Chapitre} 5.
-<chapters/diagramme_classe.png, id=1106, 5223.515pt x 3348.51pt>
+<chapters/diagramme_classe.png, id=1152, 5223.515pt x 3348.51pt>
 File: chapters/diagramme_classe.png Graphic file (type png)
 <use chapters/diagramme_classe.png>
 Package pdftex.def Info: chapters/diagramme_classe.png  used on input line 11.
@@ -1151,224 +1150,271 @@ File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <12> not available
 (Font)              Font shape `T1/cmtt/m/n' tried instead on input line 26.
- [43
+ [44
 
 
 
 
  <./chapters/diagramme_classe.png>]
-Overfull \hbox (11.47385pt too wide) in paragraph at lines 92--93
+Overfull \hbox (11.47385pt too wide) in paragraph at lines 79--80
 []\T1/cmr/m/n/12 L'\T1/cmtt/m/n/12 Utilisateur \T1/cmr/m/n/12 con-sulte les don-n�es de sa \T1/cmtt/m/n/12 Bouteille \T1/cmr/m/n/12 qui sont mises � jour via la \T1/cmtt/m/n/12 Passerelle
  []
 
-<chapters/usecase.png, id=1115, 4259.915pt x 2192.19pt>
+<chapters/usecase.png, id=1160, 4259.915pt x 2192.19pt>
 File: chapters/usecase.png Graphic file (type png)
 <use chapters/usecase.png>
-Package pdftex.def Info: chapters/usecase.png  used on input line 103.
+Package pdftex.def Info: chapters/usecase.png  used on input line 90.
 (pdftex.def)             Requested size: 386.95897pt x 199.12834pt.
-[44]
-Underfull \hbox (badness 4832) in paragraph at lines 122--122
+[45]
+Underfull \hbox (badness 4832) in paragraph at lines 109--109
 []|\T1/cmr/bx/n/10.95 Cas d'u-til-i-sa-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 123--123
+Underfull \hbox (badness 10000) in paragraph at lines 110--110
 []|\T1/cmr/bx/n/10.95 Pr�con-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 125--125
+Underfull \hbox (badness 10000) in paragraph at lines 112--112
 []|\T1/cmr/bx/n/10.95 Sc�narios al-ter-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 126--127
+Underfull \hbox (badness 10000) in paragraph at lines 113--114
 []|\T1/cmr/bx/n/10.95 Post-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 132--133
-[]\T1/cmr/m/n/10.95 L'utilisateur ou-vre
+Underfull \hbox (badness 5022) in paragraph at lines 119--120
+[]\T1/cmr/m/n/10.95 L'utilisateur ac-c�de
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 134--135
+Underfull \hbox (badness 10000) in paragraph at lines 121--122
 []\T1/cmr/m/n/10.95 R�cup�ration des
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 134--135
+Underfull \hbox (badness 10000) in paragraph at lines 121--122
 \T1/cmr/m/n/10.95 derni�res don-n�es
  []
 
 
-Underfull \hbox (badness 1668) in paragraph at lines 135--136
+Underfull \hbox (badness 1668) in paragraph at lines 122--123
 []\T1/cmr/m/n/10.95 Affichage en temps
  []
 
 
-Underfull \hbox (badness 2111) in paragraph at lines 137--138
+Underfull \hbox (badness 2111) in paragraph at lines 124--125
 []|\T1/cmr/bx/n/10.95 A1: \T1/cmr/m/n/10.95 Pas d'in-ter-net
  []
 
 
-Underfull \hbox (badness 6348) in paragraph at lines 137--138
+Underfull \hbox (badness 6348) in paragraph at lines 124--125
 \T1/cmr/bx/n/10.95 A2: \T1/cmr/m/n/10.95 Serveur in-ac-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 139--140
+Underfull \hbox (badness 10000) in paragraph at lines 126--127
 []|\T1/cmr/m/n/10.95 Niveau de
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 139--140
+Underfull \hbox (badness 10000) in paragraph at lines 126--127
 \T1/cmr/m/n/10.95 gaz af-fich�
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 139--140
+Underfull \hbox (badness 10000) in paragraph at lines 126--127
 \T1/cmr/m/n/10.95 avec pr�-ci-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 143--143
+Underfull \hbox (badness 10000) in paragraph at lines 130--130
 []|\T1/cmr/m/n/10.95 Application
  []
 
 
-Underfull \hbox (badness 3009) in paragraph at lines 146--147
+Underfull \hbox (badness 3009) in paragraph at lines 133--134
 []\T1/cmr/m/n/10.95 T�l�chargement des
  []
 
 
-Underfull \hbox (badness 2635) in paragraph at lines 147--148
+Underfull \hbox (badness 2635) in paragraph at lines 134--135
 []\T1/cmr/m/n/10.95 Affichage graphique
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 150--151
+Underfull \hbox (badness 10000) in paragraph at lines 137--138
 []|\T1/cmr/m/n/10.95 Historique
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 150--151
+Underfull \hbox (badness 10000) in paragraph at lines 137--138
 \T1/cmr/m/n/10.95 vi-su-al-is�
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 150--151
+Underfull \hbox (badness 10000) in paragraph at lines 137--138
 \T1/cmr/m/n/10.95 sous forme
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 153--153
+Underfull \hbox (badness 10000) in paragraph at lines 140--140
 []|\T1/cmr/bx/n/10.95 UC3: \T1/cmr/m/n/10.95 Obtenir
  []
 
 
-Underfull \hbox (badness 6625) in paragraph at lines 154--154
+Underfull \hbox (badness 6625) in paragraph at lines 141--141
 []|\T1/cmr/m/n/10.95 Donn�es suff-
  []
 
 
-Underfull \hbox (badness 1817) in paragraph at lines 154--154
+Underfull \hbox (badness 1817) in paragraph at lines 141--141
 \T1/cmr/m/n/10.95 isantes sur le
  []
 
 
-Underfull \hbox (badness 2150) in paragraph at lines 156--157
+Underfull \hbox (badness 2150) in paragraph at lines 143--144
 []\T1/cmr/m/n/10.95 Requ�te de pr�-dic-
  []
 
 
-Underfull \hbox (badness 2564) in paragraph at lines 160--161
+Underfull \hbox (badness 2564) in paragraph at lines 147--148
 \T1/cmr/bx/n/10.95 A2: \T1/cmr/m/n/10.95 Con-som-ma-tion
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 162--163
+Underfull \hbox (badness 10000) in paragraph at lines 149--150
 []|\T1/cmr/m/n/10.95 Pr�diction
  []
 
 
-Underfull \hbox (badness 1005) in paragraph at lines 162--163
+Underfull \hbox (badness 1005) in paragraph at lines 149--150
 \T1/cmr/m/n/10.95 af-fich�e avec
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 162--163
+Underfull \hbox (badness 10000) in paragraph at lines 149--150
 \T1/cmr/m/n/10.95 niveau de
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 165--165
+Underfull \hbox (badness 10000) in paragraph at lines 152--152
 []|\T1/cmr/bx/n/10.95 UC4: \T1/cmr/m/n/10.95 Ajouter
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 165--165
+Underfull \hbox (badness 10000) in paragraph at lines 152--152
 \T1/cmr/m/n/10.95 un nou-veau
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 166--166
+Underfull \hbox (badness 10000) in paragraph at lines 153--153
 []|\T1/cmr/m/n/10.95 Code ID
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 166--166
+Underfull \hbox (badness 10000) in paragraph at lines 153--153
 \T1/cmr/m/n/10.95 du cap-teur
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 170--171
+Underfull \hbox (badness 10000) in paragraph at lines 157--158
 []\T1/cmr/m/n/10.95 V�rification aupr�s
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 171--172
+Underfull \hbox (badness 10000) in paragraph at lines 158--159
 []\T1/cmr/m/n/10.95 Association au
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 172--173
+Underfull \hbox (badness 10000) in paragraph at lines 159--160
 []\T1/cmr/m/n/10.95 Confirmation vi-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 175--176
+Underfull \hbox (badness 10000) in paragraph at lines 162--163
 []|\T1/cmr/m/n/10.95 Capteur
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 175--176
+Underfull \hbox (badness 10000) in paragraph at lines 162--163
 \T1/cmr/m/n/10.95 ajout� au
  []
 
 
-Overfull \hbox (5.4944pt too wide) in paragraph at lines 119--179
+Overfull \hbox (5.4944pt too wide) in paragraph at lines 106--166
  [][] 
  []
 
-[45 <./chapters/usecase.png>] [46]
-<chapters/activite_historique.png, id=1149, 1685.29625pt x 156.585pt>
+[46 <./chapters/usecase.png>] [47]
+<chapters/activite_historique.png, id=1192, 1685.29625pt x 156.585pt>
 File: chapters/activite_historique.png Graphic file (type png)
 <use chapters/activite_historique.png>
-Package pdftex.def Info: chapters/activite_historique.png  used on input line 240.
+Package pdftex.def Info: chapters/activite_historique.png  used on input line 227.
 (pdftex.def)             Requested size: 386.95897pt x 35.95166pt.
- [47]
-<chapters/activite_niveau_gaz.png, id=1161, 1672.2475pt x 184.69pt>
+ [48]
+<chapters/activite_niveau_gaz.png, id=1204, 1672.2475pt x 184.69pt>
 File: chapters/activite_niveau_gaz.png Graphic file (type png)
 <use chapters/activite_niveau_gaz.png>
-Package pdftex.def Info: chapters/activite_niveau_gaz.png  used on input line 247.
+Package pdftex.def Info: chapters/activite_niveau_gaz.png  used on input line 234.
 (pdftex.def)             Requested size: 386.95897pt x 42.73706pt.
-<chapters/activite_prediction.png, id=1162, 1651.16875pt x 150.5625pt>
+<chapters/activite_prediction.png, id=1205, 1651.16875pt x 150.5625pt>
 File: chapters/activite_prediction.png Graphic file (type png)
 <use chapters/activite_prediction.png>
-Package pdftex.def Info: chapters/activite_prediction.png  used on input line 254.
+Package pdftex.def Info: chapters/activite_prediction.png  used on input line 241.
 (pdftex.def)             Requested size: 386.95897pt x 35.2834pt.
-) [48 <./chapters/activite_historique.png> <./chapters/activite_niveau_gaz.png> <./chapters/activite_prediction.png>]
+<appli/Capture d’écran du 2025-12-30 19-37-47.png, id=1206, 466.74374pt x 891.33pt>
+File: appli/Capture d’écran du 2025-12-30 19-37-47.png Graphic file (type png)
+<use appli/Capture d’écran du 2025-12-30 19-37-47.png>
+Package pdftex.def Info: appli/Capture d’écran du 2025-12-30 19-37-47.png  used on input line 251.
+(pdftex.def)             Requested size: 241.84843pt x 461.8486pt.
+ [49 <./chapters/activite_historique.png> <./chapters/activite_niveau_gaz.png> <./chapters/activite_prediction.png>]
+<appli/Capture d’écran du 2025-12-30 19-40-01.png, id=1215, 466.74374pt x 891.33pt>
+File: appli/Capture d’écran du 2025-12-30 19-40-01.png Graphic file (type png)
+<use appli/Capture d’écran du 2025-12-30 19-40-01.png>
+Package pdftex.def Info: appli/Capture d’écran du 2025-12-30 19-40-01.png  used on input line 258.
+(pdftex.def)             Requested size: 241.84843pt x 461.8486pt.
+ [50 <./appli/Capture d’écran du 2025-12-30 19-37-47.png>]
+<appli/Capture d’écran du 2025-12-30 19-40-13.png, id=1221, 466.74374pt x 891.33pt>
+File: appli/Capture d’écran du 2025-12-30 19-40-13.png Graphic file (type png)
+<use appli/Capture d’écran du 2025-12-30 19-40-13.png>
+Package pdftex.def Info: appli/Capture d’écran du 2025-12-30 19-40-13.png  used on input line 265.
+(pdftex.def)             Requested size: 241.84843pt x 461.8486pt.
+ [51 <./appli/Capture d’écran du 2025-12-30 19-40-01.png>]
+<appli/Capture d’écran du 2025-12-30 19-40-24.png, id=1227, 466.74374pt x 891.33pt>
+File: appli/Capture d’écran du 2025-12-30 19-40-24.png Graphic file (type png)
+<use appli/Capture d’écran du 2025-12-30 19-40-24.png>
+Package pdftex.def Info: appli/Capture d’écran du 2025-12-30 19-40-24.png  used on input line 272.
+(pdftex.def)             Requested size: 241.84843pt x 461.8486pt.
+ [52 <./appli/Capture d’écran du 2025-12-30 19-40-13.png>]
+<appli/Capture d’écran du 2025-12-30 19-49-56.png, id=1233, 466.74374pt x 891.33pt>
+File: appli/Capture d’écran du 2025-12-30 19-49-56.png Graphic file (type png)
+<use appli/Capture d’écran du 2025-12-30 19-49-56.png>
+Package pdftex.def Info: appli/Capture d’écran du 2025-12-30 19-49-56.png  used on input line 279.
+(pdftex.def)             Requested size: 241.84843pt x 461.8486pt.
+ [53 <./appli/Capture d’écran du 2025-12-30 19-40-24.png>]
+<appli/Capture d’écran du 2025-12-30 19-50-10.png, id=1239, 466.74374pt x 891.33pt>
+File: appli/Capture d’écran du 2025-12-30 19-50-10.png Graphic file (type png)
+<use appli/Capture d’écran du 2025-12-30 19-50-10.png>
+Package pdftex.def Info: appli/Capture d’écran du 2025-12-30 19-50-10.png  used on input line 286.
+(pdftex.def)             Requested size: 241.84843pt x 461.8486pt.
+ [54 <./appli/Capture d’écran du 2025-12-30 19-49-56.png>]
+<appli/Capture d’écran du 2025-12-30 19-50-21.png, id=1245, 466.74374pt x 891.33pt>
+File: appli/Capture d’écran du 2025-12-30 19-50-21.png Graphic file (type png)
+<use appli/Capture d’écran du 2025-12-30 19-50-21.png>
+Package pdftex.def Info: appli/Capture d’écran du 2025-12-30 19-50-21.png  used on input line 293.
+(pdftex.def)             Requested size: 241.84843pt x 461.8486pt.
+ [55 <./appli/Capture d’écran du 2025-12-30 19-50-10.png>]
+<appli/Capture d’écran du 2025-12-30 19-50-33.png, id=1253, 466.74374pt x 891.33pt>
+File: appli/Capture d’écran du 2025-12-30 19-50-33.png Graphic file (type png)
+<use appli/Capture d’écran du 2025-12-30 19-50-33.png>
+Package pdftex.def Info: appli/Capture d’écran du 2025-12-30 19-50-33.png  used on input line 300.
+(pdftex.def)             Requested size: 241.84843pt x 461.8486pt.
+) [56 <./appli/Capture d’écran du 2025-12-30 19-50-21.png>] [57 <./appli/Capture d’écran du 2025-12-30 19-50-33.png>]
 \openout2 = `chapters/chap7_tests.aux'.
 
  (./chapters/chap7_tests.tex
@@ -1378,92 +1424,105 @@ Overfull \hbox (3.22177pt too wide) in paragraph at lines 16--17
 \T1/cmr/m/n/12 Cette pre-mi�re phase vise � qual-i-fier le bon fonc-tion-nement in-di-viduel des trois mod-ules mat�riels
  []
 
-[49
+[58
 
 
 
 
-] [50] [51]
+] [59] [60]
 Underfull \hbox (badness 4595) in paragraph at lines 142--142
 []|\T1/cmr/m/n/12 Jardin \TS1/cmr/m/n/12 ^^Y \T1/cmr/m/n/12 in-t�rieur 50m
  []
 
-[52]) [53]
+[61] [62]
+<succes_niveau_normal.jpg, id=1293, 1927.2pt x 2569.6pt>
+File: succes_niveau_normal.jpg Graphic file (type jpg)
+<use succes_niveau_normal.jpg>
+Package pdftex.def Info: succes_niveau_normal.jpg  used on input line 191.
+(pdftex.def)             Requested size: 386.95897pt x 515.91055pt.
+<succes_niveau_moyen.jpg, id=1294, 1927.2pt x 2569.6pt>
+File: succes_niveau_moyen.jpg Graphic file (type jpg)
+<use succes_niveau_moyen.jpg>
+Package pdftex.def Info: succes_niveau_moyen.jpg  used on input line 198.
+(pdftex.def)             Requested size: 386.95897pt x 515.91055pt.
+ [63 <./succes_niveau_normal.jpg>]
+<succes_niveau_bas.jpg, id=1299, 813.0375pt x 1084.05pt>
+File: succes_niveau_bas.jpg Graphic file (type jpg)
+<use succes_niveau_bas.jpg>
+Package pdftex.def Info: succes_niveau_bas.jpg  used on input line 205.
+(pdftex.def)             Requested size: 386.95897pt x 515.93813pt.
+ [64 <./succes_niveau_moyen.jpg>]
+<fonctionnement_buzzer.jpg, id=1304, 813.0375pt x 1084.05pt>
+File: fonctionnement_buzzer.jpg Graphic file (type jpg)
+<use fonctionnement_buzzer.jpg>
+Package pdftex.def Info: fonctionnement_buzzer.jpg  used on input line 212.
+(pdftex.def)             Requested size: 386.95897pt x 515.93813pt.
+) [65 <./succes_niveau_bas.jpg>] [66 <./fonctionnement_buzzer.jpg>]
 \openout2 = `chapters/chap8_difficultes.aux'.
 
  (./chapters/chap8_difficultes.tex
 \bbl@ensure@french {Chapitre} 7.
-[54
+[67
 
 
 
 
-] [55])
-Overfull \hbox (8.8995pt too wide) in paragraph at lines 125--213
+] [68])
+Overfull \hbox (8.8995pt too wide) in paragraph at lines 125--214
 \T1/cmr/m/n/12 des mem-bres de l'�quipe et con-stituent un ap-port sig-ni-fi-catif pour leurs fu-turs pro-jets acad�miques
  []
 
-[56]
+[69]
 \openout2 = `chapters/chap9_perspectives.aux'.
 
  (./chapters/chap9_perspectives.tex
 \bbl@ensure@french {Chapitre} 8.
-[57
+[70
 
 
 
 
-]) [58]
+]) [71]
 \openout2 = `chapters/chap10_conclusion.aux'.
 
  (./chapters/chap10_conclusion.tex
 \bbl@ensure@french {Chapitre} 9.
-[59
+[72
 
 
 
 
-] [60]) [61]
-Overfull \hbox (2.47198pt too wide) in paragraph at lines 234--236
-\T1/cmtt/m/n/12 / / www . bluetooth . com / specifications / specs / core-[]specification/$[][] \T1/cmr/m/n/12 (con-sult� en jan-
- []
-
-
-Overfull \hbox (4.1506pt too wide) in paragraph at lines 258--260
-\T1/cmtt/m/n/12 www . youtube . com / playlist ? list = PL4cUxeGkcC9i9Ae2D9Ee1RvylH38dKuET$[][] \T1/cmr/m/n/12 (con-sult� en
- []
-
-[62
-
-
-
-
-]
-Overfull \hbox (61.0777pt too wide) in paragraph at lines 273--275
+] [73]) [74]
+Overfull \hbox (61.0777pt too wide) in paragraph at lines 271--273
 [][]$\T1/cmtt/m/n/12 https : / / www . who . int / news-[]room / fact-[]sheets / detail / household-[]air-[]pollution-[]and-[]health$[][]
  []
 
-[63] (./main.aux (./chapters/chap1_introduction.aux) (./chapters/chap2_analyse.aux) (./chapters/chap3_conception_globale.aux) (./chapters/chap4_appareil.aux) (./chapters/chap5_application.aux) (./chapters/chap7_tests.aux) (./chapters/chap8_difficultes.aux) (./chapters/chap9_perspectives.aux) (./chapters/chap10_conclusion.aux))
+[75
+
+
+
+
+] [76] (./main.aux (./chapters/chap1_introduction.aux) (./chapters/chap2_analyse.aux) (./chapters/chap3_conception_globale.aux) (./chapters/chap4_appareil.aux) (./chapters/chap5_application.aux) (./chapters/chap7_tests.aux) (./chapters/chap8_difficultes.aux) (./chapters/chap9_perspectives.aux) (./chapters/chap10_conclusion.aux))
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: F801323DE130CF239BA87C01AA7863A9;30527.
+(rerunfilecheck)             Checksum: CCD9C6999D4467425F8A80828F2DF730;31135.
  ) 
 Here is how much of TeX's memory you used:
- 38035 strings out of 476182
- 779396 string characters out of 5795595
+ 38169 strings out of 476182
+ 784029 string characters out of 5795595
  1946975 words of memory out of 5000000
- 58991 multiletter control sequences out of 15000+600000
+ 59093 multiletter control sequences out of 15000+600000
  576233 words of font info for 78 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  86i,12n,96p,652b,726s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </home/ahmed-jalil/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0800.600pk> </home/ahmed-jalil/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcbx1200.600pk> </home/ahmed-jalil/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1095.600pk> </home/ahmed-jalil/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1200.600pk> </home/ahmed-jalil/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1095.600pk> </home/ahmed-jalil/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1095.600pk> </home/ahmed-jalil/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1200.600pk> </home/ahmed-jalil/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbi1200.600pk> </home/ahmed-jalil/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1200.600pk> </home/ahmed-jalil/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/ahmed-jalil/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1728.600pk> </home/ahmed-jalil/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </home/ahmed-jalil/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </home/ahmed-jalil/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2488.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on main.pdf (63 pages, 5441145 bytes).
+Output written on main.pdf (76 pages, 7059242 bytes).
 PDF statistics:
- 2026 PDF objects out of 2073 (max. 8388607)
- 1271 compressed objects within 13 object streams
- 377 named destinations out of 1000 (max. 500000)
- 1293 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2140 PDF objects out of 2487 (max. 8388607)
+ 1360 compressed objects within 14 object streams
+ 409 named destinations out of 1000 (max. 500000)
+ 1372 words of extra memory for PDF output out of 10000 (max. 10000000)
 
