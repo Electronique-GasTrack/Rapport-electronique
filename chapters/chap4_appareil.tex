@@ -1,156 +1,79 @@
-\chapter{Conception et Réalisation de l'Appareil}
+\chapter{Conception et Réalisation des Appareils}
 \label{chap:appareil}
 
-Ce chapitre décrit en détail la conception matérielle et logicielle du dispositif embarqué de détection de gaz.
+Ce chapitre décrit en détail la conception matérielle et logicielle des deux dispositifs constituant le système de surveillance du niveau de gaz.
 
-\section{Module de Détection}
-\label{sec:module_detection}
+\section{Appareil 1 : L'Émetteur (Mesure)}
+\label{sec:emetteur}
 
-\subsection{Principe physique de la détection ultrasonore}
+L'émetteur est placé sous la bouteille de gaz. Son rôle est de mesurer la distance entre le fond de la bouteille et la surface du gaz liquide, puis de transmettre cette information par LoRa.
 
-\subsubsection{Propagation des ondes ultrasonores}
+\subsection{Composants matériels}
 
-[INSÉRER EXPLICATION DÉTAILLÉE + FORMULES]
+\begin{itemize}
+    \item \textbf{Arduino Nano} : Choisi pour sa compacité.
+    \item \textbf{Capteur DYP-L06} : Capteur ultrasonore industriel avec sortie UART. Contrairement au JSN-SR04T, il offre une meilleure stabilité pour les mesures de niveau de liquide.
+    \item \textbf{Module LoRa (433MHz)} : Configuré pour envoyer les données à l'appareil récepteur.
+    \item \textbf{Batterie plate} : Pour une installation discrète sous le réservoir.
+\end{itemize}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{capteur_sonore.jpeg}
-    \caption{Capteur Ultrasonore}
-    \label{fig:capteur_ultrasons}
-\end{figure}
+\subsection{Implémentation logicielle}
 
-\subsection{Mise en œuvre des capteurs JSN-SR04T}
+Le code de l'émetteur gère la lecture série du capteur DYP-L06. Les données sont reçues sous forme de trames hexadécimales commençant par 0xFF.
 
-\subsubsection{Caractéristiques techniques}
+\begin{lstlisting}[language=C++, caption=Structure des données transmises]
+struct SensorData {
+  int level;
+  unsigned long timestamp;
+};
+\end{lstlisting}
 
-\begin{table}[H]
-    \centering
-    \caption{Spécifications capteur JSN-SR04T}
-    \label{tab:specs_jsn}
-    \begin{tabular}{ll}
-        \toprule
-        \textbf{Paramètre} & \textbf{Valeur} \\
-        \midrule
-        Tension d'alimentation & 5V DC \\
-        Courant de travail & < 15 mA \\
-        Fréquence ultrasonore & 40 kHz \\
-        Portée de détection & 25 - 450 cm \\
-        Précision & ±2 mm \\
-        Angle de mesure & 75° \\
-        Temps de cycle min & 60 ms \\
-        Étanchéité & IP67 \\
-        \bottomrule
-    \end{tabular}
-\end{table}
+La distance est calculée en mm puis convertie en cm. Le niveau en pourcentage est obtenu par une fonction de transfert linéaire entre une distance "vide" (TANK\_HEIGHT) et une distance "plein" (FULL\_DISTANCE).
 
-\subsubsection{Montage et fixation}
+\section{Appareil 2 : Le Récepteur (Affichage et Alerte)}
+\label{sec:recepteur}
 
-[DÉCRIRE SYSTÈME DE FIXATION + PHOTOS]
+Le récepteur est l'unité centrale de l'utilisateur, placée dans la cuisine ou le salon.
 
-\subsection{Circuit de conditionnement du signal}
+\subsection{Composants matériels}
 
-[SCHÉMA ÉLECTRIQUE DÉTAILLÉ + EXPLICATIONS]
+\begin{itemize}
+    \item \textbf{Arduino Nano} : Pilotage central.
+    \item \textbf{Module LoRa (433MHz)} : Réception des paquets de données.
+    \item \textbf{Écran LCD 16x2 I2C} : Affichage de la distance et du pourcentage.
+    \item \textbf{LED RGB} : Signalisation lumineuse d'état (Verte, Orange, Rouge).
+    \item \textbf{Buzzer actif} : Alerte sonore en cas de seuil critique.
+\end{itemize}
 
-\begin{figure}[H]
-    \centering
-    \fbox{\textcolor{blue}{[INSÉRER SCHÉMA : Circuit de conditionnement avec ampli-op LM358]}}
-    \caption{Circuit de conditionnement}
-    \label{fig:circuit_conditioning}
-\end{figure}
+\subsection{Logique d'affichage et d'alerte}
 
-\section{Module de Traitement}
-\label{sec:module_traitement}
+Le récepteur interprète la structure \texttt{SensorData} reçue et applique les règles suivantes :
 
-\subsection{Circuit Arduino Uno}
+\begin{itemize}
+    \item \textbf{Niveau > 50\%} : LED Verte, pas d'alarme.
+    \item \textbf{20\% < Niveau < 50\%} : LED Orange (R=255, G=165, B=0), pas d'alarme.
+    \item \textbf{Niveau < 20\%} : LED Rouge et déclenchement du Buzzer actif.
+\end{itemize}
 
-\subsubsection{Schéma de connexion complet}
+L'utilisateur dispose de deux boutons : un pour couper l'alarme sonore (\texttt{BUTTON\_STOP\_PIN}) et un pour allumer/éteindre le rétroéclairage de l'écran (\texttt{BUTTON\_SCREEN\_PIN}).
 
-\begin{figure}[H]
-    \centering
-    \fbox{\textcolor{blue}{[INSÉRER SCHÉMA FRITZING : Connexions complètes Arduino]}}
-    \caption{Schéma de câblage complet}
-    \label{fig:schema_cablage}
-\end{figure}
+\section{Algorithmes de mesure et transmission}
 
-\subsection{Algorithme de mesure}
+\subsection{Algorithme de l'émetteur}
 
-\subsubsection{Organigramme général}
+L'émetteur fonctionne en boucle infinie avec un délai de 2 secondes. Il lit les données UART du DYP-L06, vérifie le checksum de la trame, calcule le pourcentage et envoie le tout via \texttt{LoRa.beginPacket()}.
 
-\begin{figure}[H]
-    \centering
-    \fbox{\textcolor{blue}{[INSÉRER FLOWCHART : Algorithme principal]}}
-    \caption{Organigramme algorithme de mesure}
-    \label{fig:flowchart_mesure}
-\end{figure}
+\subsection{Algorithme du récepteur}
 
-
-
-\subsection{Gestion de la mémoire EEPROM}
-
-[EXPLICATION STOCKAGE CALIBRATION + HISTORIQUE]
-
-\section{Module d'Affichage}
-\label{sec:module_affichage}
-
-\subsection{Écran OLED SSD1306}
-
-\subsubsection{Configuration I2C}
-
-[DÉTAILS CONFIGURATION + CODE]
-
-\subsubsection{Interface graphique}
-
-\begin{figure}[H]
-    \centering
-    \fbox{\textcolor{blue}{[INSÉRER MOCKUPS : Différents états d'affichage OLED]}}
-    \caption{États d'affichage OLED}
-    \label{fig:etats_oled}
-\end{figure}
-
-\subsection{Indicateurs LED}
-
-[DESCRIPTION FONCTIONNEMENT LEDs]
-
-\subsection{Alarme sonore}
-
-[DESCRIPTION PATTERNS SONORES]
-
-\section{Module de Communication BLE}
-\label{sec:module_ble}
-
-\subsection{Configuration module HM-10}
-
-[DÉTAILS CONFIGURATION]
-
-\subsection{Implémentation services GATT}
-
-[CODE + EXPLICATIONS]
-
-\section{Module d'Alimentation}
-\label{sec:module_alimentation}
-
-\subsection{Circuit d'alimentation}
-
-\begin{figure}[H]
-    \centering
-    \fbox{\textcolor{blue}{[INSÉRER SCHÉMA : Circuit alimentation complet]}}
-    \caption{Circuit d'alimentation}
-    \label{fig:circuit_alimentation}
-\end{figure}
-
-\subsection{Gestion de la charge}
-
-[EXPLICATIONS TP4056]
+Le récepteur vérifie si un paquet LoRa est disponible via \texttt{LoRa.parsePacket()}. Si la taille correspond à la structure attendue, il met à jour ses variables globales et rafraîchit l'affichage LCD. Une sécurité (\texttt{TIMEOUT}) est implémentée : si aucun signal n'est reçu pendant 10 secondes, l'écran affiche "Pas de signal !" et la LED passe au bleu.
 
 \section{Intégration Mécanique}
 \label{sec:integration_mecanique}
 
-\subsection{Conception du boîtier}
+\subsection{Installation sous la bouteille}
 
-[PLANS + PHOTOS]
+L'émetteur doit être solidement fixé sous la bouteille à l'aide d'un support adapté, en veillant à l'alignement vertical du capteur DYP-L06 pour garantir la réflexion de l'écho sur la surface du gaz liquide.
 
-\subsection{Assemblage final}
+\subsection{Boîtier du récepteur}
 
-[PHOTOS ÉTAPES D'ASSEMBLAGE]
-
-\section{Conclusion du Chapitre}
+Le récepteur est logé dans un boîtier compact permettant la visibilité de l'écran LCD et de la LED RGB, avec un accès facile aux boutons de commande.

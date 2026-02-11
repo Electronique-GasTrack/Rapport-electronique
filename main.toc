@@ -1,197 +1,180 @@
 \babel@toc {french}{}\relax 
-\contentsline {chapter}{\bbl@ensure@french {Table des figures}}{5}{section*.1}%
-\contentsline {chapter}{\bbl@ensure@french {Liste des tableaux}}{6}{section*.2}%
-\contentsline {chapter}{Liste des Acronymes et Abréviations}{7}{chapter*.3}%
-\contentsline {chapter}{\numberline {1}Introduction Générale}{8}{chapter.1}%
-\contentsline {section}{\numberline {1.1}Contexte}{8}{section.1.1}%
-\contentsline {subsection}{\numberline {1.1.1}Utilisation du gaz domestique}{8}{subsection.1.1.1}%
-\contentsline {subsection}{\numberline {1.1.2}Problèmes réels rencontrés}{8}{subsection.1.1.2}%
-\contentsline {paragraph}{Coupures imprévues :}{9}{paragraph*.5}%
-\contentsline {paragraph}{Manipulations dangereuses :}{9}{paragraph*.6}%
-\contentsline {paragraph}{Risques de sécurité :}{9}{paragraph*.7}%
-\contentsline {paragraph}{Mauvaise planification :}{9}{paragraph*.8}%
-\contentsline {section}{\numberline {1.2}Problématique}{9}{section.1.2}%
-\contentsline {subsection}{\numberline {1.2.1}Formulation du problème}{9}{subsection.1.2.1}%
-\contentsline {subsection}{\numberline {1.2.2}Limites des solutions existantes}{10}{subsection.1.2.2}%
-\contentsline {subsection}{\numberline {1.2.3}Justification de l'approche ultrasonore}{10}{subsection.1.2.3}%
-\contentsline {section}{\numberline {1.3}Objectifs du Projet}{10}{section.1.3}%
-\contentsline {subsection}{\numberline {1.3.1}Objectif général}{10}{subsection.1.3.1}%
-\contentsline {subsection}{\numberline {1.3.2}Objectifs spécifiques}{10}{subsection.1.3.2}%
-\contentsline {subsubsection}{OS1 : Mesure non-intrusive du niveau de gaz}{11}{subsubsection*.10}%
-\contentsline {subsubsection}{OS2 : Affichage et supervision déportés}{11}{subsubsection*.11}%
-\contentsline {subsubsection}{OS3 : Application web connectée}{11}{subsubsection*.12}%
-\contentsline {subsubsection}{OS4 : Communication LoRa et infrastructure réseau}{11}{subsubsection*.13}%
-\contentsline {subsubsection}{OS5 : Sécurité et fiabilité}{11}{subsubsection*.14}%
-\contentsline {subsubsection}{OS6 : Autonomie et efficacité énergétique}{12}{subsubsection*.15}%
-\contentsline {section}{\numberline {1.4}Méthodologie de Travail}{12}{section.1.4}%
-\contentsline {chapter}{\numberline {2}Analyse du Projet}{13}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Étude des Solutions Existantes}{13}{section.2.1}%
-\contentsline {subsection}{\numberline {2.1.1}Méthodes de mesure de niveau}{13}{subsection.2.1.1}%
-\contentsline {subsubsection}{Mesure par pesage}{13}{subsubsection*.16}%
-\contentsline {subsubsection}{Mesure par pression}{14}{subsubsection*.18}%
-\contentsline {subsubsection}{Mesure ultrasonore (Solution retenue)}{16}{subsubsection*.20}%
-\contentsline {subsection}{\numberline {2.1.2}Tableau comparatif des technologies}{17}{subsection.2.1.2}%
-\contentsline {subsection}{\numberline {2.1.3}Justification du choix de la solution ultrasonore}{18}{subsection.2.1.3}%
-\contentsline {section}{\numberline {2.2}Analyse Fonctionnelle Globale}{18}{section.2.2}%
-\contentsline {subsection}{\numberline {2.2.1}Modèle général du système}{18}{subsection.2.2.1}%
-\contentsline {subsection}{\numberline {2.2.2}Diagramme de contexte}{19}{subsection.2.2.2}%
-\contentsline {section}{\numberline {2.3}Analyse des Besoins}{20}{section.2.3}%
-\contentsline {subsection}{\numberline {2.3.1}Besoins fonctionnels}{20}{subsection.2.3.1}%
-\contentsline {subsection}{\numberline {2.3.2}Besoins non fonctionnels}{22}{subsection.2.3.2}%
-\contentsline {subsubsection}{Performance}{22}{subsubsection*.26}%
-\contentsline {subsubsection}{Fiabilité}{22}{subsubsection*.27}%
-\contentsline {subsubsection}{Utilisabilité}{22}{subsubsection*.28}%
-\contentsline {subsubsection}{Sécurité}{22}{subsubsection*.29}%
-\contentsline {subsubsection}{Maintenabilité}{23}{subsubsection*.30}%
-\contentsline {subsubsection}{Énergie}{23}{subsubsection*.31}%
-\contentsline {subsection}{\numberline {2.3.3}Scénarios d'utilisation principaux}{23}{subsection.2.3.3}%
-\contentsline {subsubsection}{Scénario 1 : Installation initiale}{23}{subsubsection*.32}%
-\contentsline {subsubsection}{Scénario 2 : Consultation quotidienne}{23}{subsubsection*.33}%
-\contentsline {subsubsection}{Scénario 3 : Alerte de niveau bas}{24}{subsubsection*.34}%
-\contentsline {subsubsection}{Scénario 4 : Suivi à distance via passerelle cloud (optionnel)}{24}{subsubsection*.35}%
-\contentsline {subsubsection}{Scénario 5 : Gestion de plusieurs bouteilles (avec passerelle)}{25}{subsubsection*.36}%
-\contentsline {section}{\numberline {2.4}Contraintes du projet}{25}{section.2.4}%
-\contentsline {subsubsection}{Contraintes techniques}{25}{subsubsection*.37}%
-\contentsline {subsubsection}{Contraintes économiques}{25}{subsubsection*.39}%
-\contentsline {subsubsection}{Contraintes temporelles}{26}{subsubsection*.40}%
-\contentsline {chapter}{\numberline {3}Conception du Système Global}{27}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Architecture Générale du Système}{27}{section.3.1}%
-\contentsline {subsection}{\numberline {3.1.1}Vue d'ensemble}{27}{subsection.3.1.1}%
-\contentsline {subsection}{\numberline {3.1.2}Description des dispositifs matériels}{28}{subsection.3.1.2}%
-\contentsline {subsubsection}{Le dispositif de mesure (Module Capteur)}{28}{subsubsection*.44}%
-\contentsline {subsubsection}{Le dispositif d'affichage (Module Récepteur)}{29}{subsubsection*.45}%
-\contentsline {subsubsection}{La passerelle LoRa (Module Gateway - Optionnel)}{29}{subsubsection*.46}%
-\contentsline {subsection}{\numberline {3.1.3}Architecture de l'application web}{29}{subsection.3.1.3}%
-\contentsline {subsection}{\numberline {3.1.4}Architecture du frontend}{29}{subsection.3.1.4}%
-\contentsline {subsection}{\numberline {3.1.5}Architecture du backend}{30}{subsection.3.1.5}%
-\contentsline {section}{\numberline {3.2}Choix Technologiques}{30}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Choix du microcontrôleur : Arduino Nano}{30}{subsection.3.2.1}%
-\contentsline {subsubsection}{Justification du choix}{30}{subsubsection*.47}%
-\contentsline {subsubsection}{Caractéristiques techniques détaillées}{31}{subsubsection*.48}%
-\contentsline {subsection}{\numberline {3.2.2}Choix du capteurs ultrasonores}{31}{subsection.3.2.2}%
-\contentsline {subsubsection}{Analyse et justification du choix}{31}{subsubsection*.50}%
-\contentsline {subsubsection}{Principe de fonctionnement}{31}{subsubsection*.51}%
-\contentsline {subsubsection}{Configuration mécanique du capteur}{32}{subsubsection*.52}%
-\contentsline {subsubsection}{Avantages de la solution retenue}{32}{subsubsection*.54}%
-\contentsline {subsection}{\numberline {3.2.3}Choix de l'écran : LCD I2C}{32}{subsection.3.2.3}%
-\contentsline {subsubsection}{Justification du choix LCD I2C}{32}{subsubsection*.55}%
-\contentsline {subsection}{\numberline {3.2.4}Choix du module de communication : LoRa}{32}{subsection.3.2.4}%
-\contentsline {subsubsection}{Justification du choix LoRa}{33}{subsubsection*.56}%
-\contentsline {subsubsection}{Module LoRa choisi : SX1278}{33}{subsubsection*.57}%
-\contentsline {subsubsection}{Configuration retenue pour le projet}{33}{subsubsection*.58}%
-\contentsline {subsection}{\numberline {3.2.5}Choix technologiques logiciels}{34}{subsection.3.2.5}%
-\contentsline {subsubsection}{Firmware embarqué : Arduino IDE + C/C++}{34}{subsubsection*.59}%
-\contentsline {subsubsection}{Firmware passerelle : ESP-IDF / Arduino Core ESP32}{34}{subsubsection*.60}%
-\contentsline {subsubsection}{Backend : Spring Boot}{34}{subsubsection*.61}%
-\contentsline {subsubsection}{Frontend : React.js}{35}{subsubsection*.62}%
-\contentsline {section}{\numberline {3.3}Principe de calibration}{36}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}Améliorations possibles (évolutions futures)}{36}{subsection.3.3.1}%
-\contentsline {section}{\numberline {3.4}Gestion de l'énergie}{36}{section.3.4}%
-\contentsline {subsection}{\numberline {3.4.1}Dispositif de mesure (capteur)}{36}{subsection.3.4.1}%
-\contentsline {subsection}{\numberline {3.4.2}Dispositif d'affichage (récepteur)}{37}{subsection.3.4.2}%
-\contentsline {subsection}{\numberline {3.4.3}Passerelle LoRa (gateway)}{38}{subsection.3.4.3}%
-\contentsline {section}{\numberline {3.5}Sécurité du système}{38}{section.3.5}%
-\contentsline {subsection}{\numberline {3.5.1}Sécurité électrique}{38}{subsection.3.5.1}%
-\contentsline {subsection}{\numberline {3.5.2}Sécurité mécanique et installation}{38}{subsection.3.5.2}%
-\contentsline {subsection}{\numberline {3.5.3}Sécurité fonctionnelle}{38}{subsection.3.5.3}%
-\contentsline {subsection}{\numberline {3.5.4}Sécurité données et vie privée}{39}{subsection.3.5.4}%
-\contentsline {chapter}{\numberline {4}Conception et Réalisation de l'Appareil}{40}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Module de Détection}{40}{section.4.1}%
-\contentsline {subsection}{\numberline {4.1.1}Principe physique de la détection ultrasonore}{40}{subsection.4.1.1}%
-\contentsline {subsubsection}{Propagation des ondes ultrasonores}{40}{subsubsection*.65}%
-\contentsline {subsection}{\numberline {4.1.2}Mise en œuvre des capteurs JSN-SR04T}{41}{subsection.4.1.2}%
-\contentsline {subsubsection}{Caractéristiques techniques}{41}{subsubsection*.67}%
-\contentsline {subsubsection}{Montage et fixation}{41}{subsubsection*.69}%
-\contentsline {subsection}{\numberline {4.1.3}Circuit de conditionnement du signal}{42}{subsection.4.1.3}%
-\contentsline {section}{\numberline {4.2}Module de Traitement}{42}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Circuit Arduino Uno}{42}{subsection.4.2.1}%
-\contentsline {subsubsection}{Schéma de connexion complet}{42}{subsubsection*.71}%
-\contentsline {subsection}{\numberline {4.2.2}Algorithme de mesure}{42}{subsection.4.2.2}%
-\contentsline {subsubsection}{Organigramme général}{42}{subsubsection*.73}%
-\contentsline {subsection}{\numberline {4.2.3}Gestion de la mémoire EEPROM}{42}{subsection.4.2.3}%
-\contentsline {section}{\numberline {4.3}Module d'Affichage}{42}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}Écran OLED SSD1306}{42}{subsection.4.3.1}%
-\contentsline {subsubsection}{Configuration I2C}{42}{subsubsection*.75}%
-\contentsline {subsubsection}{Interface graphique}{42}{subsubsection*.76}%
-\contentsline {subsection}{\numberline {4.3.2}Indicateurs LED}{42}{subsection.4.3.2}%
-\contentsline {subsection}{\numberline {4.3.3}Alarme sonore}{43}{subsection.4.3.3}%
-\contentsline {section}{\numberline {4.4}Module de Communication BLE}{43}{section.4.4}%
-\contentsline {subsection}{\numberline {4.4.1}Configuration module HM-10}{43}{subsection.4.4.1}%
-\contentsline {subsection}{\numberline {4.4.2}Implémentation services GATT}{43}{subsection.4.4.2}%
-\contentsline {section}{\numberline {4.5}Module d'Alimentation}{43}{section.4.5}%
-\contentsline {subsection}{\numberline {4.5.1}Circuit d'alimentation}{43}{subsection.4.5.1}%
-\contentsline {subsection}{\numberline {4.5.2}Gestion de la charge}{43}{subsection.4.5.2}%
-\contentsline {section}{\numberline {4.6}Intégration Mécanique}{43}{section.4.6}%
-\contentsline {subsection}{\numberline {4.6.1}Conception du boîtier}{43}{subsection.4.6.1}%
-\contentsline {subsection}{\numberline {4.6.2}Assemblage final}{43}{subsection.4.6.2}%
-\contentsline {section}{\numberline {4.7}Conclusion du Chapitre}{43}{section.4.7}%
-\contentsline {chapter}{\numberline {5}Développement de l'Application Web}{44}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Modèle de données}{44}{section.5.1}%
-\contentsline {subsection}{\numberline {5.1.1}Vue d’ensemble du modèle}{44}{subsection.5.1.1}%
-\contentsline {subsection}{\numberline {5.1.2}Description des classes}{44}{subsection.5.1.2}%
-\contentsline {subsubsection}{Classe \texttt {Bouteille}}{44}{subsubsection*.80}%
-\contentsline {subsubsection}{Classe \texttt {Mesure}}{45}{subsubsection*.81}%
-\contentsline {subsubsection}{Classe \texttt {Utilisateur}}{45}{subsubsection*.82}%
-\contentsline {subsection}{\numberline {5.1.3}Relations entre les classes}{45}{subsection.5.1.3}%
-\contentsline {section}{\numberline {5.2}Analyse Fonctionnelle de l'Application}{46}{section.5.2}%
-\contentsline {subsection}{\numberline {5.2.1}Cas d'utilisation}{46}{subsection.5.2.1}%
-\contentsline {subsection}{\numberline {5.2.2}Synthèse des cas d’utilisation}{46}{subsection.5.2.2}%
-\contentsline {section}{\numberline {5.3}Parcours Utilisateur}{47}{section.5.3}%
-\contentsline {subsection}{\numberline {5.3.1}Principes généraux du parcours}{48}{subsection.5.3.1}%
-\contentsline {subsection}{\numberline {5.3.2}Parcours : Consultation du niveau de gaz}{48}{subsection.5.3.2}%
-\contentsline {subsection}{\numberline {5.3.3}Parcours : Consultation de l’historique de consommation}{48}{subsection.5.3.3}%
-\contentsline {subsection}{\numberline {5.3.4}Parcours : Affichage de la prédiction de consommation}{48}{subsection.5.3.4}%
-\contentsline {subsection}{\numberline {5.3.5}Synthèse du parcours utilisateur}{48}{subsection.5.3.5}%
-\contentsline {section}{\numberline {5.4}Interfaces Utilisateur}{50}{section.5.4}%
-\contentsline {chapter}{\numberline {6}Tests et Validation}{58}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Stratégie de Test}{58}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Tests des Dispositifs Matériels}{58}{section.6.2}%
-\contentsline {subsection}{\numberline {6.2.1}Tests du dispositif de mesure (capteur)}{58}{subsection.6.2.1}%
-\contentsline {subsubsection}{Test du capteur ultrasonore DYP-L06}{58}{subsubsection*.96}%
-\contentsline {subsubsection}{Test du microcontrôleur Arduino Nano et traitement}{59}{subsubsection*.98}%
-\contentsline {subsubsection}{Test module LoRa SX1278 émetteur}{59}{subsubsection*.99}%
-\contentsline {subsection}{\numberline {6.2.2}Tests du dispositif d'affichage (récepteur)}{59}{subsection.6.2.2}%
-\contentsline {subsubsection}{Test de l'affichage LCD I2C et des alertes}{59}{subsubsection*.100}%
-\contentsline {subsubsection}{Test module LoRa SX1278 récepteur}{60}{subsubsection*.102}%
-\contentsline {subsubsection}{Test autonomie batterie afficheur}{60}{subsubsection*.103}%
-\contentsline {subsection}{\numberline {6.2.3}Tests de la passerelle LoRa (optionnelle)}{60}{subsection.6.2.3}%
-\contentsline {section}{\numberline {6.3}Tests de Communication LoRa}{60}{section.6.3}%
-\contentsline {subsection}{\numberline {6.3.1}Test de portée en ligne de vue}{60}{subsection.6.3.1}%
-\contentsline {subsection}{\numberline {6.3.2}Test de portée en milieu urbain avec obstacles}{61}{subsection.6.3.2}%
-\contentsline {subsection}{\numberline {6.3.3}Test de fiabilité et robustesse}{61}{subsection.6.3.3}%
-\contentsline {section}{\numberline {6.4}Tests Logiciels}{62}{section.6.4}%
-\contentsline {subsection}{\numberline {6.4.1}Tests firmware Arduino (capteur + afficheur)}{62}{subsection.6.4.1}%
-\contentsline {subsection}{\numberline {6.4.2}Tests de l'application web}{62}{subsection.6.4.2}%
-\contentsline {subsubsection}{Tests fonctionnels}{62}{subsubsection*.106}%
-\contentsline {section}{\numberline {6.5}Tests d'Intégration Système Complet}{62}{section.6.5}%
-\contentsline {subsection}{\numberline {6.5.1}Test autonomie batterie en conditions réelles}{62}{subsection.6.5.1}%
-\contentsline {subsection}{\numberline {6.5.2}Validation globale du système}{62}{subsection.6.5.2}%
-\contentsline {section}{\numberline {6.6}Déploiement et Documentation}{62}{section.6.6}%
-\contentsline {subsection}{\numberline {6.6.1}Documentation livrée}{62}{subsection.6.6.1}%
-\contentsline {subsection}{\numberline {6.6.2}Code source et réutilisabilité}{63}{subsection.6.6.2}%
-\contentsline {section}{\numberline {6.7}Gallerie des tests}{63}{section.6.7}%
-\contentsline {chapter}{\numberline {7}Difficultés Rencontrées et Solutions}{67}{chapter.7}%
-\contentsline {section}{\numberline {7.1}Difficultés Matérielles}{67}{section.7.1}%
-\contentsline {subsection}{\numberline {7.1.1}Difficulté d’acquisition du matériel}{67}{subsection.7.1.1}%
-\contentsline {subsection}{\numberline {7.1.2}Contraintes financières}{67}{subsection.7.1.2}%
-\contentsline {subsection}{\numberline {7.1.3}Disponibilité des bouteilles de gaz pour les tests}{68}{subsection.7.1.3}%
-\contentsline {section}{\numberline {7.2}Difficultés Logicielles}{68}{section.7.2}%
-\contentsline {subsection}{\numberline {7.2.1}Courbe d’apprentissage de React.JS}{68}{subsection.7.2.1}%
-\contentsline {subsection}{\numberline {7.2.2}Déploiement du backend}{68}{subsection.7.2.2}%
-\contentsline {section}{\numberline {7.3}Difficultés d’Intégration}{68}{section.7.3}%
-\contentsline {section}{\numberline {7.4}Leçons Apprises}{69}{section.7.4}%
-\contentsline {chapter}{\numberline {8}Limites et Perspectives d'Évolution}{70}{chapter.8}%
-\contentsline {section}{\numberline {8.1}Limites Actuelles}{70}{section.8.1}%
-\contentsline {subsection}{\numberline {8.1.1}Limites matérielles}{70}{subsection.8.1.1}%
-\contentsline {subsection}{\numberline {8.1.2}Limites logicielles}{70}{subsection.8.1.2}%
-\contentsline {section}{\numberline {8.2}Améliorations Matérielles}{70}{section.8.2}%
-\contentsline {section}{\numberline {8.3}Améliorations Logicielles}{71}{section.8.3}%
-\contentsline {section}{\numberline {8.4}Évolution vers une Solution Commerciale}{71}{section.8.4}%
-\contentsline {subsection}{\numberline {8.4.1}Étapes envisagées}{71}{subsection.8.4.1}%
-\contentsline {subsection}{\numberline {8.4.2}Vision à long terme}{71}{subsection.8.4.2}%
-\contentsline {chapter}{\numberline {9}Conclusion Générale}{72}{chapter.9}%
-\contentsline {section}{\numberline {9.1}Synthèse du Travail Réalisé}{72}{section.9.1}%
-\contentsline {section}{\numberline {9.2}Atteinte des Objectifs}{72}{section.9.2}%
-\contentsline {section}{\numberline {9.3}Apports Personnels et Compétences Acquises}{73}{section.9.3}%
-\contentsline {section}{\numberline {9.4}Perspectives}{73}{section.9.4}%
-\contentsline {chapter}{Réferences}{75}{chapter*.111}%
+\contentsline {chapter}{\bbl@ensure@french {Table des figures}}{4}{section*.1}%
+\contentsline {chapter}{\bbl@ensure@french {Liste des tableaux}}{5}{section*.2}%
+\contentsline {chapter}{Liste des Acronymes et Abréviations}{6}{chapter*.3}%
+\contentsline {chapter}{\numberline {1}Introduction Générale}{7}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Contexte}{7}{section.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}Utilisation du gaz domestique}{7}{subsection.1.1.1}%
+\contentsline {subsection}{\numberline {1.1.2}Problèmes réels rencontrés}{7}{subsection.1.1.2}%
+\contentsline {paragraph}{Coupures imprévues :}{8}{paragraph*.5}%
+\contentsline {paragraph}{Manipulations dangereuses :}{8}{paragraph*.6}%
+\contentsline {paragraph}{Risques de sécurité :}{8}{paragraph*.7}%
+\contentsline {paragraph}{Mauvaise planification :}{8}{paragraph*.8}%
+\contentsline {section}{\numberline {1.2}Problématique}{8}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}Formulation du problème}{8}{subsection.1.2.1}%
+\contentsline {subsection}{\numberline {1.2.2}Limites des solutions existantes}{9}{subsection.1.2.2}%
+\contentsline {subsection}{\numberline {1.2.3}Justification de l'approche ultrasonore}{9}{subsection.1.2.3}%
+\contentsline {section}{\numberline {1.3}Objectifs du Projet}{9}{section.1.3}%
+\contentsline {subsection}{\numberline {1.3.1}Objectif général}{9}{subsection.1.3.1}%
+\contentsline {subsection}{\numberline {1.3.2}Objectifs spécifiques}{9}{subsection.1.3.2}%
+\contentsline {subsubsection}{OS1 : Mesure non-intrusive du niveau de gaz}{10}{subsubsection*.10}%
+\contentsline {subsubsection}{OS2 : Affichage et supervision déportés}{10}{subsubsection*.11}%
+\contentsline {subsubsection}{OS3 : Application web connectée}{10}{subsubsection*.12}%
+\contentsline {subsubsection}{OS4 : Communication LoRa et infrastructure réseau}{10}{subsubsection*.13}%
+\contentsline {subsubsection}{OS5 : Sécurité et fiabilité}{10}{subsubsection*.14}%
+\contentsline {subsubsection}{OS6 : Autonomie et efficacité énergétique}{11}{subsubsection*.15}%
+\contentsline {section}{\numberline {1.4}Méthodologie de Travail}{11}{section.1.4}%
+\contentsline {chapter}{\numberline {2}Analyse du Projet}{12}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Étude des Solutions Existantes}{12}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Méthodes de mesure de niveau}{12}{subsection.2.1.1}%
+\contentsline {subsubsection}{Mesure par pesage}{12}{subsubsection*.16}%
+\contentsline {subsubsection}{Mesure par pression}{13}{subsubsection*.18}%
+\contentsline {subsubsection}{Mesure ultrasonore (Solution retenue)}{15}{subsubsection*.20}%
+\contentsline {subsection}{\numberline {2.1.2}Tableau comparatif des technologies}{16}{subsection.2.1.2}%
+\contentsline {subsection}{\numberline {2.1.3}Justification du choix de la solution ultrasonore}{17}{subsection.2.1.3}%
+\contentsline {section}{\numberline {2.2}Analyse Fonctionnelle Globale}{17}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Modèle général du système}{17}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Diagramme de contexte}{18}{subsection.2.2.2}%
+\contentsline {section}{\numberline {2.3}Analyse des Besoins}{19}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Besoins fonctionnels}{19}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}Besoins non fonctionnels}{21}{subsection.2.3.2}%
+\contentsline {subsubsection}{Performance}{21}{subsubsection*.26}%
+\contentsline {subsubsection}{Fiabilité}{21}{subsubsection*.27}%
+\contentsline {subsubsection}{Utilisabilité}{21}{subsubsection*.28}%
+\contentsline {subsubsection}{Sécurité}{21}{subsubsection*.29}%
+\contentsline {subsubsection}{Maintenabilité}{22}{subsubsection*.30}%
+\contentsline {subsubsection}{Énergie}{22}{subsubsection*.31}%
+\contentsline {subsection}{\numberline {2.3.3}Scénarios d'utilisation principaux}{22}{subsection.2.3.3}%
+\contentsline {subsubsection}{Scénario 1 : Installation initiale}{22}{subsubsection*.32}%
+\contentsline {subsubsection}{Scénario 2 : Consultation quotidienne}{22}{subsubsection*.33}%
+\contentsline {subsubsection}{Scénario 3 : Alerte de niveau bas}{23}{subsubsection*.34}%
+\contentsline {subsubsection}{Scénario 4 : Suivi à distance via passerelle cloud (optionnel)}{23}{subsubsection*.35}%
+\contentsline {subsubsection}{Scénario 5 : Gestion de plusieurs bouteilles (avec passerelle)}{24}{subsubsection*.36}%
+\contentsline {section}{\numberline {2.4}Contraintes du projet}{24}{section.2.4}%
+\contentsline {subsubsection}{Contraintes techniques}{24}{subsubsection*.37}%
+\contentsline {subsubsection}{Contraintes économiques}{24}{subsubsection*.39}%
+\contentsline {subsubsection}{Contraintes temporelles}{25}{subsubsection*.40}%
+\contentsline {chapter}{\numberline {3}Conception du Système Global}{26}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Architecture Générale du Système}{26}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Vue d'ensemble}{26}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Description des dispositifs matériels}{27}{subsection.3.1.2}%
+\contentsline {subsubsection}{Le dispositif de mesure (Module Capteur)}{27}{subsubsection*.44}%
+\contentsline {subsubsection}{Le dispositif d'affichage (Module Récepteur)}{28}{subsubsection*.45}%
+\contentsline {subsubsection}{La passerelle LoRa (Module Gateway - Optionnel)}{28}{subsubsection*.46}%
+\contentsline {subsection}{\numberline {3.1.3}Architecture de l'application web}{28}{subsection.3.1.3}%
+\contentsline {subsection}{\numberline {3.1.4}Architecture du frontend}{28}{subsection.3.1.4}%
+\contentsline {subsection}{\numberline {3.1.5}Architecture du backend}{29}{subsection.3.1.5}%
+\contentsline {section}{\numberline {3.2}Choix Technologiques}{29}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Choix du microcontrôleur : Arduino Nano}{29}{subsection.3.2.1}%
+\contentsline {subsubsection}{Justification du choix}{29}{subsubsection*.47}%
+\contentsline {subsubsection}{Caractéristiques techniques détaillées}{30}{subsubsection*.48}%
+\contentsline {subsection}{\numberline {3.2.2}Choix du capteurs ultrasonores}{30}{subsection.3.2.2}%
+\contentsline {subsubsection}{Analyse et justification du choix}{30}{subsubsection*.50}%
+\contentsline {subsubsection}{Principe de fonctionnement}{30}{subsubsection*.51}%
+\contentsline {subsubsection}{Configuration mécanique du capteur}{31}{subsubsection*.52}%
+\contentsline {subsubsection}{Avantages de la solution retenue}{31}{subsubsection*.54}%
+\contentsline {subsection}{\numberline {3.2.3}Choix de l'écran : LCD I2C}{31}{subsection.3.2.3}%
+\contentsline {subsubsection}{Justification du choix LCD I2C}{31}{subsubsection*.55}%
+\contentsline {subsection}{\numberline {3.2.4}Choix du module de communication : LoRa}{31}{subsection.3.2.4}%
+\contentsline {subsubsection}{Justification du choix LoRa}{32}{subsubsection*.56}%
+\contentsline {subsubsection}{Module LoRa choisi : SX1278}{32}{subsubsection*.57}%
+\contentsline {subsubsection}{Configuration retenue pour le projet}{32}{subsubsection*.58}%
+\contentsline {subsection}{\numberline {3.2.5}Choix technologiques logiciels}{33}{subsection.3.2.5}%
+\contentsline {subsubsection}{Firmware embarqué : Arduino IDE + C/C++}{33}{subsubsection*.59}%
+\contentsline {subsubsection}{Firmware passerelle : ESP-IDF / Arduino Core ESP32}{33}{subsubsection*.60}%
+\contentsline {subsubsection}{Backend : Spring Boot}{33}{subsubsection*.61}%
+\contentsline {subsubsection}{Frontend : React.js}{34}{subsubsection*.62}%
+\contentsline {section}{\numberline {3.3}Principe de calibration}{35}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Améliorations possibles (évolutions futures)}{35}{subsection.3.3.1}%
+\contentsline {section}{\numberline {3.4}Gestion de l'énergie}{35}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Dispositif de mesure (capteur)}{35}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Dispositif d'affichage (récepteur)}{36}{subsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.4.3}Passerelle LoRa (gateway)}{37}{subsection.3.4.3}%
+\contentsline {section}{\numberline {3.5}Sécurité du système}{37}{section.3.5}%
+\contentsline {subsection}{\numberline {3.5.1}Sécurité électrique}{37}{subsection.3.5.1}%
+\contentsline {subsection}{\numberline {3.5.2}Sécurité mécanique et installation}{37}{subsection.3.5.2}%
+\contentsline {subsection}{\numberline {3.5.3}Sécurité fonctionnelle}{37}{subsection.3.5.3}%
+\contentsline {subsection}{\numberline {3.5.4}Sécurité données et vie privée}{38}{subsection.3.5.4}%
+\contentsline {chapter}{\numberline {4}Conception et Réalisation des Appareils}{39}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Appareil 1 : L'Émetteur (Mesure)}{39}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Composants matériels}{39}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Implémentation logicielle}{39}{subsection.4.1.2}%
+\contentsline {section}{\numberline {4.2}Appareil 2 : Le Récepteur (Affichage et Alerte)}{39}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Composants matériels}{40}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Logique d'affichage et d'alerte}{40}{subsection.4.2.2}%
+\contentsline {section}{\numberline {4.3}Algorithmes de mesure et transmission}{40}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Algorithme de l'émetteur}{40}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Algorithme du récepteur}{40}{subsection.4.3.2}%
+\contentsline {section}{\numberline {4.4}Intégration Mécanique}{40}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Installation sous la bouteille}{40}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}Boîtier du récepteur}{40}{subsection.4.4.2}%
+\contentsline {chapter}{\numberline {5}Développement de l'Application Web}{41}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Modèle de données}{41}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Vue d’ensemble du modèle}{41}{subsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.1.2}Description des classes}{41}{subsection.5.1.2}%
+\contentsline {subsubsection}{Classe \texttt {Bouteille}}{41}{subsubsection*.66}%
+\contentsline {subsubsection}{Classe \texttt {Mesure}}{42}{subsubsection*.67}%
+\contentsline {subsubsection}{Classe \texttt {Utilisateur}}{42}{subsubsection*.68}%
+\contentsline {subsection}{\numberline {5.1.3}Relations entre les classes}{42}{subsection.5.1.3}%
+\contentsline {section}{\numberline {5.2}Analyse Fonctionnelle de l'Application}{43}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Cas d'utilisation}{43}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}Synthèse des cas d’utilisation}{43}{subsection.5.2.2}%
+\contentsline {section}{\numberline {5.3}Parcours Utilisateur}{44}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Principes généraux du parcours}{45}{subsection.5.3.1}%
+\contentsline {subsection}{\numberline {5.3.2}Parcours : Consultation du niveau de gaz}{45}{subsection.5.3.2}%
+\contentsline {subsection}{\numberline {5.3.3}Parcours : Consultation de l’historique de consommation}{45}{subsection.5.3.3}%
+\contentsline {subsection}{\numberline {5.3.4}Parcours : Affichage de la prédiction de consommation}{45}{subsection.5.3.4}%
+\contentsline {subsection}{\numberline {5.3.5}Synthèse du parcours utilisateur}{45}{subsection.5.3.5}%
+\contentsline {section}{\numberline {5.4}Interfaces Utilisateur}{47}{section.5.4}%
+\contentsline {chapter}{\numberline {6}Tests et Validation}{55}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Stratégie de Test}{55}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Tests des Dispositifs Matériels}{55}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}Tests du dispositif de mesure (capteur)}{55}{subsection.6.2.1}%
+\contentsline {subsubsection}{Test du capteur ultrasonore DYP-L06}{55}{subsubsection*.82}%
+\contentsline {subsubsection}{Test du microcontrôleur Arduino Nano et traitement}{56}{subsubsection*.84}%
+\contentsline {subsubsection}{Test module LoRa SX1278 émetteur}{56}{subsubsection*.85}%
+\contentsline {subsection}{\numberline {6.2.2}Tests du dispositif d'affichage (récepteur)}{56}{subsection.6.2.2}%
+\contentsline {subsubsection}{Test de l'affichage LCD I2C et des alertes}{56}{subsubsection*.86}%
+\contentsline {subsubsection}{Test module LoRa SX1278 récepteur}{57}{subsubsection*.88}%
+\contentsline {subsubsection}{Test autonomie batterie afficheur}{57}{subsubsection*.89}%
+\contentsline {subsection}{\numberline {6.2.3}Tests de la passerelle LoRa (optionnelle)}{57}{subsection.6.2.3}%
+\contentsline {section}{\numberline {6.3}Tests de Communication LoRa}{57}{section.6.3}%
+\contentsline {subsection}{\numberline {6.3.1}Test de portée en ligne de vue}{57}{subsection.6.3.1}%
+\contentsline {subsection}{\numberline {6.3.2}Test de portée en milieu urbain avec obstacles}{58}{subsection.6.3.2}%
+\contentsline {subsection}{\numberline {6.3.3}Test de fiabilité et robustesse}{58}{subsection.6.3.3}%
+\contentsline {section}{\numberline {6.4}Tests Logiciels}{59}{section.6.4}%
+\contentsline {subsection}{\numberline {6.4.1}Tests firmware Arduino (capteur + afficheur)}{59}{subsection.6.4.1}%
+\contentsline {subsection}{\numberline {6.4.2}Tests de l'application web}{59}{subsection.6.4.2}%
+\contentsline {subsubsection}{Tests fonctionnels}{59}{subsubsection*.92}%
+\contentsline {section}{\numberline {6.5}Tests d'Intégration Système Complet}{59}{section.6.5}%
+\contentsline {subsection}{\numberline {6.5.1}Test autonomie batterie en conditions réelles}{59}{subsection.6.5.1}%
+\contentsline {subsection}{\numberline {6.5.2}Validation globale du système}{59}{subsection.6.5.2}%
+\contentsline {section}{\numberline {6.6}Déploiement et Documentation}{59}{section.6.6}%
+\contentsline {subsection}{\numberline {6.6.1}Documentation livrée}{59}{subsection.6.6.1}%
+\contentsline {subsection}{\numberline {6.6.2}Code source et réutilisabilité}{60}{subsection.6.6.2}%
+\contentsline {section}{\numberline {6.7}Gallerie des tests}{60}{section.6.7}%
+\contentsline {chapter}{\numberline {7}Difficultés Rencontrées et Solutions}{64}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Difficultés Matérielles}{64}{section.7.1}%
+\contentsline {subsection}{\numberline {7.1.1}Difficulté d’acquisition du matériel}{64}{subsection.7.1.1}%
+\contentsline {subsection}{\numberline {7.1.2}Contraintes financières}{64}{subsection.7.1.2}%
+\contentsline {subsection}{\numberline {7.1.3}Disponibilité des bouteilles de gaz pour les tests}{65}{subsection.7.1.3}%
+\contentsline {section}{\numberline {7.2}Difficultés Logicielles}{65}{section.7.2}%
+\contentsline {subsection}{\numberline {7.2.1}Courbe d’apprentissage de React.JS}{65}{subsection.7.2.1}%
+\contentsline {subsection}{\numberline {7.2.2}Déploiement du backend}{65}{subsection.7.2.2}%
+\contentsline {section}{\numberline {7.3}Difficultés d’Intégration}{65}{section.7.3}%
+\contentsline {section}{\numberline {7.4}Leçons Apprises}{66}{section.7.4}%
+\contentsline {chapter}{\numberline {8}Limites et Perspectives d'Évolution}{67}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Limites Actuelles}{67}{section.8.1}%
+\contentsline {subsection}{\numberline {8.1.1}Limites matérielles}{67}{subsection.8.1.1}%
+\contentsline {subsection}{\numberline {8.1.2}Limites logicielles}{67}{subsection.8.1.2}%
+\contentsline {section}{\numberline {8.2}Améliorations Matérielles}{67}{section.8.2}%
+\contentsline {section}{\numberline {8.3}Améliorations Logicielles}{68}{section.8.3}%
+\contentsline {section}{\numberline {8.4}Évolution vers une Solution Commerciale}{68}{section.8.4}%
+\contentsline {subsection}{\numberline {8.4.1}Étapes envisagées}{68}{subsection.8.4.1}%
+\contentsline {subsection}{\numberline {8.4.2}Vision à long terme}{68}{subsection.8.4.2}%
+\contentsline {chapter}{\numberline {9}Conclusion Générale}{69}{chapter.9}%
+\contentsline {section}{\numberline {9.1}Synthèse du Travail Réalisé}{69}{section.9.1}%
+\contentsline {section}{\numberline {9.2}Atteinte des Objectifs}{69}{section.9.2}%
+\contentsline {section}{\numberline {9.3}Apports Personnels et Compétences Acquises}{70}{section.9.3}%
+\contentsline {section}{\numberline {9.4}Perspectives}{70}{section.9.4}%
+\contentsline {chapter}{Réferences}{72}{chapter*.97}%
