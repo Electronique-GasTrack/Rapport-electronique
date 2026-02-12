@@ -85,11 +85,6 @@ En réception, le module décode correctement 100\% des trames de test. Le méca
 \subsubsection{Test autonomie batterie afficheur}
 L'autonomie étant un critère de confort, nous avons mesuré la durée de vie réelle des batteries 18650. Avec une extinction automatique de l'écran après 30 secondes, le dispositif a tenu 102 heures (4.25 jours) en fonctionnement continu. Ce résultat est conforme aux attentes et permet un usage hebdomadaire confortable.
 
-\subsection{Tests de la passerelle LoRa (optionnelle)}
-Enfin, la passerelle optionnelle a été testée pour sa connectivité. Elle établit une connexion Wi-Fi stable et sécurisée (HTTPS) avec le backend en moins de 5 secondes.
-
-Nous avons également validé sa capacité à gérer un parc de bouteilles : lors d'un test de 24h avec 3 capteurs simultanés, la passerelle a relayé plus de 98\% des trames sans aucune confusion entre les identifiants, prouvant sa robustesse pour une gestion multi-dispositifs.
-
 \section{Tests de Communication LoRa}
 
 La technologie LoRa étant au cœur de notre architecture pour pallier les limites du Bluetooth, la validation de la portée radio est fondamentale.
@@ -156,17 +151,6 @@ La fiabilité du matériel ne serait rien sans un logiciel robuste. Nous avons d
 \subsection{Tests firmware Arduino (capteur + afficheur)}
 Les tests logiciels embarqués ont principalement ciblé la gestion de l'énergie et la persistance des données. Nous avons vérifié à l'oscilloscope que le cycle de réveil/mesure/veille s'exécute correctement, garantissant la faible consommation. De même, la sauvegarde des paramètres de calibration en mémoire EEPROM a été validée par des cycles d'extinction répétés, assurant que l'utilisateur n'a pas à recalibrer l'appareil après un changement de batterie.
 
-\subsection{Tests de l'application web}
-
-Les tests de l'application web ont porté sur plusieurs aspects :
-
-\subsubsection{Tests fonctionnels}
-\begin{itemize}
-    \item Vérification de la connexion à l'API REST et de la récupération des données.
-    \item Validation de l'affichage correct des données (niveau de gaz, historique, prédictions).
-    \item Test de la navigation entre les différentes vues.
-\end{itemize}
-
 \section{Tests d'Intégration Système Complet}
 
 Cette phase finale valide la synergie entre tous les composants du projet.
@@ -183,7 +167,7 @@ En synthèse, la campagne de tests valide la réussite technique du projet. Le s
 Pour assurer la pérennité du projet et faciliter sa reproduction ou son amélioration future, une documentation exhaustive a été produite. Elle comprend les schémas électroniques détaillés, les nomenclatures (BOM), ainsi que les manuels d'installation et d'utilisation.
 
 \subsection{Code source et réutilisabilité}
-L'ensemble du code source (Firmware, Application Web, Backend) a été structuré et commenté pour favoriser sa réutilisabilité. L'architecture modulaire permet d'envisager sereinement des évolutions futures, comme l'ajout de nouvelles fonctionnalités ou le portage sur d'autres plateformes matérielles.
+L'ensemble du code source (Firmware) a été structuré et commenté pour favoriser sa réutilisabilité. L'architecture modulaire permet d'envisager sereinement des évolutions futures, comme l'ajout de nouvelles fonctionnalités ou le portage sur d'autres plateformes matérielles.
 
 \section{Gallerie des tests}
 \begin{figure}[H]

@@ -148,7 +148,7 @@ Au vu de l'analyse comparative, la technologie ultrasonore s'impose comme le mei
     
     \item \textbf{Précision suffisante} : L'objectif de ± 5\% est atteignable avec une calibration appropriée et un traitement du signal optimisé.
     
-    \item \textbf{Coût maîtrisé} : Les capteurs ultrasonores sont disponibles à des prix raisonnables (3 000 - 15 000 FCFA pièce selon la qualité).
+    \item \textbf{Coût maîtrisé} : Les capteurs ultrasonores sont disponibles à des prix raisonnables (10 000 - 15 000 FCFA pièce selon la qualité).
     
     \item \textbf{Facilité d'implémentation} : La technologie est bien documentée avec de nombreuses ressources disponibles pour Arduino et microcontrôleurs embarqués.
     
@@ -164,7 +164,7 @@ Au vu de l'analyse comparative, la technologie ultrasonore s'impose comme le mei
 
 \subsection{Modèle général du système}
 
-Le système de détection de gaz repose sur une architecture distribuée comprenant trois dispositifs matériels indépendants communiquant via technologie LoRa longue portée :
+Le système de détection de gaz repose sur une architecture distribuée comprenant deux dispositifs matériels indépendants communiquant via technologie LoRa longue portée :
 
 \begin{figure}[H]
     \centering
@@ -179,8 +179,6 @@ Le système de détection de gaz repose sur une architecture distribuée compren
     \item \textbf{Le dispositif de mesure} : Module autonome fixé sous la bouteille, effectuant périodiquement les mesures ultrasonores et transmettant les données via LoRa. Fonctionne sur batterie Li-Po rechargeable.
     
     \item \textbf{Le dispositif d'affichage} : Boîtier mural équipé d'un écran LCD, de LEDs et d'un buzzer, recevant les données du capteur et affichant le niveau de gaz en temps réel. Déclenche des alarmes visuelles et sonores en cas de niveau critique.
-    
-    \item \textbf{La passerelle LoRa (optionnelle)} : Gateway permettant de transmettre les données vers un serveur cloud pour suivi à distance via application web.
 \end{enumerate}
 
 \subsection{Diagramme de contexte}
@@ -194,15 +192,13 @@ Le diagramme de contexte illustre les interactions entre le système et son envi
     \label{fig:diagramme_contexte}
 \end{figure}
 
-Le système est principalement composé de trois sous-ensembles : \textbf{le dispositif de mesure}, \textbf{le dispositif d'affichage} et \textbf{la passerelle LoRa (optionnelle)}.
+Le système est principalement composé de deux sous-ensembles : \textbf{le dispositif de mesure} et \textbf{le dispositif d'affichage}.
 
 Le dispositif de mesure, fixé sous la bouteille de gaz, est chargé de collecter les données physiques liées au niveau de GPL à l'aide du capteur ultrasonique DYP-L06. Ces données sont traitées localement par un microcontrôleur Arduino Nano, puis transmises sans fil au dispositif d'affichage via communication LoRa 433 MHz.
 
 Le dispositif d'affichage, installé dans un endroit accessible de l'habitation (mur, étagère, plan de travail), sert d'interface visuelle pour l'utilisateur. Il affiche le niveau de gaz en pourcentage sur un écran LCD I2C, utilise des LEDs pour indication rapide de l'état, et déclenche une alarme sonore via buzzer en cas de niveau critique. L'utilisateur peut interagir avec le système via des boutons physiques (allumage et arrêt d'alarme).
 
-La passerelle LoRa optionnelle permet d'étendre les fonctionnalités du système en transmettant les données vers un serveur cloud via Wi-Fi ou Ethernet. Basée sur un ESP32, elle reçoit les trames LoRa des capteurs et les transmet à une plateforme IoT (MQTT, HTTP REST API, ou serveur personnalisé). Cela permet un suivi à distance via application mobile ou interface web, ainsi que la gestion simultanée de plusieurs bouteilles.
-
-L'utilisateur interagit principalement avec le dispositif d'affichage pour la consultation locale, et optionnellement avec l'application web pour le suivi à distance, tandis que le dispositif de mesure fonctionne de manière totalement autonome avec alimentation sur batterie et gestion intelligente de la consommation énergétique.
+L'utilisateur interagit principalement avec le dispositif d'affichage pour la consultation locale, tandis que le dispositif de mesure fonctionne de manière totalement autonome avec alimentation sur batterie et gestion intelligente de la consommation énergétique.
 
 \section{Analyse des Besoins}
 \label{sec:analyse_besoins}
@@ -224,32 +220,25 @@ Les besoins fonctionnels décrivent ce que le système doit faire. Ils sont clas
         \midrule
         BF01 & Mesure du niveau & Le système doit mesurer le niveau de gaz avec une précision de $\pm$5\% via capteur ultrasonique \\
         BF02 & Affichage local & Le niveau doit être affiché en temps réel sur un écran LCD I2C avec bargraphe \\
-        BF03 & Alerte niveau bas & Une alerte visuelle (LED) et sonore (buzzer) doit être déclenchée quand le niveau < 15\% \\
+        BF03 & Alerte niveau bas & Une alerte visuelle (LED) et sonore (buzzer) doit être déclenchée quand le niveau < 20\% \\
         BF04 & Autonomie capteur & Le dispositif de mesure doit fonctionner au moins 30 jours sur batterie Li-Po \\
         BF05 & Communication LoRa & Transmission fiable des données sur plusieurs kilomètres avec portée minimale de 500m en urbain \\
         \midrule
         \multicolumn{3}{c}{\textbf{SHOULD HAVE (Important)}} \\
         \midrule
-        BF06 & Passerelle IoT & Gateway LoRa permettant connexion au cloud via Wi-Fi/Ethernet \\
-        BF07 & Application web & Interface graphique pour consultation à distance via serveur cloud \\
-        BF08 & Indicateurs LED & Affichage visuel rapide de l'état sur le dispositif d'affichage (vert/orange/rouge) \\
-        BF09 & Alarme sonore & Buzzer actif paramétrable pour alertes critiques \\
-        BF10 & Boutons physiques & Interaction utilisateur (allumage écran, arrêt alarme) \\
+        BF06 & Indicateurs LED & Affichage visuel rapide de l'état sur le dispositif d'affichage (vert/orange/rouge) \\
+        BF07 & Alarme sonore & Buzzer actif paramétrable pour alertes critiques \\
+        BF08 & Boutons physiques & Interaction utilisateur (allumage écran, arrêt alarme) \\
         \midrule
         \multicolumn{3}{c}{\textbf{COULD HAVE (Souhaitable)}} \\
         \midrule
-        BF11 & Historique cloud & Stockage de l'historique de consommation sur serveur distant \\
-        BF12 & Multi-bouteilles & Gestion de plusieurs capteurs par une seule passerelle \\
-        BF13 & Statistiques & Analyse de consommation avec graphiques via application \\
-        BF14 & Prédiction & Estimation du nombre de jours restants basée sur historique \\
-        BF15 & Notifications & Alertes par email ou interface web en cas de niveau bas \\
+        BF09 & Historique local & Mémorisation des dernières mesures sur l'afficheur \\
         \midrule
         \multicolumn{3}{c}{\textbf{WON'T HAVE (Non prioritaire)}} \\
         \midrule
-        BF16 & Détection de fuites & Alerte en cas de fuite détectée (capteur MQ-6 additionnel) \\
-        BF17 & Géolocalisation & Localisation des points de vente de bouteilles \\
-        BF18 & Partage social & Partage des statistiques sur réseaux sociaux \\
-        BF19 & Commande vocale & Intégration assistants vocaux (Alexa, Google Home) \\
+        BF10 & Détection de fuites & Alerte en cas de fuite détectée (capteur MQ-6 additionnel) \\
+        BF11 & Géolocalisation & Localisation des points de vente de bouteilles \\
+        BF12 & Commande vocale & Intégration assistants vocaux (Alexa, Google Home) \\
         \bottomrule
     \end{tabular}
 \end{table}
@@ -341,50 +330,19 @@ Les besoins non fonctionnels définissent les contraintes de qualité du systèm
     \item Le niveau de gaz actuel s'affiche immédiatement en pourcentage (ex: 67\%) et sous forme de bargraphe.
     \item Les LEDs indiquent l'état : verte (>50\%), orange (20-50\%), rouge (<20\%).
     \item L'heure de la dernière mesure est affichée sur la deuxième ligne du LCD.
-    \item Si l'utilisateur possède la passerelle cloud, il peut également consulter le niveau via l'application web depuis n'importe où.
     \item Le système repasse automatiquement en veille d'affichage après 30 secondes sans interaction.
 \end{enumerate}
 
 \subsubsection{Scénario 3 : Alerte de niveau bas}
 
 \begin{enumerate}
-    \item Le dispositif de mesure détecte lors d'une mesure périodique que le niveau est descendu sous le seuil de 15\%.
+    \item Le dispositif de mesure détecte lors d'une mesure périodique que le niveau est descendu sous le seuil de 20\%.
     \item Il transmet immédiatement cette information critique via LoRa au dispositif d'affichage.
     \item Le buzzer du dispositif d'affichage émet un signal sonore intermittent (3 bips toutes les 10 secondes).
     \item La LED rouge clignote de manière continue.
     \item L'écran LCD affiche "NIVEAU BAS - 12\%" avec une icône d'avertissement.
-    \item Si la passerelle cloud est installée, une alerte est visible sur le tableau de bord web.
-    \item L'application web affiche un message suggérant de prévoir un rechange rapidement.
     \item L'utilisateur peut désactiver temporairement l'alarme sonore en appuyant sur le bouton "SILENCE", mais la LED rouge continue de clignoter.
     \item L'alarme se réactivera automatiquement après 6 heures si le niveau n'a pas augmenté.
-\end{enumerate}
-
-\subsubsection{Scénario 4 : Suivi à distance via passerelle cloud (optionnel)}
-
-\begin{enumerate}
-    \item L'utilisateur a installé la passerelle LoRa ESP32 connectée à son réseau Wi-Fi domestique.
-    \item La passerelle reçoit périodiquement les trames LoRa du capteur (toutes les 15 minutes).
-    \item Elle transmet ces données au serveur cloud via protocole MQTT ou HTTP REST API.
-    \item L'utilisateur ouvre l'application web via son navigateur même en étant absent de son domicile.
-    \item Il accède à l'onglet "Tableau de bord" qui affiche le niveau actuel de toutes ses bouteilles.
-    \item Il consulte l'onglet "Historique" pour voir l'évolution de la consommation sur les 7 derniers jours.
-    \item L'application affiche des graphiques de consommation quotidienne et hebdomadaire.
-    \item Il accède ensuite à l'onglet "Prédiction".
-    \item Un algorithme basé sur la consommation moyenne estime le nombre de jours restants avant épuisement complet.
-    \item L'application suggère une date optimale pour le remplacement de la bouteille.
-    \item L'utilisateur peut configurer les seuils d'alerte et la fréquence de mesure via l'application.
-\end{enumerate}
-
-\subsubsection{Scénario 5 : Gestion de plusieurs bouteilles (avec passerelle)}
-
-\begin{enumerate}
-    \item Un utilisateur possède deux bouteilles : une en utilisation, une de rechange.
-    \item Il installe un capteur sous chaque bouteille (chaque capteur a un identifiant unique).
-    \item La passerelle LoRa reçoit les données des deux capteurs sur le même canal 433 MHz.
-    \item L'application web affiche deux widgets distincts : "Bouteille Cuisine" et "Bouteille Rechange".
-    \item Quand la bouteille principale atteint 10\%, l'application suggère : "Préparez le remplacement - Rechange disponible à 92\%".
-    \item L'utilisateur peut renommer, archiver, ou réassigner les capteurs via l'interface.
-    \item Le système conserve l'historique séparé de chaque bouteille pour analyse de consommation.
 \end{enumerate}
 
 \section{Contraintes du projet}
@@ -418,17 +376,15 @@ Les besoins non fonctionnels définissent les contraintes de qualité du systèm
 \subsubsection{Contraintes économiques}
 
 \begin{itemize}
-    \item \textbf{Budget prototype global} : Maximum 200 000 FCFA pour système complet sans passerelle
-    \item \textbf{Budget avec passerelle} : Maximum 300 000 FCFA incluant gateway ESP32
+    \item \textbf{Budget prototype global} : Maximum 200 000 FCFA pour système complet
     \item \textbf{Répartition budgétaire} :
     \begin{itemize}
-        \item Dispositif de mesure : 20 000 - 40 000 FCFA
-        \item Dispositif d'affichage : 20 000 - 40 000 FCFA
-        \item Passerelle LoRa (opt) : 15 000 - 30 000 FCFA
-        \item PCB et boîtiers : 10 000 - 20 000 FCFA
+        \item Dispositif de mesure : 20 000 - 50 000 FCFA
+        \item Dispositif d'affichage : 20 000 - 50 000 FCFA
+        \item PCB et boîtiers : 10 000 - 30 000 FCFA
     \end{itemize}
     \item \textbf{Composants} : Priorité aux composants disponibles localement (Cameroun) ou via fournisseurs internationaux (AliExpress, Mouser)
-    \item \textbf{Coût cible production} : Coût unitaire de production série inférieur à 60 000 FCFA
+    \item \textbf{Coût cible production} : Coût unitaire de production série inférieur à 100 000 FCFA
     \item \textbf{Maintenance} : Coût de maintenance annuel inférieur à 2 000 FCFA (remplacement batteries)
 \end{itemize}
 
@@ -450,7 +406,6 @@ Les besoins non fonctionnels définissent les contraintes de qualité du systèm
         5 & Développement firmware & 4 semaines & Code Arduino + ESP32 \\
         6 & Tests communication LoRa & 1 semaine & Validation portée et fiabilité \\
         7 & Calibration capteur & 2 semaines & Procédure validée \\
-        8 & Développement backend (opt) & 2 semaines & Serveur cloud + API \\
         9 & Tests et validation & 2 semaines & Résultats des tests \\
         10 & Documentation & 2 semaines & Rapport final complet \\
         \bottomrule
@@ -458,6 +413,5 @@ Les besoins non fonctionnels définissent les contraintes de qualité du systèm
 \end{table}
 
 \begin{center}
-    \textbf{TOTAL :} \textbf{26 semaines} (avec passerelle cloud)\\
-    \textbf{TOTAL :} \textbf{24 semaines} (version standalone sans cloud)
+    \textbf{TOTAL :} \textbf{24 semaines}
 \end{center}

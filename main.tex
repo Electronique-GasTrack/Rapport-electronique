@@ -24,6 +24,9 @@
 \usepackage{float}
 \usepackage{caption}
 \usepackage{subcaption}
+\usepackage{booktabs}      % Pour de belles lignes dans les tableaux
+\usepackage{tabularx}      % Pour des tableaux avec des colonnes à largeur ajustable
+\usepackage[table]{xcolor} % Pour colorer les cellules des tableaux
 \usepackage[table]{xcolor}
 \usepackage{tikz}
 \usetikzlibrary{shapes,arrows,positioning,calc}
@@ -140,6 +143,55 @@
 
 \begin{document}
 
+%-----------------------------------------------------------------------------
+% PAGE DES PARTICIPANTS (non numérotée)
+%-----------------------------------------------------------------------------
+\pagenumbering{gobble} % Désactive la numérotation
+\begin{titlepage}
+    \centering
+    % --- Titre de la page ---
+    {\Huge\bfseries\color{blue!70!black} Participants au Projet\par}
+    
+    \vspace{0.25cm}
+    
+    % --- Début du tableau ---
+    \begingroup
+    \setlength{\tabcolsep}{10pt} % Espacement entre les colonnes
+    \renewcommand{\arraystretch}{1.8} % Hauteur des lignes
+    
+    \begin{tabularx}{\textwidth}{|l|l|c|>{\raggedright\arraybackslash}X|}
+        \hline
+        \rowcolor{blue!70!black} % Couleur de fond pour l'en-tête
+        \textcolor{white}{\textbf{Nom et Prénom}} & \textcolor{white}{\textbf{Matricule}} & \textcolor{white}{\textbf{\% Part.}} & \textcolor{white}{\textbf{Travail réalisé}} \\
+        \hline
+        
+        AHMED JALIL TADIDA & 22P265 & 11.2\% & Recherche sur le module de détection et rédaction du rapport \\
+        \hline
+        AKOULOUZE JAMALI AMINA & 22P340 & 11.1\% & Recherche et implémentation du module d'affichage \\
+        \hline
+        AKOULOUZE MANY EVA  & 22P508 & 11.1\% & Implémentation de la simulation du projet \\
+        \hline
+        ATCHINE OUDAM HANNIEL & 22P590 & 11.1\% & Implémentation du module de détection et modélisation 3D\\
+        \hline
+        ESSONO SANDRINE FLORA & 22P289 & 11.1\% & Implémentation de la simulation sur Proteus \\
+        \hline
+        FEZE DJOUMESSI FRED & 22P334 & 11.1\% & Recherche du module d'affichage \\
+        \hline
+        NBEUYO KOLOGNE ULRICH & 22P204 & 11.1\% & Recherche et implémentation du module d'alimentation \\
+        \hline
+        TAGATSING FOTSING SAMUEL & 22P215 & 11.2\% & Recherche et implémentation de la simulation du projet et rédaction du rapport \\
+        \hline
+        TEKEU KAMCHI NATHAN & 22P245 & 11\% & Recherche sur le module d'alimentation\\
+        \hline
+    \end{tabularx}
+    \endgroup
+    % --- Fin du tableau ---
+    
+\end{titlepage}
+
+% Commande pour s'assurer que la page suivante (table des matières) commence bien
+\cleardoublepage 
+\pagenumbering{arabic} % Réactive la numérotation en chiffres arabes
 
 %-----------------------------------------------------------------------------
 % TABLE DES MATIÈRES
@@ -209,7 +261,7 @@
 \include{chapters/chap2_analyse}
 \include{chapters/chap3_conception_globale}
 \include{chapters/chap4_appareil}
-\include{chapters/chap5_application}
+% \include{chapters/chap5_application} % Chapitre supprimé (devenu perspective)
 \include{chapters/chap7_tests}
 \include{chapters/chap8_difficultes}
 \include{chapters/chap9_perspectives}
@@ -223,12 +275,6 @@
 
 \begin{itemize}[label={-}]
 
-\item Meta. \textit{React Documentation}.  
-Disponible sur : \url{https://react.dev} (consulté en janvier 2026).
-
-\item VMware. \textit{Spring Boot Reference Documentation}.  
-Disponible sur : \url{https://docs.spring.io/spring-boot/docs/current/reference/html/} (consulté en janvier 2026).
-
 \item Arduino. \textit{Arduino Official Documentation}.  
 Disponible sur : \url{https://docs.arduino.cc} (consulté en janvier 2026).
 
@@ -237,24 +283,15 @@ Disponible sur : \url{https://www.dypcn.com/uploads/DYP-L06.pdf} (consulté en j
 
 \item Buyya, R., \& Dastjerdi, A. V. \textit{Internet of Things: Principles and Paradigms}. Morgan Kaufmann, 2016.
 
-\item Margolis, M. \textit{Arduino Cookbook}. 2\textsuperscript{e} édition, O’Reilly Media, 2016.
+\item Margolis, M. \textit{Arduino Cookbook}. 2\textsuperscript{e} édition, O'Reilly Media, 2016.
 
 \item Valvano, J. W. \textit{Embedded Systems: Real-Time Interfacing to ARM Cortex-M Microcontrollers}. CreateSpace, 2015.
-
-\item Render. \textit{Deploying Spring Boot Applications}.  
-Disponible sur : \url{https://render.com/docs/deploy-spring-boot} (consulté en janvier 2026).
 
 \item Semtech. \textit{LoRa Modulation Basics}.  
 Disponible sur : \url{https://www.semtech.com/lora} (consulté en janvier 2026).
 
-\item Google. \textit{Google Identity Platform Documentation}.  
-Disponible sur : \url{https://developers.google.com/identity} (consulté en janvier 2026).
-
 \item Kinsler, L. E., Frey, A. R., Coppens, A. B., \& Sanders, J. V.  
 \textit{Fundamentals of Acoustics}. John Wiley \& Sons, 2000.
-
-\item Net Ninja. \textit{React Tutorial for Beginners}. YouTube Playlist.  
-Disponible sur : \url{https://www.youtube.com/playlist?list=PL4cUxeGkcC9gZD-TvwFp28qnm_j8ugaZ} (consulté en janvier 2026).
 
 \item Andreas Spiess. \textit{LoRa with Arduino}. YouTube Video.  
 Disponible sur : \url{https://www.youtube.com/watch?v=hMOwbNUpDQA} (consulté en janvier 2026).
@@ -267,9 +304,6 @@ Disponible sur : \url{https://www.wlpga.org/publications/global-lpg-market-outlo
 
 \item International Energy Agency (IEA). \textit{Energy Access Outlook – Cooking Fuels}.  
 Disponible sur : \url{https://www.iea.org/reports/energy-access-outlook-2017} (consulté en janvier 2026).
-
-\item World Health Organization (WHO). \textit{Household Air Pollution and Health}.  
-Disponible sur : \url{https://www.who.int/news-room/fact-sheets/detail/household-air-pollution-and-health} (consulté en janvier 2026).
 
 \end{itemize}
 % \endgroup supprimé car on a changé le style de page globalement pour la fin

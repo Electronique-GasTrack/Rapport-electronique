@@ -112,7 +112,7 @@ Face à ces limitations, nous avons opté pour une solution basée sur la \textb
 L'objectif principal de ce projet est de :
 
 \begin{quote}
-    \textit{Concevoir, réaliser et valider un système électronique intelligent et connecté permettant la mesure non-intrusive du niveau de gaz butane dans une bouteille domestique, avec affichage local et accès à distance via une application web.}
+    \textit{Concevoir, réaliser et valider un système électronique intelligent permettant la mesure non-intrusive du niveau de gaz butane dans une bouteille domestique, avec transmission sans fil et affichage local déporté.}
 \end{quote}
 
 \subsection{Objectifs spécifiques}
@@ -140,27 +140,15 @@ Concevoir un dispositif de supervision distinct permettant de :
 \end{itemize}
 
 
-\subsubsection{OS3 : Application web connectée}
-
-Développer une application web offrant :
-\begin{itemize}
-    \item Connexion au backend cloud via Internet ;
-    \item Consultation à distance des données transmises par la passerelle LoRa ;
-    \item Historique de consommation avec graphiques ;
-    \item Prédictions de durée restante basées sur les habitudes d'utilisation ;
-    \item Notifications ou alertes visuelles (niveau bas, anomalies détectées).
-\end{itemize}
-
-\subsubsection{OS4 : Communication LoRa et infrastructure réseau}
+\subsubsection{OS3 : Communication LoRa}
 
 Mettre en place une architecture de communication comprenant :
 \begin{itemize}
     \item Une liaison radio longue portée (LoRa) entre le capteur et l'afficheur ;
-    \item Une passerelle LoRa optionnelle pour la remontée des données vers le cloud ;
     \item Un protocole de communication optimisé pour la faible consommation.
 \end{itemize}
 
-\subsubsection{OS5 : Sécurité et fiabilité}
+\subsubsection{OS4 : Sécurité et fiabilité}
 
 Garantir la sécurité du système en :
 \begin{itemize}
@@ -171,7 +159,7 @@ Garantir la sécurité du système en :
     \item Validant le système par des tests rigoureux.
 \end{itemize}
 
-\subsubsection{OS6 : Autonomie et efficacité énergétique}
+\subsubsection{OS5 : Autonomie et efficacité énergétique}
 
 Optimiser la consommation énergétique pour :
 \begin{itemize}

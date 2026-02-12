@@ -12,22 +12,13 @@ Pour répondre aux contraintes d'éloignement et d'autonomie, le système repose
 
 Le système s'articule autour de trois entités distinctes :
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.6\textwidth]{chapters/archi_cloud.png}
-    \caption{Architecture distribuée du système LoRa}
-    \label{fig:architecture_lora}
-\end{figure}
-
 \begin{itemize}
     \item \textbf{Le dispositif de mesure (Capteur)} : Placé directement sous la bouteille, ce module autonome a pour unique fonction de mesurer le niveau de gaz et de transmettre l'information. Il est conçu pour être "invisible" à l'usage et très économe en énergie.
     
     \item \textbf{Le dispositif d'affichage (Récepteur)} : Situé dans la pièce de vie, il joue le rôle d'interface homme-machine. Il reçoit les données et informe l'utilisateur via un écran et des signaux lumineux ou sonores, sans nécessiter de connexion internet.
-    
-    \item \textbf{La passerelle LoRa (Optionnelle)} : Cet élément permet d'ouvrir le système vers l'Internet des Objets (IoT). Elle fait le pont entre le réseau local LoRa et le Cloud, permettant ainsi l'usage de l'application web.
 \end{itemize}
 
-Cette approche modulaire offre une grande flexibilité : le système est parfaitement fonctionnel en mode "local" (capteur + afficheur) pour les utilisateurs sans internet, tout en étant extensible vers une solution connectée complète.
+Cette approche modulaire offre une grande flexibilité : le système est parfaitement fonctionnel en mode "local" (capteur + afficheur) pour les utilisateurs sans internet.
 
 \subsection{Description des dispositifs matériels}
 
@@ -68,42 +59,6 @@ Le système gère trois états :
     \item \textbf{Actif} : Écran allumé sur demande utilisateur ou réception de données.
     \item \textbf{Alerte} : Activation des signaux sonores et visuels en cas de niveau critique.
 \end{itemize}
-
-\subsubsection{La passerelle LoRa (Module Gateway - Optionnel)}
-Pour les utilisateurs souhaitant une connectivité étendue, la passerelle joue le rôle de pont. Basée sur un microcontrôleur \textbf{ESP32} (choisi pour sa connectivité Wi-Fi native), elle écoute les messages LoRa et les retransmet vers un serveur distant.
-
-Contrairement aux autres modules, elle est alimentée sur secteur, ce qui lui permet d'être en écoute permanente et de gérer simultanément plusieurs bouteilles si nécessaire.
-
-\subsection{Architecture de l'application web}
-
-L'application web constitue le terminal de supervision avancé. Elle ne communique pas directement avec les capteurs, mais interroge le serveur Cloud (Backend).
-
-Son rôle dépasse le simple affichage : elle transforme les données brutes en informations utiles. Elle permet notamment de visualiser l'historique de consommation, de consulter les alertes en cas de niveau bas où que l'on soit, et d'utiliser des algorithmes prédictifs pour estimer la date de remplacement de la bouteille.
-
-\subsection{Architecture du frontend}
-
-L'architecture de l'application repose sur le framework \textbf{React.js}, suivant le modèle SPA (Single Page Application). Cette approche permet une expérience utilisateur fluide, sans rechargement complet de la page lors de la navigation.
-
-L'application est structurée autour de composants réutilisables :
-\begin{enumerate}
-    \item \textbf{Les Composants d'Interface (UI)} : Boutons, graphiques, cartes d'information qui constituent les briques visuelles de l'application.
-    \item \textbf{La Gestion d'État (State Management)} : Utilisation des Hooks (useState, useEffect) et du Context API pour gérer les données globales (utilisateur connecté, liste des bouteilles) de manière efficace.
-    \item \textbf{Le Routage} : Gestion de la navigation entre les différentes vues (Tableau de bord, Historique, Paramètres) via React Router.
-    \item \textbf{La Couche Service} : Modules dédiés à la communication avec l'API REST du backend (via Axios), assurant la récupération et l'envoi sécurisé des données.
-\end{enumerate}
-
-\subsection{Architecture du backend}
-
-Le Backend, développé avec le framework \textbf{Spring Boot}, est le cerveau de la partie connectée. Il assure la persistance des données et l'exécution de la logique métier complexe.
-
-L'architecture logicielle suit le modèle MVC (Modèle-Vue-Contrôleur) pour garantir une séparation claire des responsabilités :
-
-\begin{enumerate}
-    \item \textbf{Les Contrôleurs REST} gèrent les entrées/sorties. Ils reçoivent les mesures de la passerelle et répondent aux requêtes de l'application web, tout en sécurisant les accès via des jetons JWT.
-    \item \textbf{Les Services Métier} contiennent l'intelligence du système : validation des données, détection d'anomalies, calculs statistiques et déclenchement des notifications.
-    \item \textbf{La Couche de Données (DAO)} interagit avec la base de données PostgreSQL pour stocker de manière pérenne les utilisateurs, les bouteilles et l'historique des mesures.
-\end{enumerate}
-
 
 
 \section{Choix Technologiques}
@@ -249,8 +204,6 @@ Le mode point-à-point direct a été privilégié pour le fonctionnement autono
     \item \textbf{Confidentialité} : Données restent locales (aucun transit réseau externe)
 \end{itemize}
 
-La passerelle optionnelle peut recevoir les mêmes trames P2P et les relayer vers le cloud, offrant le meilleur des deux mondes.
-
 \textbf{Paramètres radio configurés :}
 \begin{itemize}
     \item \textbf{Fréquence porteuse} : 433.0 MHz (bande ISM)
@@ -269,72 +222,6 @@ Ces paramètres offrent portée typique 1-2 km en urbain avec débit ~1 kbps, la
 
 \subsubsection{Firmware embarqué : Arduino IDE + C/C++}
 Le développement embarqué a été réalisé en C/C++ via l'IDE Arduino. Ce choix nous donne accès à des bibliothèques optimisées pour la gestion de l'énergie (LowPower) et la communication radio, accélérant ainsi la phase de prototypage.
-
-\subsubsection{Firmware passerelle : ESP-IDF / Arduino Core ESP32}
-Pour la passerelle, nous utilisons les capacités natives de l'ESP32 pour gérer simultanément la pile LoRa et la pile Wi-Fi, assurant le pontage des données vers le Cloud via des requêtes HTTP sécurisées.
-
-\subsubsection{Backend : Spring Boot}
-Côté serveur, le choix de Spring Boot (Java) garantit une robustesse industrielle. Il permet de structurer proprement l'API, de gérer la sécurité des données et d'évoluer facilement vers une architecture micro-services si le projet venait à grandir.
-
-\textbf{Fonctions principales du backend :}
-\begin{itemize}
-    \item \textbf{Réception données passerelle} : Endpoint POST /api/measurements acceptant payloads JSON
-    \item \textbf{Gestion entités métier} : CRUD complet users, bottles, measurements, alerts
-    \item \textbf{Persistance base de données} : Stockage relationnel PostgreSQL avec transactions ACID
-    \item \textbf{Algorithmes prédiction} : Calcul tendances consommation, estimation jours restants (régression linéaire, moyennes mobiles exponentielles)
-    \item \textbf{Notifications} : Gestion des alertes pour l'interface web
-    \item \textbf{API REST documentée} : Endpoints exposés avec Swagger/OpenAPI pour l'app web
-    \item \textbf{Authentification/autorisation} : JWT tokens, rôles utilisateurs
-    \item \textbf{Monitoring/logs} : Actuator endpoints, logs structurés JSON
-\end{itemize}
-\vspace{1pt}
-
-\textbf{Stack technique utilisée :}
-\begin{itemize}
-    \item \textbf{Langage} : Java 21 LTS
-    \item \textbf{Framework} : Spring Boot 3.5
-    \item \textbf{Base de données} : PostgreSQL 16.0
-    \item \textbf{ORM} : Spring Data JPA (Hibernate implémentation)
-    \item \textbf{Documentation API} : SpringDoc OpenAPI (Swagger UI)
-    \item \textbf{Sécurité} : Spring Security + JWT
-    \item \textbf{Build} : Maven
-    \item \textbf{Déploiement} : Docker
-\end{itemize}
-
-\subsubsection{Frontend : React.js}
-Pour l'interface utilisateur web, nous avons choisi la bibliothèque React.js.
-
-\textbf{Justification du choix :}
-\begin{itemize}
-    \item \textbf{Architecture à base de composants} : Facilite la réutilisation du code et la maintenance.
-    \item \textbf{DOM Virtuel} : Optimise les performances d'affichage, crucial pour les graphiques en temps réel.
-    \item \textbf{Écosystème riche} : Disponibilité de nombreuses bibliothèques pour les graphiques (Recharts, Chart.js) et le design (Material UI, Tailwind).
-    \item \textbf{Popularité et support} : Une large communauté et une documentation exhaustive facilitant le développement.
-\end{itemize}
-
-\vspace{1pt}
-
-\textbf{Fonctions principales du frontend :}
-\begin{itemize}
-    \item \textbf{Tableau de bord de supervision} : Affichage synthétique des niveaux de gaz et statuts des capteurs (batterie, connectivité).
-    \item \textbf{Visualisation analytique} : Restitution graphique de l'historique de consommation via des courbes interactives.
-    \item \textbf{Gestion de compte} : Interface de connexion, inscription et gestion de profil utilisateur.
-    \item \textbf{Configuration des alertes} : Définition personnalisée des seuils de notification pour chaque bouteille.
-    \item \textbf{Communication API} : Abstraction des appels REST vers le backend avec gestion des erreurs et des chargements.
-    \item \textbf{Adaptabilité} : Interface responsive garantissant une expérience utilisateur optimale sur mobile et desktop.
-\end{itemize}
-\vspace{1pt}
-
-\textbf{Stack technique utilisée :}
-\begin{itemize}
-    \item \textbf{Langage} : JavaScript (ES6+) / JSX
-    \item \textbf{Framework UI} : React 18
-    \item \textbf{Routage} : React Router v6
-    \item \textbf{Client HTTP} : Axios
-    \item \textbf{Gestion d'état} : Context API + Hooks
-    \item \textbf{Styles} : Tailwind CSS
-    \item \textbf{Outil de build} : Vite
-\end{itemize}
 
 \section{Principe de calibration}
 \label{sec:calibration}
@@ -443,11 +330,6 @@ L'afficheur consomme davantage car il doit rester à l'écoute des signaux radio
         \bottomrule
     \end{tabular}
 \end{table}
-
-L'autonomie estimée est d'environ 4 à 5 jours en usage normal. Bien que plus faible que celle du capteur, elle reste acceptable car le remplacement des batteries est aisé dans l'espace de vie.
-
-\subsection{Passerelle LoRa (gateway)}
-La passerelle étant alimentée sur secteur, aucune contrainte énergétique ne s'applique. Elle privilégie la performance et la disponibilité pour assurer le lien temps réel avec le Cloud.
 
 \section{Sécurité du système}
 \label{sec:securite}

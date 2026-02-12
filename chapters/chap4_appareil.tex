@@ -1,7 +1,7 @@
 \chapter{Conception et Réalisation des Appareils}
 \label{chap:appareil}
 
-Ce chapitre décrit en détail la conception matérielle et logicielle des deux dispositifs constituant le système de surveillance du niveau de gaz.
+Ce chapitre se concentre sur la mise en œuvre pratique des deux modules matériels principaux : le dispositif de mesure (émetteur) et le dispositif d'affichage (récepteur). Nous y détaillerons la conception électronique, l'implémentation logicielle embarquée, ainsi que l'intégration mécanique de chaque appareil.
 
 \section{Appareil 1 : L'Émetteur (Mesure)}
 \label{sec:emetteur}
@@ -10,70 +10,153 @@ L'émetteur est placé sous la bouteille de gaz. Son rôle est de mesurer la dis
 
 \subsection{Composants matériels}
 
+Le choix des composants a été guidé par les contraintes de compacité, d'autonomie et de fiabilité.
+
 \begin{itemize}
-    \item \textbf{Arduino Nano} : Choisi pour sa compacité.
-    \item \textbf{Capteur DYP-L06} : Capteur ultrasonore industriel avec sortie UART. Contrairement au JSN-SR04T, il offre une meilleure stabilité pour les mesures de niveau de liquide.
-    \item \textbf{Module LoRa (433MHz)} : Configuré pour envoyer les données à l'appareil récepteur.
-    \item \textbf{Batterie plate} : Pour une installation discrète sous le réservoir.
+    \item \textbf{Microcontrôleur Arduino Nano} : Comme justifié au chapitre \ref{chap:conception_globale}, sa petite taille (18x45mm) et sa faible consommation en mode veille sont idéales pour une intégration dans un boîtier discret. Il orchestre l'ensemble des opérations : réveil, lecture du capteur, traitement des données et transmission.
+    
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\textwidth]{arduino nano.png}
+        \caption{Microcontrôleur Arduino Nano}
+        \label{fig:arduino_nano}
+    \end{figure}
+
+    \item \textbf{Capteur ultrasonore DYP-L06} : Ce capteur industriel a été préféré aux modèles grand public pour sa capacité à effectuer des mesures à travers le métal et sa sortie série (UART) qui simplifie l'interfaçage. Il fournit directement une mesure de distance, réduisant la charge de traitement sur le microcontrôleur.
+    
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.5\textwidth]{capteur_sonore.jpeg}
+        \caption{Capteur DYP-L06}
+        \label{fig:capteur}
+    \end{figure}
+    \item \textbf{Module LoRa SX1278 (433MHz)} : Ce module assure la communication longue portée. Il est interfacé avec l'Arduino Nano via le bus SPI. Sa configuration (SF10, 125kHz, +17dBm) a été choisie pour offrir un excellent compromis entre portée, robustesse face aux obstacles et faible consommation, comme détaillé dans la section \ref{sec:choix_technologiques}.
+     \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.5\textwidth]{lora.png}
+        \caption{Module Lora avec antenne}
+        \label{fig:Lora}
+    \end{figure}
+    \item \textbf{Circuit d'alimentation} : L'autonomie est assurée par une batterie Li-Po de 3.7V (1500 mAh). Elle est gérée par un module \textbf{TP4056} qui intègre les protections essentielles contre la surcharge et la décharge profonde. Un régulateur de tension LDO (Low-Dropout) abaisse la tension à 3.3V pour alimenter le module LoRa de manière stable.
 \end{itemize}
+
 
 \subsection{Implémentation logicielle}
 
-Le code de l'émetteur gère la lecture série du capteur DYP-L06. Les données sont reçues sous forme de trames hexadécimales commençant par 0xFF.
+Le firmware de l'émetteur est optimisé pour une consommation d'énergie minimale. Il fonctionne selon un cycle veille/activité strict.
+
+\subsubsection{Algorithme de fonctionnement}
+L'algorithme, illustré par l'organigramme de la figure \ref{fig:organigramme_emetteur}, suit les étapes ci-dessous dans une boucle infinie :
+\begin{enumerate}
+    \item \textbf{Mise en veille profonde (Deep Sleep)} : Le microcontrôleur et le module LoRa sont placés dans un état de très faible consommation pendant une durée de 15 minutes.
+    \item \textbf{Réveil} : Le timer interne du microcontrôleur le réveille.
+    \item \textbf{Lecture du capteur} : Le firmware envoie une commande au capteur DYP-L06 via la liaison série et attend la réception de la trame de réponse. Cette trame hexadécimale, commençant par l'octet `0xFF`, contient la mesure de distance sur deux octets. Un checksum est vérifié pour garantir l'intégrité des données.
+    \item \textbf{Calcul du niveau} : La distance brute en millimètres est extraite de la trame. Le niveau en pourcentage est ensuite calculé en utilisant la fonction de transfert linéaire issue de la calibration (voir section \ref{sec:calibration}) : 
+    \[\text{Niveau (\%)} = \left(1 - \frac{d_{mesure} - d_{plein}}{d_{vide} - d_{plein}}\right) \times 100\]
+    \item \textbf{Préparation de la charge utile (Payload)} : Les données (niveau en pourcentage et un timestamp) sont encapsulées dans une structure de données compacte pour minimiser le temps de transmission.
+    \item \textbf{Transmission LoRa} : Le module LoRa est activé, la charge utile est envoyée via la fonction `LoRa.beginPacket()`, puis la transmission est effectuée.
+    \item \textbf{Retour en veille} : Immédiatement après la transmission, le système retourne en veille profonde pour le cycle suivant.
+\end{enumerate}
 
 \begin{lstlisting}[language=C++, caption=Structure des données transmises]
 struct SensorData {
-  int level;
-  unsigned long timestamp;
+  uint8_t level; // Niveau en pourcentage (0-100)
+  uint8_t battery; // Niveau de batterie (0-100)
 };
 \end{lstlisting}
 
-La distance est calculée en mm puis convertie en cm. Le niveau en pourcentage est obtenu par une fonction de transfert linéaire entre une distance "vide" (TANK\_HEIGHT) et une distance "plein" (FULL\_DISTANCE).
 
 \section{Appareil 2 : Le Récepteur (Affichage et Alerte)}
 \label{sec:recepteur}
 
-Le récepteur est l'unité centrale de l'utilisateur, placée dans la cuisine ou le salon.
+Le récepteur est l'interface homme-machine (IHM) du système. Placé à un endroit visible dans l'habitation (cuisine, salon), il a pour mission de recevoir les données de l'émetteur, d'afficher le niveau de gaz de manière claire et de générer des alertes pertinentes pour l'utilisateur.
 
 \subsection{Composants matériels}
 
 \begin{itemize}
-    \item \textbf{Arduino Nano} : Pilotage central.
-    \item \textbf{Module LoRa (433MHz)} : Réception des paquets de données.
-    \item \textbf{Écran LCD 16x2 I2C} : Affichage de la distance et du pourcentage.
-    \item \textbf{LED RGB} : Signalisation lumineuse d'état (Verte, Orange, Rouge).
-    \item \textbf{Buzzer actif} : Alerte sonore en cas de seuil critique.
+    \item \textbf{Arduino Nano} : Le même microcontrôleur est utilisé pour simplifier la maintenance et le développement. Il gère la réception LoRa, le pilotage de l'écran, des LEDs, du buzzer et la lecture des boutons.
+    
+    \item \textbf{Module LoRa SX1278 (433MHz)} : Identique à celui de l'émetteur, il est configuré en mode réception continue pour être constamment à l'écoute des paquets de données.
+    
+    \item \textbf{Écran LCD 16x2 I2C} : L'interface I2C a été choisie pour sa simplicité de câblage (4 fils seulement : VCC, GND, SDA, SCL). L'écran affiche le niveau en pourcentage, un bargraphe visuel et des messages d'état.
+    
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.7\textwidth]{LCD_arduino.jpg}
+        \caption{Écran LCD 16x2 avec interface I2C}
+        \label{fig:lcd_i2c}
+    \end{figure}
+    \item \textbf{LED RGB} : Une LED tricolore fournit un indicateur d'état rapide et visible à distance, changeant de couleur en fonction du niveau de gaz.
+    
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.5\textwidth]{led_rgb.jpeg}
+        \caption{LED RGB pour indication visuelle}
+        \label{fig:led_rgb}
+    \end{figure}
+    \item \textbf{Buzzer actif} : Il génère une alerte sonore puissante lorsque le niveau de gaz atteint un seuil critique, attirant l'attention de l'utilisateur même s'il ne regarde pas l'écran.
+    
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.5\textwidth]{buzzer_actif.jpeg}
+        \caption{Buzzer actif pour signal sonore}
+        \label{fig:buzzer_actif}
+    \end{figure}
+
+    \item \textbf{Boutons poussoirs} : Deux boutons permettent une interaction utilisateur : un pour allumer/éteindre le rétroéclairage de l'écran afin d'économiser l'énergie, et un autre pour acquitter (silencier) l'alarme sonore.
+    
+    \item \textbf{Alimentation} : Le récepteur est alimenté par deux batteries 18650 en série, offrant une grande capacité pour une autonomie de plusieurs jours. Un convertisseur DC-DC de type "buck" (LM2596) fournit une tension stable de 5V à l'Arduino et aux périphériques.
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.6\textwidth]{batterie_rechargeable.jpg}
+        \caption{Batteries pour alimentation du récepteur}
+        \label{fig:batterie}
+    \end{figure}
 \end{itemize}
 
-\subsection{Logique d'affichage et d'alerte}
 
-Le récepteur interprète la structure \texttt{SensorData} reçue et applique les règles suivantes :
 
-\begin{itemize}
-    \item \textbf{Niveau > 50\%} : LED Verte, pas d'alarme.
-    \item \textbf{20\% < Niveau < 50\%} : LED Orange (R=255, G=165, B=0), pas d'alarme.
-    \item \textbf{Niveau < 20\%} : LED Rouge et déclenchement du Buzzer actif.
-\end{itemize}
+\subsection{Implémentation logicielle et logique d'alerte}
 
-L'utilisateur dispose de deux boutons : un pour couper l'alarme sonore (\texttt{BUTTON\_STOP\_PIN}) et un pour allumer/éteindre le rétroéclairage de l'écran (\texttt{BUTTON\_SCREEN\_PIN}).
+Le firmware du récepteur est événementiel : son action principale est de réagir à la réception d'un paquet LoRa ou à l'appui sur un bouton.
 
-\section{Algorithmes de mesure et transmission}
+\subsubsection{Algorithme de fonctionnement}
 
-\subsection{Algorithme de l'émetteur}
+\begin{enumerate}
+    \item \textbf{Initialisation} : Au démarrage, les périphériques (LCD, LoRa) sont initialisés et un message d'accueil est affiché.
+    \item \textbf{Écoute LoRa} : Le programme vérifie en permanence si un paquet LoRa a été reçu via la fonction `LoRa.parsePacket()`.
+    \item \textbf{Validation du paquet} : Si un paquet est reçu, le firmware vérifie sa taille pour s'assurer qu'elle correspond à celle de la structure `SensorData`. Le CRC (contrôle de redondance cyclique) activé au niveau du module LoRa garantit l'intégrité des données.
+    \item \textbf{Mise à jour des données} : Si le paquet est valide, les variables globales (niveau de gaz, niveau de batterie) sont mises à jour. Un timestamp de la dernière réception est enregistré.
+    \item \textbf{Gestion de l'affichage et des alertes} : Une fonction dédiée est appelée pour rafraîchir l'écran LCD et piloter la LED RGB et le buzzer selon la logique suivante :
+    \begin{itemize}
+        \item \textbf{Niveau > 50\%} : LED Verte, pas d'alarme. Message "Niveau OK".
+        \item \textbf{20\% < Niveau < 50\%} : LED Orange (R=255, G=165, B=0), pas d'alarme. Message "Niveau Moyen".
+        \item \textbf{Niveau < 20\%} : LED Rouge clignotante et déclenchement du buzzer. Message "NIVEAU BAS".
+    \end{itemize}
+    \item \textbf{Gestion des boutons} : Le programme scanne l'état des boutons pour allumer/éteindre le rétroéclairage ou arrêter le buzzer.
+    \item \textbf{Gestion du timeout} : Une sécurité est implémentée. Si aucun paquet n'est reçu pendant une période définie (ex: 35 minutes, soit deux cycles de mesure manqués), le système considère le capteur comme déconnecté. L'écran affiche "Pas de signal !", et la LED passe au bleu pour signaler une perte de communication.
+\end{enumerate}
 
-L'émetteur fonctionne en boucle infinie avec un délai de 2 secondes. Il lit les données UART du DYP-L06, vérifie le checksum de la trame, calcule le pourcentage et envoie le tout via \texttt{LoRa.beginPacket()}.
-
-\subsection{Algorithme du récepteur}
-
-Le récepteur vérifie si un paquet LoRa est disponible via \texttt{LoRa.parsePacket()}. Si la taille correspond à la structure attendue, il met à jour ses variables globales et rafraîchit l'affichage LCD. Une sécurité (\texttt{TIMEOUT}) est implémentée : si aucun signal n'est reçu pendant 10 secondes, l'écran affiche "Pas de signal !" et la LED passe au bleu.
 
 \section{Intégration Mécanique}
 \label{sec:integration_mecanique}
 
-\subsection{Installation sous la bouteille}
+L'intégration mécanique vise à protéger les circuits électroniques tout en garantissant une installation simple et une bonne expérience utilisateur. Les boîtiers ont été modélisés en 3D et imprimés en PLA.
 
-L'émetteur doit être solidement fixé sous la bouteille à l'aide d'un support adapté, en veillant à l'alignement vertical du capteur DYP-L06 pour garantir la réflexion de l'écho sur la surface du gaz liquide.
+\subsection{Boîtier et installation de l'émetteur}
+
+Le boîtier de l'émetteur est conçu pour être compact (diamètre 90mm, hauteur 25mm) et robuste. Il est certifié IP54, le protégeant des poussières et des projections d'eau, ce qui est essentiel pour un usage en extérieur ou en cuisine.
+
+L'installation est un point critique pour la qualité de la mesure. Le boîtier doit être fermement plaqué contre le fond plat de la bouteille. Pour cela, une fine couche de gel de couplage (similaire au gel pour échographie) est appliquée sur la face du capteur afin d'éliminer toute bulle d'air et d'assurer une transmission parfaite des ultrasons. Le maintien est assuré par de puissants aimants néodyme intégrés au boîtier, permettant une fixation et un retrait aisés. L'alignement vertical du capteur est crucial pour que l'écho ultrasonore se réfléchisse correctement sur la surface plane du gaz liquide.
+
 
 \subsection{Boîtier du récepteur}
 
-Le récepteur est logé dans un boîtier compact permettant la visibilité de l'écran LCD et de la LED RGB, avec un accès facile aux boutons de commande.
+Le boîtier du récepteur est conçu pour être à la fois esthétique et fonctionnel. Il peut être posé sur une surface plane ou fixé au mur. Des ouvertures sont prévues pour garantir la visibilité de l'écran LCD et de la LED RGB, ainsi qu'un accès facile aux boutons de commande. Des grilles de ventilation assurent une dissipation thermique adéquate et permettent au son du buzzer de se propager efficacement.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Prototype boitier.png}
+    \caption{Prototype des boitiers du récepteur et de l'emetteur}
+    \label{fig:boitier_recepteur}
+\end{figure}

@@ -8,7 +8,7 @@ Ce chapitre présente la conception et le développement de l'application web Ga
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\linewidth]{chapters/diagramme_classe.png}
+    \includegraphics[width=0.9\textwidth]{chapters/diagramme_classe.png}
     \caption{Diagramme de classe}
     \label{fig:diagramme_classe}
 \end{figure}
@@ -87,7 +87,7 @@ Les relations entre les classes assurent la cohérence du modèle :
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{chapters/usecase.png}
+    \includegraphics[width=0.9\textwidth]{chapters/usecase.png}
     \caption{Diagramme de cas d'utilisation}
     \label{fig:use_cases_app}
 \end{figure}
@@ -147,19 +147,6 @@ Données suffisantes sur le serveur &
 \textbf{A1:} Données insuffisantes → "Besoin de plus de données"\newline
 \textbf{A2:} Consommation irrégulière → Prédiction imprécise & 
 Prédiction affichée avec niveau de confiance \\
-\hline
-
-\textbf{UC4:} Ajouter un nouveau capteur & 
-Code ID du capteur disponible & 
-\begin{enumerate}[leftmargin=*, nosep]
-    \item Appui sur "Ajouter dispositif"
-    \item Saisie de l'ID unique du capteur LoRa
-    \item Vérification auprès du serveur
-    \item Association au compte utilisateur
-    \item Confirmation visuelle
-\end{enumerate} & 
-\textbf{A1:} ID invalide → Message d'erreur & 
-Capteur ajouté au parc \\
 \hline
 
 \end{tabular}
@@ -224,21 +211,21 @@ L'utilisation d'une architecture cloud simplifie grandement le parcours utilisat
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\linewidth]{chapters/activite_historique.png}
+    \includegraphics[width=0.9\textwidth]{chapters/activite_historique.png}
     \caption{Diagramme d'activité "Consulter Historique"}
     \label{fig:diagramme_activite}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\linewidth]{chapters/activite_niveau_gaz.png}
+    \includegraphics[width=0.9\textwidth]{chapters/activite_niveau_gaz.png}
     \caption{Diagramme d'activité "Consulter Niveau de Gaz}
     \label{fig:activité_niveau_gaz}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\linewidth]{chapters/activite_prediction.png}
+    \includegraphics[width=0.9\textwidth]{chapters/activite_prediction.png}
     \caption{Diagramme d'activité "Afficher Prédiction"}
     \label{fig:activité_prevision}
 \end{figure}

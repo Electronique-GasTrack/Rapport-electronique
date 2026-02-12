@@ -5,11 +5,7 @@
 
 Ce projet avait pour objectif principal de concevoir et de réaliser un système intelligent de surveillance du niveau de gaz domestique, combinant un dispositif embarqué, une application mobile et une infrastructure logicielle backend. Face aux problématiques réelles rencontrées par de nombreux ménages, notamment l'absence de visibilité sur la quantité de gaz restante et les risques de rupture imprévue, notre solution vise à apporter une réponse technologique accessible, fiable et sécurisée.
 
-Sur le plan matériel, nous avons conçu un système distribué innovant composé de deux unités distinctes : un module de mesure autonome fixé sous la bouteille et un module de supervision déporté. Cette architecture repose sur la technologie LoRa, offrant une portée étendue et une excellente autonomie. Le capteur ultrasonore DYP-L06, piloté par un Arduino Nano, assure une mesure précise et non intrusive, tandis que l'unité d'affichage permet une surveillance confortable depuis l'espace de vie.
-
-Sur le plan logiciel, l'intégration d'une passerelle LoRa optionnelle ouvre le système vers le cloud. L'application web React.JS développée ne se limite plus à une connexion locale, mais devient un véritable outil de supervision à distance, exploitant les données centralisées par le backend pour offrir des analyses de consommation et des prédictions fiables.
-
-Ainsi, ce projet a permis de couvrir l’intégralité de la chaîne technologique, depuis l’acquisition physique des données jusqu’à leur valorisation numérique à travers une interface utilisateur intuitive.
+Nous avons conçu un système distribué innovant composé de deux unités distinctes : un module de mesure autonome fixé sous la bouteille et un module de supervision déporté. Cette architecture repose sur la technologie LoRa, offrant une portée étendue et une excellente autonomie. Le capteur ultrasonore DYP-L06, piloté par un Arduino Nano, assure une mesure précise et non intrusive, tandis que l'unité d'affichage permet une surveillance confortable depuis l'espace de vie.
 
 \section{Atteinte des Objectifs}
 
@@ -20,9 +16,7 @@ Les objectifs fixés au début du projet ont été atteints de manière satisfai
     
     \item \textbf{Transmission longue portée :} L'adoption de la technologie LoRa a permis de s'affranchir des limites de distance du Bluetooth, autorisant le placement de la bouteille à l'extérieur de l'habitation.
     
-    \item \textbf{Supervision locale et distante :} La double interface (écran dédié et application web via cloud) offre une flexibilité d'usage optimale pour l'utilisateur.
-    
-    \item \textbf{Mise en place d’une architecture logicielle backend :} Le backend assure la gestion des données, la persistance et la préparation des traitements futurs plus avancés, ouvrant la voie à une évolution vers une solution connectée à grande échelle.
+    \item \textbf{Supervision locale :} L'interface dédiée (écran LCD) offre une lecture claire et immédiate pour l'utilisateur.
     
     \item \textbf{Respect des contraintes de sécurité et d’autonomie :} Le système fonctionne en basse tension, ne génère aucune étincelle et présente une autonomie satisfaisante, compatible avec un usage domestique quotidien.
 \end{itemize}
@@ -35,8 +29,6 @@ Ce projet a constitué une expérience particulièrement formatrice, tant sur le
 
 Sur le plan technique, il nous a permis de renforcer nos compétences en électronique embarquée, notamment en acquisition de signaux, traitement de données issues de capteurs physiques et gestion de microcontrôleurs. La manipulation de la technologie ultrasonore et l’intégration matérielle dans un environnement réel ont représenté un apprentissage concret des contraintes du monde physique, souvent absentes des projets purement logiciels.
 
-Sur le plan logiciel, nous avons approfondi notre maîtrise du développement web avec React.JS, en mettant en œuvre une architecture claire, une gestion d’état efficace et une interface utilisateur ergonomique. Le développement du backend nous a également permis de consolider nos compétences en conception d’API REST, modélisation de données et communication client-serveur.
-
 Sur le plan méthodologique et humain, ce projet nous a appris à travailler en équipe sur un système complexe, à gérer les contraintes de temps et de ressources, à communiquer efficacement entre sous-groupes matériel et logiciel, et à résoudre des problèmes imprévus de manière collaborative. Il nous a également sensibilisés à l’importance de la rigueur, de la documentation et de la validation progressive des solutions techniques.
 
 Ainsi, ce projet dépasse largement le cadre académique pour constituer une expérience professionnalisante proche des conditions réelles de développement industriel.
@@ -47,7 +39,7 @@ Bien que fonctionnelle, la solution développée présente plusieurs axes d’am
 
 Sur le plan matériel, l’intégration d’un microcontrôleur plus performant et basse consommation, tel qu’un ESP32, permettrait d’ajouter une connectivité Wi-Fi directe et d’optimiser l’autonomie énergétique. L’amélioration du capteur et de l’algorithme de traitement du signal pourrait également accroître la précision des mesures, notamment dans des conditions environnementales variables.
 
-Sur le plan logiciel, l’application web pourrait évoluer vers une gestion multi-utilisateurs et multi-dispositifs, l’intégration de notifications intelligentes, ainsi qu’un système avancé d’analyse de consommation. Le backend pourrait être enrichi par des modèles de prédiction basés sur l’apprentissage automatique afin d’anticiper plus finement les besoins de remplacement de bouteilles.
+Sur le plan logiciel, le développement d'une application web et mobile constitue la prochaine étape logique. Cela permettrait une gestion multi-utilisateurs, l’intégration de notifications intelligentes, ainsi qu’un système avancé d’analyse de consommation via le cloud.
 
 Enfin, à plus long terme, ce projet pourrait évoluer vers une solution commerciale complète intégrée à des écosystèmes de maison connectée (smart home), permettant une gestion centralisée de l’énergie domestique et une amélioration globale du confort et de la sécurité des utilisateurs.
 

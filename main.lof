@@ -1,36 +1,29 @@
 \babel@toc {french}{}\relax 
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {1.1}{\ignorespaces Bouteiile de gaz standard\relax }}{7}{figure.caption.4}%
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Bouteiile de gaz standard}}{7}{figure.caption.4}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Exemple de solution de mesure du niveau de gaz par pesage\relax }}{13}{figure.caption.17}%
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Solution de mesure du niveau de gaz par mesure de la pression interne\relax }}{14}{figure.caption.19}%
-\contentsline {figure}{\numberline {2.3}{\ignorespaces Principe de fonctionnement de la détection ultrasonore\relax }}{16}{figure.caption.21}%
-\contentsline {figure}{\numberline {2.4}{\ignorespaces Modèle général du système\relax }}{18}{figure.caption.23}%
-\contentsline {figure}{\numberline {2.5}{\ignorespaces Diagramme de contexte du système\relax }}{19}{figure.caption.24}%
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Exemple de solution de mesure du niveau de gaz par pesage}}{13}{figure.caption.16}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Solution de mesure du niveau de gaz par mesure de la pression interne}}{14}{figure.caption.18}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Principe de fonctionnement de la détection ultrasonore}}{16}{figure.caption.20}%
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Modèle général du système}}{18}{figure.caption.22}%
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Diagramme de contexte du système}}{19}{figure.caption.23}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Architecture distribuée du système LoRa\relax }}{26}{figure.caption.42}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Schéma fonctionnel des deux dispositifs\relax }}{27}{figure.caption.43}%
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Positionnement du capteur ultrasonore sur la bouteille\relax }}{31}{figure.caption.53}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Schéma fonctionnel des deux dispositifs}}{26}{figure.caption.39}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Positionnement du capteur ultrasonore sur la bouteille}}{29}{figure.caption.48}%
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Microcontrôleur Arduino Nano}}{35}{figure.caption.57}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Capteur DYP-L06}}{36}{figure.caption.58}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Module Lora avec antenne}}{36}{figure.caption.59}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Écran LCD 16x2 avec interface I2C}}{38}{figure.caption.61}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces LED RGB pour indication visuelle}}{39}{figure.caption.62}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Buzzer actif pour signal sonore}}{39}{figure.caption.63}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Batteries pour alimentation du récepteur}}{40}{figure.caption.64}%
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Prototype des boitiers du récepteur et de l'emetteur}}{42}{figure.caption.66}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Diagramme de classe\relax }}{41}{figure.caption.65}%
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Diagramme de cas d'utilisation\relax }}{43}{figure.caption.69}%
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Diagramme d'activité "Consulter Historique"\relax }}{46}{figure.caption.71}%
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Diagramme d'activité "Consulter Niveau de Gaz\relax }}{46}{figure.caption.72}%
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Diagramme d'activité "Afficher Prédiction"\relax }}{46}{figure.caption.73}%
-\contentsline {figure}{\numberline {5.6}{\ignorespaces Page d'accueil\relax }}{47}{figure.caption.74}%
-\contentsline {figure}{\numberline {5.7}{\ignorespaces Formulaire d'utilisation 1\relax }}{48}{figure.caption.75}%
-\contentsline {figure}{\numberline {5.8}{\ignorespaces Formulaire d'utilisation 2\relax }}{49}{figure.caption.76}%
-\contentsline {figure}{\numberline {5.9}{\ignorespaces Formulaire d'utilisation 3\relax }}{50}{figure.caption.77}%
-\contentsline {figure}{\numberline {5.10}{\ignorespaces Tableau de bord\relax }}{51}{figure.caption.78}%
-\contentsline {figure}{\numberline {5.11}{\ignorespaces Historique\relax }}{52}{figure.caption.79}%
-\contentsline {figure}{\numberline {5.12}{\ignorespaces Prédictions\relax }}{53}{figure.caption.80}%
-\contentsline {figure}{\numberline {5.13}{\ignorespaces Paramètres\relax }}{54}{figure.caption.81}%
-\addvspace {10\p@ }
-\contentsline {figure}{\numberline {6.1}{\ignorespaces Cas du niveau de gaz élevé\relax }}{60}{figure.caption.93}%
-\contentsline {figure}{\numberline {6.2}{\ignorespaces Cas du niveau de gaz moyen\relax }}{61}{figure.caption.94}%
-\contentsline {figure}{\numberline {6.3}{\ignorespaces Cas du niveau de gaz bas\relax }}{62}{figure.caption.95}%
-\contentsline {figure}{\numberline {6.4}{\ignorespaces Fonctionnement du buzzer\relax }}{63}{figure.caption.96}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Cas du niveau de gaz élevé}}{48}{figure.caption.77}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Cas du niveau de gaz moyen}}{49}{figure.caption.78}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Cas du niveau de gaz bas}}{50}{figure.caption.79}%
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Fonctionnement du buzzer}}{51}{figure.caption.80}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
