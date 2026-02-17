@@ -209,7 +209,7 @@ Les besoins fonctionnels décrivent ce que le système doit faire. Ils sont clas
 
 \begin{table}[H]
     \centering
-    \caption{Besoins fonctionnels classés par priorité}
+    \caption{Besoins fonctionnels(BF) classés par priorité}
     \label{tab:besoins_fonctionnels}
     \renewcommand{\arraystretch}{1.3}
     \begin{tabular}{p{2cm}p{4.5cm}p{9cm}}
@@ -338,9 +338,9 @@ Les besoins non fonctionnels définissent les contraintes de qualité du systèm
 \begin{enumerate}
     \item Le dispositif de mesure détecte lors d'une mesure périodique que le niveau est descendu sous le seuil de 20\%.
     \item Il transmet immédiatement cette information critique via LoRa au dispositif d'affichage.
-    \item Le buzzer du dispositif d'affichage émet un signal sonore intermittent (3 bips toutes les 10 secondes).
+    \item Le buzzer(actif) du dispositif d'affichage émet un signal sonore intermittent (1 bip en continu).
     \item La LED rouge clignote de manière continue.
-    \item L'écran LCD affiche "NIVEAU BAS - 12\%" avec une icône d'avertissement.
+    \item L'écran LCD affiche "NIVEAU BAS - 20\%" avec une icône d'avertissement.
     \item L'utilisateur peut désactiver temporairement l'alarme sonore en appuyant sur le bouton "SILENCE", mais la LED rouge continue de clignoter.
     \item L'alarme se réactivera automatiquement après 6 heures si le niveau n'a pas augmenté.
 \end{enumerate}
@@ -403,7 +403,7 @@ Les besoins non fonctionnels définissent les contraintes de qualité du systèm
         2 & Conception détaillée & 4 semaines & Schémas électroniques, netlists \\
         3 & Approvisionnement & 2 semaines & Composants achetés \\
         4 & Réalisation matérielle & 5 semaines & Prototypes fonctionnels (3 dispositifs) \\
-        5 & Développement firmware & 4 semaines & Code Arduino + ESP32 \\
+        5 & Développement firmware & 4 semaines & Code Arduino \\
         6 & Tests communication LoRa & 1 semaine & Validation portée et fiabilité \\
         7 & Calibration capteur & 2 semaines & Procédure validée \\
         9 & Tests et validation & 2 semaines & Résultats des tests \\
