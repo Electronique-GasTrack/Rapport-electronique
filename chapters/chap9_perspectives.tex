@@ -1,85 +1,59 @@
 \chapter{Limites et Perspectives d'Évolution}
 \label{chap:perspectives}
 
-Ce chapitre présente les principales limites du système développé dans le cadre de ce projet,
-ainsi que les perspectives d’amélioration et d’évolution possibles.
-Il met en évidence les axes de progression tant sur le plan matériel que logiciel, et ouvre la voie
-à une éventuelle transformation du prototype en une solution commerciale.
+Ce chapitre présente les limites actuelles du système ainsi que les améliorations envisageables afin de renforcer ses performances, sa robustesse et son potentiel d’évolution vers une solution industrielle.
 
 \section{Limites Actuelles}
 
-Malgré les résultats satisfaisants obtenus, le système présente certaines limites inhérentes
-au cadre académique et aux ressources disponibles.
+Malgré son fonctionnement satisfaisant, le prototype présente certaines limites liées au cadre académique et aux ressources disponibles.
 
 \subsection{Limites matérielles}
 
 \begin{itemize}
-    \item Le dispositif repose sur un seul capteur ultrasonore, ce qui peut limiter la précision
-    dans certaines conditions (inclinaison de la bouteille, vibrations).
-    \item La fixation du capteur dépend fortement de la qualité du couplage acoustique,
-    pouvant influencer la fiabilité des mesures.
-    \item L’autonomie, bien que satisfaisante (environ 30 jours), reste limitée par l’utilisation
-    de composants peu optimisés énergétiquement.
-    \item Le prototype n’intègre pas encore un boîtier industriel certifié pour un usage prolongé.
+    \item L’utilisation d’un unique capteur ultrasonore peut entraîner des variations de précision lorsque la bouteille est inclinée ou soumise à des vibrations.
+    \item La qualité du couplage acoustique entre le capteur et la paroi influence directement la fiabilité des mesures.
+    \item L’autonomie énergétique reste dépendante des composants utilisés et pourrait être améliorée par une optimisation plus poussée du circuit d’alimentation.
+    \item Le prototype ne dispose pas encore d’un boîtier industriel certifié assurant une protection optimale sur le long terme.
 \end{itemize}
 
-\subsection{Limites logicielles}
+\subsection{Limites fonctionnelles}
 
 \begin{itemize}
-    \item Les algorithmes de prédiction reposent sur des modèles simples et ne tiennent pas
-    encore compte de tous les paramètres d’usage (habitudes, saisonnalité).
+    \item Le système fonctionne actuellement en supervision locale uniquement, sans accès distant aux données.
+    \item Les algorithmes de traitement restent simples et ne prennent pas encore en compte certains paramètres environnementaux susceptibles d’affecter la mesure.
 \end{itemize}
 
-\section{Améliorations Matérielles}
+\section{Améliorations Possibles}
 
-Plusieurs améliorations matérielles peuvent être envisagées afin d’augmenter les performances
-et la fiabilité du système.
+Plusieurs pistes d’amélioration peuvent être envisagées afin d’optimiser les performances globales du système.
+
+\subsection{Améliorations matérielles}
 
 \begin{itemize}
-    \item Utilisation de plusieurs capteurs ultrasonores pour améliorer la précision et introduire
-    une redondance des mesures.
-    \item Remplacement de l’Arduino Uno par un microcontrôleur plus performant et économe
-    en énergie (ESP32, STM32).
-    \item Intégration d’un boîtier robuste et étanche, conforme aux normes industrielles.
-    \item Ajout de capteurs complémentaires (température, inclinaison) pour corriger et affiner
-    les mesures.
-    \item Optimisation du circuit d’alimentation pour augmenter l’autonomie de la batterie.
+    \item Intégration de capteurs supplémentaires pour améliorer la précision et introduire une redondance de mesure.
+    \item Utilisation d’un microcontrôleur plus performant et basse consommation afin d’augmenter l’autonomie.
+    \item Conception d’un boîtier robuste, compact et étanche conforme aux normes industrielles.
+    \item Optimisation du circuit d’alimentation et réduction des pertes énergétiques.
 \end{itemize}
 
-\section{Améliorations Logicielles}
-
-Des évolutions logicielles significatives peuvent également être envisagées.
+\subsection{Améliorations logicielles}
 
 \begin{itemize}
-    \item \textbf{Développement d'une application web et mobile :} Création d'une interface connectée pour permettre la consultation des niveaux à distance via Internet.
-    \item Mise en place d'une infrastructure backend pour l'historisation des données dans le cloud.
-    \item Amélioration des algorithmes de prédiction à l’aide de techniques d’apprentissage
-    automatique basées sur l’historique de consommation.
-    \item Ajout de notifications intelligentes sur smartphone (alertes personnalisées, prévisions avancées).
+    \item Développement d’une interface web ou mobile permettant la consultation à distance.
+    \item Mise en place d’un système d’historisation des données pour l’analyse de consommation.
+    \item Amélioration des algorithmes de traitement pour une estimation plus précise du niveau.
+    \item Intégration de notifications intelligentes et d’alertes personnalisées.
 \end{itemize}
 
-\section{Évolution vers une Solution Commerciale}
+\section{Perspectives d’Évolution}
 
-À plus long terme, le projet peut évoluer vers une solution commercialisable.
-
-\subsection{Étapes envisagées}
+À moyen et long terme, le système pourrait évoluer vers une solution complète et industrialisable. Les étapes envisagées incluent :
 
 \begin{itemize}
-    \item Validation du prototype à travers des tests intensifs en conditions réelles.
-    \item Miniaturisation du dispositif et optimisation du design industriel.
-    \item Certification du produit selon les normes de sécurité et de compatibilité électromagnétique.
-    \item Déploiement de l'application web sur une infrastructure cloud robuste et scalable.
-    \item Mise en place d’une infrastructure backend scalable.
+    \item Validation du prototype en conditions réelles prolongées.
+    \item Miniaturisation et optimisation du design électronique et mécanique.
+    \item Certification selon les normes de sécurité et de compatibilité électromagnétique.
+    \item Déploiement d’une infrastructure réseau permettant une supervision multi-utilisateurs.
 \end{itemize}
 
-\subsection{Vision à long terme}
-
-À terme, la solution pourrait être étendue à :
-\begin{itemize}
-    \item La gestion intelligente de la consommation énergétique domestique.
-    \item L’intégration dans des systèmes domotiques et des plateformes IoT.
-    \item Une utilisation à l’échelle industrielle ou commerciale (restaurants, hôtels, entreprises).
-\end{itemize}
-
-Ces perspectives montrent que le projet constitue une base solide pour des développements futurs,
-tant académiques que professionnels.
+À terme, cette solution pourrait être intégrée dans des environnements domotiques ou des plateformes IoT globales afin de participer à une gestion intelligente de l’énergie domestique. Elle pourrait également être adaptée à des contextes professionnels tels que la restauration, l’hôtellerie ou l’industrie.

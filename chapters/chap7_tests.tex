@@ -1,7 +1,7 @@
 \chapter{Tests et Validation}
 \label{chap:tests}
 
-La validation expérimentale constitue une étape cruciale du projet. Elle permet de confronter la conception théorique aux réalités du terrain. Ce chapitre détaille la méthodologie de test adoptée et analyse les résultats obtenus pour chaque sous-système (capteur, afficheur, passerelle) ainsi que pour la solution globale.
+La validation expérimentale constitue une étape cruciale du projet. Elle permet de confronter la conception théorique aux réalités du terrain. Ce chapitre détaille la méthodologie de test adoptée et analyse les résultats obtenus pour chaque sous-système (capteur, afficheur) ainsi que pour la solution globale.
 
 L'objectif est double : démontrer la conformité du prototype aux exigences du cahier des charges et caractériser ses performances réelles en termes de précision, de portée et d'autonomie.
 
@@ -20,7 +20,7 @@ Cette première phase vise à qualifier le bon fonctionnement individuel des tro
 \subsubsection{Test du capteur ultrasonore DYP-L06}
 La capacité du capteur à mesurer le niveau de liquide à travers la paroi métallique est le point le plus critique du système. Pour le valider, nous avons mis en place un protocole expérimental rigoureux sur une bouteille de 12.5 kg.
 
-Le capteur a été fixé avec un gel de couplage acoustique pour optimiser la transmission des ondes. Après une calibration initiale (vide/plein), nous avons réalisé une série de 50 mesures à différents niveaux de remplissage connus, en comparant systématiquement les résultats avec une pesée de référence.
+Le capteur a été fixé avec un gel de couplage acoustique pour optimiser la transmission des ondes. Après une calibration initiale (vide/plein), nous avons réalisé une série de 20 mesures à différents niveaux de remplissage connus, en comparant systématiquement les résultats avec une pesée de référence.
 
 \textbf{Résultats quantitatifs :}
 \begin{table}[H]
@@ -113,33 +113,6 @@ Le premier test s'est déroulé en terrain dégagé (champ libre) pour établir 
 \end{table}
 
 Les résultats confirment une portée exceptionnelle : la liaison est parfaitement fiable jusqu'à 1 km et reste exploitable jusqu'à 3 km. Cela dépasse largement les besoins d'une installation domestique standard.
-
-\subsection{Test de portée en milieu urbain avec obstacles}
-Pour évaluer la performance en conditions réelles, nous avons testé le système dans un environnement résidentiel dense, caractérisé par des murs en béton et des obstacles multiples.
-
-\textbf{Résultats mesurés :}
-\begin{table}[H]
-    \centering
-    \caption{Portée LoRa en milieu urbain}
-    \begin{tabular}{p{5cm}ccc}
-        \toprule
-        \textbf{Configuration} & \textbf{Distance} & \textbf{Taux} & \textbf{RSSI} \\
-        & \textbf{(m)} & \textbf{réception} & \textbf{(dBm)} \\
-        \midrule
-        Même pièce & 5 & 100\% & -35 \\
-        Pièces adjacentes (1 mur) & 10 & 100\% & -58 \\
-        RDC → 1er étage (dalle béton) & 15 & 100\% & -72 \\
-        RDC → 2e étage (2 dalles) & 20 & 98\% & -88 \\
-        RDC → 3e étage (3 dalles) & 25 & 95\% & -102 \\
-        Bâtiments adjacents 50m & 50 & 100\% & -85 \\
-        Bâtiments adjacents 100m & 100 & 97\% & -98 \\
-        Bâtiments séparés 200m & 200 & 92\% & -112 \\
-        Jardin → intérieur 50m (végétation) & 50 & 98\% & -82 \\
-        \bottomrule
-    \end{tabular}
-\end{table}
-
-Ces tests démontrent l'excellente capacité de pénétration du signal LoRa 433 MHz. Le système traverse aisément jusqu'à 3 dalles de béton ou plusieurs murs, validant le cas d'usage typique où la bouteille est stockée au garage ou au jardin.
 
 \subsection{Test de fiabilité et robustesse}
 Au-delà de la portée, la robustesse du lien radio a été éprouvée sur 48h continues. Avec un taux de réception de 98.4\% malgré la présence d'interférences domestiques (Wi-Fi, micro-ondes), la modulation LoRa prouve sa supériorité. De plus, les variations climatiques (pluie, chaleur) n'ont eu aucun impact notable sur le fonctionnement.

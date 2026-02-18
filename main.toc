@@ -46,7 +46,7 @@
 \contentsline {subsection}{\numberline {2.3.3}Scénarios d'utilisation principaux}{22}{subsection.2.3.3}%
 \contentsline {subsubsection}{Scénario 1 : Installation initiale}{22}{subsubsection*.31}%
 \contentsline {subsubsection}{Scénario 2 : Consultation quotidienne}{22}{subsubsection*.32}%
-\contentsline {subsubsection}{Scénario 3 : Alerte de niveau bas}{23}{subsubsection*.33}%
+\contentsline {subsubsection}{Scénario 3 : Alerte de niveau bas}{22}{subsubsection*.33}%
 \contentsline {section}{\numberline {2.4}Contraintes du projet}{23}{section.2.4}%
 \contentsline {subsubsection}{Contraintes techniques}{23}{subsubsection*.34}%
 \contentsline {subsubsection}{Contraintes économiques}{23}{subsubsection*.36}%
@@ -61,7 +61,7 @@
 \contentsline {subsection}{\numberline {3.2.1}Choix du microcontrôleur : Arduino Nano}{27}{subsection.3.2.1}%
 \contentsline {subsubsection}{Justification du choix}{27}{subsubsection*.42}%
 \contentsline {subsubsection}{Caractéristiques techniques détaillées}{28}{subsubsection*.43}%
-\contentsline {subsection}{\numberline {3.2.2}Choix du capteurs ultrasonores}{28}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.2}Choix du capteur ultrasonore}{28}{subsection.3.2.2}%
 \contentsline {subsubsection}{Analyse et justification du choix}{28}{subsubsection*.45}%
 \contentsline {subsubsection}{Principe de fonctionnement}{28}{subsubsection*.46}%
 \contentsline {subsubsection}{Configuration mécanique du capteur}{29}{subsubsection*.47}%
@@ -100,44 +100,42 @@
 \contentsline {section}{\numberline {5.1}Stratégie de Test}{43}{section.5.1}%
 \contentsline {section}{\numberline {5.2}Tests des Dispositifs Matériels}{43}{section.5.2}%
 \contentsline {subsection}{\numberline {5.2.1}Tests du dispositif de mesure (capteur)}{43}{subsection.5.2.1}%
-\contentsline {subsubsection}{Test du capteur ultrasonore DYP-L06}{43}{subsubsection*.67}%
-\contentsline {subsubsection}{Test du microcontrôleur Arduino Nano et traitement}{44}{subsubsection*.69}%
-\contentsline {subsubsection}{Test module LoRa SX1278 émetteur}{44}{subsubsection*.70}%
+\contentsline {subsubsection}{Test du capteur ultrasonore DYP-L06}{43}{subsubsection*.68}%
+\contentsline {subsubsection}{Test du microcontrôleur Arduino Nano et traitement}{44}{subsubsection*.70}%
+\contentsline {subsubsection}{Test module LoRa SX1278 émetteur}{44}{subsubsection*.71}%
 \contentsline {subsection}{\numberline {5.2.2}Tests du dispositif d'affichage (récepteur)}{44}{subsection.5.2.2}%
-\contentsline {subsubsection}{Test de l'affichage LCD I2C et des alertes}{44}{subsubsection*.71}%
-\contentsline {subsubsection}{Test module LoRa SX1278 récepteur}{45}{subsubsection*.73}%
-\contentsline {subsubsection}{Test autonomie batterie afficheur}{45}{subsubsection*.74}%
+\contentsline {subsubsection}{Test de l'affichage LCD I2C et des alertes}{44}{subsubsection*.72}%
+\contentsline {subsubsection}{Test module LoRa SX1278 récepteur}{45}{subsubsection*.74}%
+\contentsline {subsubsection}{Test autonomie batterie afficheur}{45}{subsubsection*.75}%
 \contentsline {section}{\numberline {5.3}Tests de Communication LoRa}{45}{section.5.3}%
 \contentsline {subsection}{\numberline {5.3.1}Test de portée en ligne de vue}{45}{subsection.5.3.1}%
-\contentsline {subsection}{\numberline {5.3.2}Test de portée en milieu urbain avec obstacles}{46}{subsection.5.3.2}%
-\contentsline {subsection}{\numberline {5.3.3}Test de fiabilité et robustesse}{46}{subsection.5.3.3}%
+\contentsline {subsection}{\numberline {5.3.2}Test de fiabilité et robustesse}{46}{subsection.5.3.2}%
 \contentsline {section}{\numberline {5.4}Tests Logiciels}{46}{section.5.4}%
 \contentsline {subsection}{\numberline {5.4.1}Tests firmware Arduino (capteur + afficheur)}{46}{subsection.5.4.1}%
 \contentsline {section}{\numberline {5.5}Tests d'Intégration Système Complet}{46}{section.5.5}%
-\contentsline {subsection}{\numberline {5.5.1}Test autonomie batterie en conditions réelles}{47}{subsection.5.5.1}%
-\contentsline {subsection}{\numberline {5.5.2}Validation globale du système}{47}{subsection.5.5.2}%
-\contentsline {section}{\numberline {5.6}Déploiement et Documentation}{47}{section.5.6}%
-\contentsline {subsection}{\numberline {5.6.1}Documentation livrée}{47}{subsection.5.6.1}%
+\contentsline {subsection}{\numberline {5.5.1}Test autonomie batterie en conditions réelles}{46}{subsection.5.5.1}%
+\contentsline {subsection}{\numberline {5.5.2}Validation globale du système}{46}{subsection.5.5.2}%
+\contentsline {section}{\numberline {5.6}Déploiement et Documentation}{46}{section.5.6}%
+\contentsline {subsection}{\numberline {5.6.1}Documentation livrée}{46}{subsection.5.6.1}%
 \contentsline {subsection}{\numberline {5.6.2}Code source et réutilisabilité}{47}{subsection.5.6.2}%
-\contentsline {section}{\numberline {5.7}Gallerie des tests}{48}{section.5.7}%
-\contentsline {chapter}{\numberline {6}Difficultés Rencontrées et Solutions}{52}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Difficultés Matérielles}{52}{section.6.1}%
-\contentsline {subsection}{\numberline {6.1.1}Difficulté d’acquisition du matériel}{52}{subsection.6.1.1}%
-\contentsline {subsection}{\numberline {6.1.2}Contraintes financières}{52}{subsection.6.1.2}%
-\contentsline {subsection}{\numberline {6.1.3}Disponibilité des bouteilles de gaz pour les tests}{53}{subsection.6.1.3}%
-\contentsline {section}{\numberline {6.2}Leçons Apprises}{53}{section.6.2}%
-\contentsline {chapter}{\numberline {7}Limites et Perspectives d'Évolution}{54}{chapter.7}%
-\contentsline {section}{\numberline {7.1}Limites Actuelles}{54}{section.7.1}%
-\contentsline {subsection}{\numberline {7.1.1}Limites matérielles}{54}{subsection.7.1.1}%
-\contentsline {subsection}{\numberline {7.1.2}Limites logicielles}{54}{subsection.7.1.2}%
-\contentsline {section}{\numberline {7.2}Améliorations Matérielles}{54}{section.7.2}%
-\contentsline {section}{\numberline {7.3}Améliorations Logicielles}{55}{section.7.3}%
-\contentsline {section}{\numberline {7.4}Évolution vers une Solution Commerciale}{55}{section.7.4}%
-\contentsline {subsection}{\numberline {7.4.1}Étapes envisagées}{55}{subsection.7.4.1}%
-\contentsline {subsection}{\numberline {7.4.2}Vision à long terme}{55}{subsection.7.4.2}%
-\contentsline {chapter}{\numberline {8}Conclusion Générale}{56}{chapter.8}%
-\contentsline {section}{\numberline {8.1}Synthèse du Travail Réalisé}{56}{section.8.1}%
-\contentsline {section}{\numberline {8.2}Atteinte des Objectifs}{56}{section.8.2}%
-\contentsline {section}{\numberline {8.3}Apports Personnels et Compétences Acquises}{57}{section.8.3}%
-\contentsline {section}{\numberline {8.4}Perspectives}{57}{section.8.4}%
-\contentsline {chapter}{Réferences}{58}{chapter*.81}%
+\contentsline {section}{\numberline {5.7}Gallerie des tests}{47}{section.5.7}%
+\contentsline {chapter}{\numberline {6}Difficultés Rencontrées et Solutions}{51}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Difficultés Matérielles}{51}{section.6.1}%
+\contentsline {subsection}{\numberline {6.1.1}Difficulté d’acquisition du matériel}{51}{subsection.6.1.1}%
+\contentsline {subsection}{\numberline {6.1.2}Contraintes financières}{51}{subsection.6.1.2}%
+\contentsline {subsection}{\numberline {6.1.3}Disponibilité des bouteilles de gaz pour les tests}{52}{subsection.6.1.3}%
+\contentsline {section}{\numberline {6.2}Leçons Apprises}{52}{section.6.2}%
+\contentsline {chapter}{\numberline {7}Limites et Perspectives d'Évolution}{53}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Limites Actuelles}{53}{section.7.1}%
+\contentsline {subsection}{\numberline {7.1.1}Limites matérielles}{53}{subsection.7.1.1}%
+\contentsline {subsection}{\numberline {7.1.2}Limites fonctionnelles}{53}{subsection.7.1.2}%
+\contentsline {section}{\numberline {7.2}Améliorations Possibles}{53}{section.7.2}%
+\contentsline {subsection}{\numberline {7.2.1}Améliorations matérielles}{54}{subsection.7.2.1}%
+\contentsline {subsection}{\numberline {7.2.2}Améliorations logicielles}{54}{subsection.7.2.2}%
+\contentsline {section}{\numberline {7.3}Perspectives d’Évolution}{54}{section.7.3}%
+\contentsline {chapter}{\numberline {8}Conclusion Générale}{55}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Synthèse du Travail Réalisé}{55}{section.8.1}%
+\contentsline {section}{\numberline {8.2}Atteinte des Objectifs}{55}{section.8.2}%
+\contentsline {section}{\numberline {8.3}Apports Personnels et Compétences Acquises}{56}{section.8.3}%
+\contentsline {section}{\numberline {8.4}Ouverture}{56}{section.8.4}%
+\contentsline {chapter}{Réferences}{57}{chapter*.81}%

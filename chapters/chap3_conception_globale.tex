@@ -112,7 +112,7 @@ Plusieurs arguments justifient cette décision :
 
 
 
-\subsection{Choix du capteurs ultrasonores}
+\subsection{Choix du capteur ultrasonore}
 
 \subsubsection{Analyse et justification du choix}
 La contrainte majeure du projet est de mesurer le niveau de gaz sans modifier la bouteille (pour des raisons de sécurité et de réglementation). La technologie ultrasonore s'est imposée comme la seule solution viable permettant une mesure "à travers" la paroi métallique.
@@ -199,7 +199,7 @@ Le mode point-à-point direct a été privilégié pour le fonctionnement autono
 \begin{itemize}
     \item \textbf{Simplicité} : Pas de join procedure, pas de serveur réseau LoRaWAN nécessaire
     \item \textbf{Rapidité} : Latence minimale émission→réception (<1s)
-    \item \textbf{Indépendance} : Système fonctionnel même sans connexion Internet/infrastructure
+    \item \textbf{Indépendance} : Système fonctionnel même sans connexion Internet/infrastructure réseau
     \item \textbf{Coût} : Pas d'abonnement opérateur LoRaWAN requis
     \item \textbf{Confidentialité} : Données restent locales (aucun transit réseau externe)
 \end{itemize}
@@ -348,4 +348,4 @@ Le dispositif est conçu pour être non-intrusif. Il ne nécessite aucun perçag
 Le logiciel intègre des mécanismes de surveillance (Watchdog) pour détecter les pannes. Si le capteur cesse d'émettre (panne ou batterie vide), l'afficheur signale une erreur "CAPTEUR HORS LIGNE" après un délai de sécurité. Les seuils d'alerte (20\%, 15\%, 5\%) sont définis pour laisser à l'utilisateur le temps de réagir avant la panne sèche.
 
 \subsection{Sécurité données et vie privée}
-Enfin, la confidentialité est assurée par le chiffrement des communications vers le Cloud (HTTPS/TLS). En local, la communication LoRa utilise des identifiants anonymes, ne transmettant aucune donnée personnelle, uniquement des niveaux techniques.
+En local, la communication LoRa utilise des identifiants anonymes, ne transmettant aucune donnée personnelle, uniquement des niveaux techniques.

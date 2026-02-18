@@ -3,44 +3,38 @@
 
 \section{Synthèse du Travail Réalisé}
 
-Ce projet avait pour objectif principal de concevoir et de réaliser un système intelligent de surveillance du niveau de gaz domestique, combinant un dispositif embarqué, une application mobile et une infrastructure logicielle backend. Face aux problématiques réelles rencontrées par de nombreux ménages, notamment l'absence de visibilité sur la quantité de gaz restante et les risques de rupture imprévue, notre solution vise à apporter une réponse technologique accessible, fiable et sécurisée.
+L’objectif principal de ce projet était de concevoir et de réaliser un système intelligent de surveillance du niveau de gaz domestique capable de fonctionner de manière fiable, autonome et sécurisée. Pour répondre à cette problématique réelle, nous avons développé une solution distribuée innovante composée de deux unités complémentaires : un module de mesure autonome fixé sous la bouteille et un module de supervision déporté destiné à l’utilisateur.
 
-Nous avons conçu un système distribué innovant composé de deux unités distinctes : un module de mesure autonome fixé sous la bouteille et un module de supervision déporté. Cette architecture repose sur la technologie LoRa, offrant une portée étendue et une excellente autonomie. Le capteur ultrasonore DYP-L06, piloté par un Arduino Nano, assure une mesure précise et non intrusive, tandis que l'unité d'affichage permet une surveillance confortable depuis l'espace de vie.
+L’architecture retenue repose sur la technologie LoRa, choisie pour sa portée étendue, sa robustesse face aux obstacles et sa faible consommation énergétique. Le module capteur, piloté par un microcontrôleur Arduino Nano et associé au capteur ultrasonore DYP-L06, permet une mesure non intrusive du niveau de gaz à travers la paroi métallique. Les données sont ensuite transmises sans fil vers l’unité d’affichage qui assure une visualisation claire et immédiate des informations.
+
+Cette approche modulaire offre une solution à la fois flexible, sécurisée et adaptée aux contraintes domestiques, tout en respectant les exigences techniques du cahier des charges.
 
 \section{Atteinte des Objectifs}
 
-Les objectifs fixés au début du projet ont été atteints de manière satisfaisante.
+Les objectifs fixés en début de projet ont été atteints de manière satisfaisante :
 
 \begin{itemize}
-    \item \textbf{Conception d’un système de mesure non intrusif :} L'utilisation de la technologie ultrasonore à travers la paroi métallique de la bouteille a permis d'éviter toute modification physique ou risque de fuite, tout en garantissant une précision acceptable pour un usage domestique.
+    \item \textbf{Mesure non intrusive :} L’utilisation des ultrasons permet d’estimer le niveau de gaz sans modification physique de la bouteille, garantissant sécurité et conformité.
     
-    \item \textbf{Transmission longue portée :} L'adoption de la technologie LoRa a permis de s'affranchir des limites de distance du Bluetooth, autorisant le placement de la bouteille à l'extérieur de l'habitation.
+    \item \textbf{Communication longue portée :} L’intégration de la technologie LoRa a permis de dépasser les limites des communications courte portée et d’assurer une transmission fiable sur plusieurs centaines de mètres.
     
-    \item \textbf{Supervision locale :} L'interface dédiée (écran LCD) offre une lecture claire et immédiate pour l'utilisateur.
+    \item \textbf{Supervision conviviale :} Le module d’affichage avec écran LCD fournit une interface simple et lisible permettant un suivi en temps réel.
     
-    \item \textbf{Respect des contraintes de sécurité et d’autonomie :} Le système fonctionne en basse tension, ne génère aucune étincelle et présente une autonomie satisfaisante, compatible avec un usage domestique quotidien.
+    \item \textbf{Autonomie énergétique :} L’optimisation de la consommation et l’usage de modes veille assurent un fonctionnement prolongé compatible avec une utilisation quotidienne.
 \end{itemize}
 
-Globalement, la solution obtenue répond aux exigences du cahier des charges initial tout en restant réaliste sur le plan technique, économique et opérationnel.
+Ainsi, la solution développée répond aux exigences fonctionnelles tout en restant réaliste sur les plans technique, économique et opérationnel.
 
 \section{Apports Personnels et Compétences Acquises}
 
-Ce projet a constitué une expérience particulièrement formatrice, tant sur le plan technique que sur le plan humain et organisationnel.
+La réalisation de ce projet a constitué une expérience particulièrement enrichissante. Sur le plan technique, elle a permis de consolider des compétences en électronique embarquée, acquisition de données capteurs, communication radio longue portée et intégration matérielle. La confrontation aux contraintes physiques réelles a également permis de mieux comprendre les enjeux de fiabilité, de précision et de robustesse des systèmes embarqués.
 
-Sur le plan technique, il nous a permis de renforcer nos compétences en électronique embarquée, notamment en acquisition de signaux, traitement de données issues de capteurs physiques et gestion de microcontrôleurs. La manipulation de la technologie ultrasonore et l’intégration matérielle dans un environnement réel ont représenté un apprentissage concret des contraintes du monde physique, souvent absentes des projets purement logiciels.
+Sur le plan organisationnel, le travail en équipe a favorisé le développement de compétences en gestion de projet, répartition des tâches, coordination technique et résolution collaborative de problèmes. Cette démarche nous a sensibilisés aux exigences de rigueur, de validation progressive et de documentation propres aux projets d’ingénierie.
 
-Sur le plan méthodologique et humain, ce projet nous a appris à travailler en équipe sur un système complexe, à gérer les contraintes de temps et de ressources, à communiquer efficacement entre sous-groupes matériel et logiciel, et à résoudre des problèmes imprévus de manière collaborative. Il nous a également sensibilisés à l’importance de la rigueur, de la documentation et de la validation progressive des solutions techniques.
+Ce projet représente ainsi une véritable mise en situation professionnelle, proche des conditions réelles de conception d’un système technologique complet.
 
-Ainsi, ce projet dépasse largement le cadre académique pour constituer une expérience professionnalisante proche des conditions réelles de développement industriel.
+\section{Ouverture}
 
-\section{Perspectives}
+Au-delà de ses résultats immédiats, ce travail constitue une base solide pour le développement futur de solutions IoT appliquées à la gestion domestique. Il démontre l’intérêt d’une approche distribuée combinant capteurs intelligents, communication longue portée et interfaces utilisateur adaptées.
 
-Bien que fonctionnelle, la solution développée présente plusieurs axes d’amélioration et d’évolution.
-
-Sur le plan matériel, l’intégration d’un microcontrôleur plus performant et basse consommation, tel qu’un ESP32, permettrait d’ajouter une connectivité Wi-Fi directe et d’optimiser l’autonomie énergétique. L’amélioration du capteur et de l’algorithme de traitement du signal pourrait également accroître la précision des mesures, notamment dans des conditions environnementales variables.
-
-Sur le plan logiciel, le développement d'une application web et mobile constitue la prochaine étape logique. Cela permettrait une gestion multi-utilisateurs, l’intégration de notifications intelligentes, ainsi qu’un système avancé d’analyse de consommation via le cloud.
-
-Enfin, à plus long terme, ce projet pourrait évoluer vers une solution commerciale complète intégrée à des écosystèmes de maison connectée (smart home), permettant une gestion centralisée de l’énergie domestique et une amélioration globale du confort et de la sécurité des utilisateurs.
-
-En conclusion, ce travail constitue une base solide pour le développement de solutions IoT appliquées aux besoins quotidiens, et illustre la pertinence de l’ingénierie numérique au service de problématiques concrètes de la vie courante.
+Il illustre également le potentiel des technologies embarquées pour répondre à des besoins concrets du quotidien, en améliorant à la fois le confort, la sécurité et l’efficacité énergétique des utilisateurs.

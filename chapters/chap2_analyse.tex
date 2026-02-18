@@ -233,12 +233,13 @@ Les besoins fonctionnels décrivent ce que le système doit faire. Ils sont clas
         \multicolumn{3}{c}{\textbf{COULD HAVE (Souhaitable)}} \\
         \midrule
         BF09 & Historique local & Mémorisation des dernières mesures sur l'afficheur \\
+        BF10 & Application de suivi & Utilisation d'une application locale (mobile ou web) pour le suivi à distance du niveau de gaz \\
         \midrule
         \multicolumn{3}{c}{\textbf{WON'T HAVE (Non prioritaire)}} \\
         \midrule
-        BF10 & Détection de fuites & Alerte en cas de fuite détectée (capteur MQ-6 additionnel) \\
-        BF11 & Géolocalisation & Localisation des points de vente de bouteilles \\
-        BF12 & Commande vocale & Intégration assistants vocaux (Alexa, Google Home) \\
+        BF11 & Détection de fuites & Alerte en cas de fuite détectée (capteur MQ-6 additionnel) \\
+        BF12 & Géolocalisation & Localisation des points de vente de bouteilles \\
+        BF13 & Commande vocale & Intégration assistants vocaux (Alexa, Google Home) \\
         \bottomrule
     \end{tabular}
 \end{table}
@@ -274,7 +275,6 @@ Les besoins non fonctionnels définissent les contraintes de qualité du systèm
     \item \textbf{Appairage LoRa} : Connexion automatique au démarrage sans configuration manuelle
     \item \textbf{Apprentissage} : Utilisation intuitive sans formation préalable
     \item \textbf{Lisibilité} : Affichage LCD visible à 3 mètres de distance
-    \item \textbf{Accessibilité web} : Compatible avec tout navigateur web moderne (Chrome, Firefox, Safari)
 \end{itemize}
 
 \subsubsection{Sécurité}
@@ -313,11 +313,11 @@ Les besoins non fonctionnels définissent les contraintes de qualité du systèm
 \begin{enumerate}
     \item L'utilisateur fixe le dispositif de mesure sous la bouteille de gaz à l'aide de la sangle ajustable ou du système de fixation adhésif.
     \item Il connecte la batterie Li-Po au module TP4056 et la place dans le boîtier du capteur.
-    \item Il installe le dispositif d'affichage à l'endroit souhaité (cuisine, salon) et insère les batteries 18650.
+    \item Il installe le dispositif d'affichage à l'endroit souhaité (cuisine, salon) et insère la batterie plate Li-Po.
     \item Il allume les deux dispositifs via leurs interrupteurs respectifs.
     \item Le système effectue une auto-vérification : le capteur clignote une LED verte, l'écran LCD affiche un message de démarrage.
     \item L'appairage LoRa se fait automatiquement (fréquence 433 MHz préprogrammée).
-    \item L'utilisateur lance la procédure de calibration via le bouton dédié sur le dispositif d'affichage.
+    \item La procédure de calibration se fait automatiquement sur le dispositif d'affichage.
     \item Le capteur ultrasonique effectue plusieurs mesures pour détecter le niveau actuel et ajuste les paramètres.
     \item La mesure initiale est effectuée et transmise via LoRa, puis affichée sur le LCD en pourcentage.
 \end{enumerate}
@@ -327,9 +327,8 @@ Les besoins non fonctionnels définissent les contraintes de qualité du systèm
 \begin{enumerate}
     \item L'utilisateur se trouve dans la pièce où est installé le dispositif d'affichage.
     \item Il appuie sur le bouton d'allumage pour activer le rétroéclairage du LCD (si éteint).
-    \item Le niveau de gaz actuel s'affiche immédiatement en pourcentage (ex: 67\%) et sous forme de bargraphe.
+    \item Le niveau de gaz actuel s'affiche immédiatement en pourcentage (ex: 67\%).
     \item Les LEDs indiquent l'état : verte (>50\%), orange (20-50\%), rouge (<20\%).
-    \item L'heure de la dernière mesure est affichée sur la deuxième ligne du LCD.
     \item Le système repasse automatiquement en veille d'affichage après 30 secondes sans interaction.
 \end{enumerate}
 
@@ -338,11 +337,11 @@ Les besoins non fonctionnels définissent les contraintes de qualité du systèm
 \begin{enumerate}
     \item Le dispositif de mesure détecte lors d'une mesure périodique que le niveau est descendu sous le seuil de 20\%.
     \item Il transmet immédiatement cette information critique via LoRa au dispositif d'affichage.
-    \item Le buzzer(actif) du dispositif d'affichage émet un signal sonore intermittent (1 bip en continu).
+    \item Le buzzer(actif) du dispositif d'affichage émet un signal sonore intermittent.
     \item La LED rouge clignote de manière continue.
     \item L'écran LCD affiche "NIVEAU BAS - 20\%" avec une icône d'avertissement.
     \item L'utilisateur peut désactiver temporairement l'alarme sonore en appuyant sur le bouton "SILENCE", mais la LED rouge continue de clignoter.
-    \item L'alarme se réactivera automatiquement après 6 heures si le niveau n'a pas augmenté.
+    \item L'alarme se réactivera automatiquement après 36 heures si le niveau n'a pas augmenté.
 \end{enumerate}
 
 \section{Contraintes du projet}
@@ -376,16 +375,16 @@ Les besoins non fonctionnels définissent les contraintes de qualité du systèm
 \subsubsection{Contraintes économiques}
 
 \begin{itemize}
-    \item \textbf{Budget prototype global} : Maximum 200 000 FCFA pour système complet
+    \item \textbf{Budget prototype global} : Maximum 250 000 FCFA pour système complet
     \item \textbf{Répartition budgétaire} :
     \begin{itemize}
-        \item Dispositif de mesure : 20 000 - 50 000 FCFA
-        \item Dispositif d'affichage : 20 000 - 50 000 FCFA
+        \item Dispositif de mesure : 50 000 - 100 000 FCFA
+        \item Dispositif d'affichage : 50 000 - 100 000 FCFA
         \item PCB et boîtiers : 10 000 - 30 000 FCFA
     \end{itemize}
     \item \textbf{Composants} : Priorité aux composants disponibles localement (Cameroun) ou via fournisseurs internationaux (AliExpress, Mouser)
-    \item \textbf{Coût cible production} : Coût unitaire de production série inférieur à 100 000 FCFA
-    \item \textbf{Maintenance} : Coût de maintenance annuel inférieur à 2 000 FCFA (remplacement batteries)
+    \item \textbf{Coût cible production} : Coût unitaire de production série inférieur à 250 000 FCFA
+    \item \textbf{Maintenance} : Coût de maintenance annuel inférieur à 5 000 FCFA (remplacement batteries)
 \end{itemize}
 
 \subsubsection{Contraintes temporelles}
@@ -413,5 +412,5 @@ Les besoins non fonctionnels définissent les contraintes de qualité du systèm
 \end{table}
 
 \begin{center}
-    \textbf{TOTAL :} \textbf{24 semaines}
+    \textbf{TOTAL :} \textbf{25 semaines}
 \end{center}
